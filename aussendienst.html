@@ -93,6 +93,7 @@
                         url('images/Headerbild_jobs.png');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             color: var(--white);
             text-align: center;
             padding: 4rem 2rem;
@@ -151,6 +152,27 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 3rem;
+        }
+
+        .benefit-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border-top: 4px solid var(--primary);
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .benefit-category.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-category.animated:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
 
         .benefit-category h3 {
@@ -219,6 +241,19 @@
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .testimonial-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card.animated:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
 
         .testimonial-quote {
@@ -262,6 +297,19 @@
             border-radius: 8px;
             border-left: 4px solid var(--primary);
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .task-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .task-card.animated:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
         }
 
         .task-icon {
@@ -499,7 +547,10 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Verkaufsberater Außendienst (m/w/d)</h1>
-            <p class="location">📍 Memmingen | Vollzeit | Mit Firmenwagen</p>
+            <p class="location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Memmingen | Vollzeit | Mit Firmenwagen
+            </p>
             <a href="bewerben.html?stelle=aussendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
         </div>
     </section>
@@ -510,7 +561,7 @@
             <h2>Das bieten wir dir</h2>
             <div class="benefits-grid">
                 <div class="benefit-category">
-                    <h3>💰 Vergütung & Ausstattung</h3>
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M3.06 13a9 9 0 1 0 5.97-8"/><line x1="12" y1="0" x2="12" y2="12"/><path d="M9 17c0 1.5 1.5 3 3 3s3-1.5 3-3-1.5-1-3-1-3 .5-3 2z"/><path d="M9 7c0-1.5 1.5-3 3-3s3 1.5 3 3-1.5 1-3 1-3-.5-3-2z"/></svg>Vergütung & Ausstattung</h3>
                     <ul>
                         <li>Attraktives Gehalt + Provisionen</li>
                         <li>Firmenwagen zur Privatnutzung</li>
@@ -520,7 +571,7 @@
                     </ul>
                 </div>
                 <div class="benefit-category">
-                    <h3>🚗 Eigenverantwortung</h3>
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/><circle cx="7.5" cy="16.5" r="1.5"/><circle cx="16.5" cy="16.5" r="1.5"/></svg>Eigenverantwortung</h3>
                     <ul>
                         <li>Eigenes Verkaufsgebiet</li>
                         <li>Selbstständige Tourenplanung</li>
@@ -531,7 +582,7 @@
                     </ul>
                 </div>
                 <div class="benefit-category">
-                    <h3>📚 Entwicklung</h3>
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Entwicklung</h3>
                     <ul>
                         <li>Systematische Einarbeitung</li>
                         <li>Regelmäßige Produktschulungen</li>
@@ -541,7 +592,7 @@
                     </ul>
                 </div>
                 <div class="benefit-category">
-                    <h3>👥 Team & Kultur</h3>
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Team & Kultur</h3>
                     <ul>
                         <li>Familiäres Arbeitsklima</li>
                         <li>Erfahrenes Vertriebsteam</li>
@@ -578,10 +629,6 @@
                     <p class="testimonial-quote">"Als Quereinsteiger wurde ich super eingearbeitet. Das Team unterstützt sich gegenseitig und teilt Erfahrungen – das ist Gold wert."</p>
                     <p class="testimonial-author">— Julia, Verkaufsberaterin Außendienst</p>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Das Sortiment ist breit und hochwertig. Unsere Kunden schätzen die Qualität der Produkte und die kompetente Beratung."</p>
-                    <p class="testimonial-author">— Thomas, Senior Verkaufsberater</p>
-                </div>
             </div>
             <div style="text-align: center;">
                 <a href="bewerben.html?stelle=aussendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
@@ -597,22 +644,30 @@
                 <h2>Das ist dein Job</h2>
                 <div class="job-tasks">
                     <div class="task-card">
-                        <div class="task-icon">🤝</div>
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
                         <h3>Kundenbetreuung</h3>
                         <p>Aktive Betreuung und Ausbau des bestehenden Kundenstamms im Handwerksbereich (Schreiner, Metallbauer, etc.)</p>
                     </div>
                     <div class="task-card">
-                        <div class="task-icon">🎯</div>
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4"/><path d="M12 8v8"/></svg>
+                        </div>
                         <h3>Neukundenakquise</h3>
                         <p>Identifikation und Gewinnung neuer Kunden durch gezielte Ansprache und überzeugende Präsentationen</p>
                     </div>
                     <div class="task-card">
-                        <div class="task-icon">💡</div>
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        </div>
                         <h3>Beratung & Lösungen</h3>
                         <p>Bedarfsanalyse und Entwicklung maßgeschneiderter Lösungen aus unserem breiten Sortiment</p>
                     </div>
                     <div class="task-card">
-                        <div class="task-icon">📊</div>
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </div>
                         <h3>Verkaufsabschluss</h3>
                         <p>Angebotserstellung, Verhandlung und erfolgreicher Abschluss von Verkaufsgesprächen</p>
                     </div>
@@ -684,12 +739,18 @@
             <div class="contact-box">
                 <h2>Dein Ansprechpartner</h2>
                 <div class="contact-person">
-                    <div class="contact-name">Herr Sven Nürnberger</div>
+                    <div class="contact-name">Herr Andreas Bodenmiller</div>
                     <p>Geschäftsführung / Personalleitung</p>
                 </div>
                 <div class="contact-details">
-                    <p>📞 <a href="tel:+498331955990">08331 9559-0</a></p>
-                    <p>📧 <a href="mailto:info@poeppel-wkz.de">info@poeppel-wkz.de</a></p>
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; display: inline-block; vertical-align: middle; margin-right: 6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:+4983319559660">08331-9559-660</a>
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; display: inline-block; vertical-align: middle; margin-right: 6px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:job@poeppel-wkz.de">job@poeppel-wkz.de</a>
+                    </p>
                 </div>
                 <div style="margin-top: 2rem;">
                     <a href="bewerben.html?stelle=aussendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
@@ -732,7 +793,28 @@
             });
         });
 
-        console.log('Pöppel Jobs - Verkaufsberater Außendienst');
+        // Intersection Observer für Scroll-Animationen
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animated');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Beobachte alle animierbaren Elemente
+        document.querySelectorAll('.benefit-category, .testimonial-card, .task-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        console.log('Pöppel Jobs - Verkaufsberater Außendienst mit Animationen');
     </script>
 </body>
 </html>

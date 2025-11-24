@@ -414,89 +414,167 @@
                         <div class="progress-step" data-step="2">2</div>
                         <div class="progress-step" data-step="3">3</div>
                         <div class="progress-step" data-step="4">4</div>
+                        <div class="progress-step" data-step="5">5</div>
+                        <div class="progress-step" data-step="6">6</div>
+                        <div class="progress-step" data-step="7">7</div>
                     </div>
                 </div>
 
-                <!-- Step 1: Qualifikation -->
+                <!-- Step 1: Technical Experience -->
                 <div class="funnel-step active" data-step="1">
-                    <h2 class="step-title">Deine Qualifikation</h2>
-                    <p class="step-subtitle">Was beschreibt dich am besten?</p>
+                    <h2 class="step-title">Technische Erfahrung</h2>
+                    <p class="step-subtitle">Hast du Erfahrung im technischen Bereich (z.B. Handwerk, Technik, Maschinenbau)?</p>
 
                     <div class="radio-options">
                         <div class="radio-option">
-                            <input type="radio" name="qualification" id="q1" value="Fachkraft für Lagerlogistik">
-                            <label for="q1" class="radio-label">Fachkraft für Lagerlogistik</label>
+                            <input type="radio" name="technical" id="t1" value="Ja, mehrere Jahre" data-points="10">
+                            <label for="t1" class="radio-label">Ja, mehrere Jahre</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="qualification" id="q2" value="Fachlagerist">
-                            <label for="q2" class="radio-label">Fachlagerist/in</label>
+                            <input type="radio" name="technical" id="t2" value="Ja, etwas" data-points="7">
+                            <label for="t2" class="radio-label">Ja, etwas</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="qualification" id="q3" value="Quereinsteiger mit Erfahrung">
-                            <label for="q3" class="radio-label">Quereinsteiger/in mit Erfahrung</label>
+                            <input type="radio" name="technical" id="t3" value="Nein, aber großes Interesse" data-points="4">
+                            <label for="t3" class="radio-label">Nein, aber großes Interesse</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="qualification" id="q4" value="Berufseinsteiger">
-                            <label for="q4" class="radio-label">Berufseinsteiger/in</label>
+                            <input type="radio" name="technical" id="t4" value="Nein" data-points="0">
+                            <label for="t4" class="radio-label">Nein</label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 2: Startdatum -->
+                <!-- Step 2: Sales Drive -->
                 <div class="funnel-step" data-step="2">
-                    <h2 class="step-title">Wann kannst du starten?</h2>
-                    <p class="step-subtitle">Wähle dein gewünschtes Startdatum</p>
+                    <h2 class="step-title">Verkaufsfreude</h2>
+                    <p class="step-subtitle">Macht es dir Freude, Menschen zu überzeugen und Produkte zu verkaufen?</p>
 
                     <div class="radio-options">
                         <div class="radio-option">
-                            <input type="radio" name="startdate" id="s1" value="Sofort">
-                            <label for="s1" class="radio-label">Sofort verfügbar</label>
+                            <input type="radio" name="sales" id="s1" value="Ja, das liegt mir sehr" data-points="10">
+                            <label for="s1" class="radio-label">Ja, das liegt mir sehr</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="startdate" id="s2" value="In 1-3 Monaten">
-                            <label for="s2" class="radio-label">In 1-3 Monaten</label>
+                            <input type="radio" name="sales" id="s2" value="Ja, ich mag es" data-points="7">
+                            <label for="s2" class="radio-label">Ja, ich mag es</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="startdate" id="s3" value="In 3-6 Monaten">
-                            <label for="s3" class="radio-label">In 3-6 Monaten</label>
+                            <input type="radio" name="sales" id="s3" value="Es geht, ich probiere es gerne" data-points="4">
+                            <label for="s3" class="radio-label">Es geht, ich probiere es gerne</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="startdate" id="s4" value="Weiß noch nicht">
-                            <label for="s4" class="radio-label">Weiß ich noch nicht genau</label>
+                            <input type="radio" name="sales" id="s4" value="Nein, eher nicht" data-points="0">
+                            <label for="s4" class="radio-label">Nein, eher nicht</label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 3: Erfahrung -->
+                <!-- Step 3: Travel Readiness -->
                 <div class="funnel-step" data-step="3">
-                    <h2 class="step-title">Deine Erfahrung</h2>
-                    <p class="step-subtitle">Wie viel Berufserfahrung hast du im Lagerbereich?</p>
+                    <h2 class="step-title">Reisebereitschaft</h2>
+                    <p class="step-subtitle">Bist du bereit, täglich zu unseren Kunden zu fahren?</p>
 
                     <div class="radio-options">
                         <div class="radio-option">
-                            <input type="radio" name="experience" id="e1" value="Über 5 Jahre">
-                            <label for="e1" class="radio-label">Über 5 Jahre</label>
+                            <input type="radio" name="travel" id="tr1" value="Ja, gerne!" data-points="10">
+                            <label for="tr1" class="radio-label">Ja, gerne!</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="experience" id="e2" value="2-5 Jahre">
-                            <label for="e2" class="radio-label">2-5 Jahre</label>
+                            <input type="radio" name="travel" id="tr2" value="Ja, das passt" data-points="7">
+                            <label for="tr2" class="radio-label">Ja, das passt</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="experience" id="e3" value="Unter 2 Jahre">
-                            <label for="e3" class="radio-label">Unter 2 Jahre</label>
+                            <input type="radio" name="travel" id="tr3" value="Gelegentlich ok" data-points="4">
+                            <label for="tr3" class="radio-label">Gelegentlich ok</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="experience" id="e4" value="Keine Erfahrung">
-                            <label for="e4" class="radio-label">Noch keine Erfahrung</label>
+                            <input type="radio" name="travel" id="tr4" value="Nein, eher nicht" data-points="0">
+                            <label for="tr4" class="radio-label">Nein, eher nicht</label>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 4: Contact Information -->
+                <!-- Step 4: Self-Organization -->
                 <div class="funnel-step" data-step="4">
-                    <div id="congratsMessage" style="display: none; margin-bottom: 2rem; padding: 1.5rem; background: var(--secondary); border-left: 4px solid var(--accent-green); border-radius: 6px;">
-                        <h3 style="color: var(--accent-green); margin-bottom: 0.5rem;">🎉 Glückwunsch!</h3>
-                        <p style="color: var(--dark); margin: 0;">Deinen Angaben zufolge passt du perfekt in unser Team! Hinterlasse uns jetzt noch deine Kontaktdaten.</p>
+                    <h2 class="step-title">Selbstorganisation</h2>
+                    <p class="step-subtitle">Kannst du deinen Arbeitstag selbst organisieren?</p>
+
+                    <div class="radio-options">
+                        <div class="radio-option">
+                            <input type="radio" name="organization" id="o1" value="Ja, sehr gut" data-points="10">
+                            <label for="o1" class="radio-label">Ja, sehr gut</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="organization" id="o2" value="Ja, meistens" data-points="7">
+                            <label for="o2" class="radio-label">Ja, meistens</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="organization" id="o3" value="Mit Hilfe schon" data-points="4">
+                            <label for="o3" class="radio-label">Mit Hilfe schon</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="organization" id="o4" value="Nein, schwer" data-points="0">
+                            <label for="o4" class="radio-label">Nein, schwer</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Digital Tools -->
+                <div class="funnel-step" data-step="5">
+                    <h2 class="step-title">Digitale Tools</h2>
+                    <p class="step-subtitle">Bist du offen für digitale Tools (CRM, Apps, etc.)?</p>
+
+                    <div class="radio-options">
+                        <div class="radio-option">
+                            <input type="radio" name="digital" id="d1" value="Ja, sehr" data-points="10">
+                            <label for="d1" class="radio-label">Ja, sehr</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="digital" id="d2" value="Ja, schon" data-points="7">
+                            <label for="d2" class="radio-label">Ja, schon</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="digital" id="d3" value="Mit Einarbeitung" data-points="4">
+                            <label for="d3" class="radio-label">Mit Einarbeitung</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="digital" id="d4" value="Nein, eher nicht" data-points="0">
+                            <label for="d4" class="radio-label">Nein, eher nicht</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Mini-Case -->
+                <div class="funnel-step" data-step="6">
+                    <h2 class="step-title">Mini-Praxisfall</h2>
+                    <p class="step-subtitle">Ein Kunde hat ein Problem. Was machst du?</p>
+
+                    <div class="radio-options">
+                        <div class="radio-option">
+                            <input type="radio" name="case" id="c1" value="Produkt zeigen" data-points="2">
+                            <label for="c1" class="radio-label">Ich zeige ihm direkt unser Produkt</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="case" id="c2" value="Problem verstehen und Lösung anbieten" data-points="10">
+                            <label for="c2" class="radio-label">Ich höre zu, verstehe das Problem und biete eine Lösung an</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="case" id="c3" value="Kollegen fragen" data-points="5">
+                            <label for="c3" class="radio-label">Ich frage einen Kollegen um Rat</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="case" id="c4" value="Weiß nicht" data-points="0">
+                            <label for="c4" class="radio-label">Weiß ich nicht</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Contact Information -->
+                <div class="funnel-step" data-step="7">
+                    <div id="scoreMessage" style="display: none; margin-bottom: 2rem; padding: 1.5rem; border-left: 4px solid var(--accent-green); border-radius: 6px;">
+                        <h3 id="scoreTitle" style="margin-bottom: 0.5rem;"></h3>
+                        <p id="scoreText" style="color: var(--dark); margin: 0;"></p>
                     </div>
 
                     <h2 class="step-title">Fast geschafft!</h2>
@@ -533,7 +611,7 @@
                 </div>
 
                 <!-- Success Message -->
-                <div class="funnel-step" data-step="5">
+                <div class="funnel-step" data-step="8">
                     <div class="success-message">
                         <div class="success-icon">✓</div>
                         <h2>Vielen Dank!</h2>
@@ -541,8 +619,8 @@
                         <p>Wir werden uns in den nächsten 2-3 Werktagen bei dir melden.</p>
                         <p style="margin-top: 2rem;">
                             <strong>Dein Ansprechpartner:</strong><br>
-                            Herr Sven Nürnberger<br>
-                            📞 <a href="tel:+498331955990" style="color: var(--primary);">08331 9559-0</a>
+                            Herr Andreas Bodenmiller<br>
+                            📞 <a href="tel:+4983319559660" style="color: var(--primary);">08331-9559-660</a>
                         </p>
                         <div class="security-note">
                             🔒 Sichere Verbindung. Deine Informationen werden streng vertraulich behandelt.
@@ -567,16 +645,21 @@
     <script>
         // State management
         let currentStep = 1;
-        const totalSteps = 4;
+        const totalSteps = 7; // Changed from 4 to 7 (6 questions + contact form)
+        let totalScore = 0;
         const formData = {
-            qualification: '',
-            startdate: '',
-            experience: '',
+            technical: '',
+            sales: '',
+            travel: '',
+            organization: '',
+            digital: '',
+            case: '',
             name: '',
             email: '',
             phone: '',
             message: '',
-            privacy: false
+            privacy: false,
+            score: 0
         };
 
         // Elements
@@ -590,14 +673,25 @@
         // Initialize
         updateProgress();
 
-        // Radio button listeners for steps 1-3
+        // Radio button listeners for steps 1-6
         document.querySelectorAll('input[type="radio"]').forEach(radio => {
             radio.addEventListener('change', (e) => {
                 const name = e.target.name;
-                formData[name] = e.target.value;
+                const value = e.target.value;
+                const points = parseInt(e.target.getAttribute('data-points')) || 0;
+
+                formData[name] = value;
+
+                // Calculate score: remove old score for this question and add new
+                if (formData[name + '_points']) {
+                    totalScore -= formData[name + '_points'];
+                }
+                formData[name + '_points'] = points;
+                totalScore += points;
+
                 nextBtn.disabled = false;
 
-                // Auto-advance after selection
+                // Auto-advance after selection (only for steps 1-6)
                 setTimeout(() => {
                     if (currentStep < totalSteps) {
                         nextStep();
@@ -606,17 +700,17 @@
             });
         });
 
-        // Form validation for step 4
+        // Form validation for step 7 (contact form)
         const contactForm = document.getElementById('contactForm');
         const formInputs = contactForm.querySelectorAll('input[required], textarea[required]');
 
         formInputs.forEach(input => {
-            input.addEventListener('input', validateStep4);
+            input.addEventListener('input', validateStep7);
         });
 
-        document.getElementById('privacy').addEventListener('change', validateStep4);
+        document.getElementById('privacy').addEventListener('change', validateStep7);
 
-        function validateStep4() {
+        function validateStep7() {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
@@ -628,7 +722,7 @@
 
         // Navigation
         nextBtn.addEventListener('click', () => {
-            if (currentStep === 4) {
+            if (currentStep === 7) {
                 submitForm();
             } else {
                 nextStep();
@@ -664,10 +758,10 @@
             if (currentStep === totalSteps) {
                 nextBtn.textContent = 'Bewerbung absenden';
                 nextBtn.disabled = true;
-                validateStep4();
+                validateStep7();
 
-                // Show congrats message if qualified
-                document.getElementById('congratsMessage').style.display = 'block';
+                // Show score-based message
+                displayScoreMessage();
             } else {
                 nextBtn.textContent = 'Weiter';
                 const currentRadios = document.querySelectorAll(`.funnel-step[data-step="${currentStep}"] input[type="radio"]`);
@@ -697,6 +791,51 @@
             });
         }
 
+        // Display score-based message
+        function displayScoreMessage() {
+            const scoreMessageEl = document.getElementById('scoreMessage');
+            const scoreTitleEl = document.getElementById('scoreTitle');
+            const scoreTextEl = document.getElementById('scoreText');
+
+            formData.score = totalScore;
+
+            let title, text, bgColor, borderColor;
+
+            // Scoring system:
+            // 50-60: Perfect fit
+            // 35-49: Good fit
+            // 20-34: Interesting
+            // 0-19: Not optimal
+            if (totalScore >= 50) {
+                title = '🎉 Perfekt! Du passt hervorragend zu uns!';
+                text = 'Deinen Angaben zufolge bringst du alles mit, was wir suchen. Wir freuen uns sehr darauf, dich kennenzulernen!';
+                bgColor = 'var(--secondary)';
+                borderColor = 'var(--accent-green)';
+            } else if (totalScore >= 35) {
+                title = '👍 Guter Fit! Lass uns sprechen.';
+                text = 'Deine Antworten zeigen, dass du gut zu uns passen könntest. Wir sind gespannt, mehr über dich zu erfahren!';
+                bgColor = '#e8f5e9';
+                borderColor = 'var(--accent-green)';
+            } else if (totalScore >= 20) {
+                title = '💡 Interessant! Wir melden uns bei dir.';
+                text = 'Danke für deine Offenheit. Wir schauen uns deine Bewerbung an und melden uns zeitnah.';
+                bgColor = '#fff3e0';
+                borderColor = '#ff9800';
+            } else {
+                title = '📋 Danke für dein Interesse!';
+                text = 'Aktuell passt es noch nicht optimal. Wir halten aber gerne deine Daten für zukünftige Positionen.';
+                bgColor = '#fce4ec';
+                borderColor = '#e91e63';
+            }
+
+            scoreTitleEl.textContent = title;
+            scoreTitleEl.style.color = borderColor;
+            scoreTextEl.textContent = text;
+            scoreMessageEl.style.background = bgColor;
+            scoreMessageEl.style.borderLeftColor = borderColor;
+            scoreMessageEl.style.display = 'block';
+        }
+
         function submitForm() {
             // Collect final form data
             formData.name = document.getElementById('name').value;
@@ -705,12 +844,13 @@
             formData.message = document.getElementById('message').value;
 
             console.log('Form submitted:', formData);
+            console.log('Total Score:', totalScore);
 
             // Here you would normally send the data to your backend
             // For now, we'll just show the success message
 
             // Show success step
-            currentStep = 5;
+            currentStep = 8;
             steps.forEach((step, index) => {
                 step.classList.toggle('active', index + 1 === currentStep);
             });
