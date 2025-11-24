@@ -1,0 +1,38 @@
+# System-Dateien
+.DS_Store
+Thumbs.db
+
+# Editor-Dateien
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Temporäre Dateien
+*.tmp
+*.temp
+
+# Large video files (hosted on YouTube/CDN, not in Git)
+Videos/
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Large PDF files (to be hosted separately)
+downloads/
+*.pdf
+*.zip
+
+# Background images (use optimized versions in production)
+Hintergrundbilder/
+
+# Compressed/optimized videos and images are OK to track
+!*-compressed.mp4
+!*-compressed.webm
+!*-optimized.png
+!*-optimized.jpg
