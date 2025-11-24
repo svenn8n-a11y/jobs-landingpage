@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Verkaufsberater Außendienst (m/w/d) bei R. Pöppel - Werde Teil unseres Vertriebsteams im Bereich Werkzeugmaschinen und Handwerk">
+    <meta name="keywords" content="Jobs, Verkaufsberater, Außendienst, Vertrieb, Pöppel, Memmingen, Werkzeugmaschinen">
+    <title>Verkaufsberater Außendienst (m/w/d) | Pöppel Jobs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== CSS Variables (Pöppel CI) ===== */
+        :root {
+            --primary: #be1823;
+            --secondary: #ffe8e9;
+            --tertiary: #F6F6F6;
+            --dark: #32373c;
+            --accent-green: #8ebf22;
+            --white: #ffffff;
+            --font-serif: 'Source Serif Pro', Georgia, serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* ===== Reset & Base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        /* ===== Header ===== */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            cursor: pointer;
+        }
+
+        .back-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(190, 24, 35, 0.75) 0%, rgba(50, 55, 60, 0.85) 100%),
+                        url('images/Headerbild_jobs.png');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero .location {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--dark);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #252a2e;
+        }
+
+        /* ===== Benefits Section ===== */
+        .benefits {
+            padding: 5rem 0;
+            background: var(--tertiary);
+        }
+
+        .benefits h2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 4rem;
+            color: var(--dark);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .benefit-category h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .benefit-category ul {
+            list-style: none;
+        }
+
+        .benefit-category li {
+            padding: 0.6rem 0 0.6rem 1.8rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .benefit-category li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* ===== CTA Divider ===== */
+        .cta-divider {
+            background: var(--secondary);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .cta-divider .cta-button {
+            background: var(--primary);
+        }
+
+        .cta-divider .cta-button:hover {
+            background: #9e1319;
+        }
+
+        /* ===== Testimonials Section ===== */
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--tertiary);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* ===== Job Description ===== */
+        .job-description {
+            padding: 5rem 0;
+            background: var(--tertiary);
+        }
+
+        .job-section {
+            margin-bottom: 4rem;
+        }
+
+        .job-section h2 {
+            text-align: left;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+        }
+
+        .job-tasks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .task-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .task-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .task-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .requirements-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .requirements-list li {
+            padding: 1.2rem 1.5rem 1.2rem 3rem;
+            background: var(--white);
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .requirements-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 1rem;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* ===== Company Profile ===== */
+        .company-profile {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .company-profile h2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 2rem;
+        }
+
+        .company-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .company-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--tertiary);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-family: var(--font-serif);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== Contact Section ===== */
+        .contact-section {
+            padding: 5rem 0;
+            background: var(--tertiary);
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .contact-person {
+            margin: 2rem 0;
+        }
+
+        .contact-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details {
+            margin-top: 1.5rem;
+            line-height: 2;
+        }
+
+        .contact-details a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            height: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 60vh;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .testimonials-carousel {
+                grid-template-columns: 1fr;
+            }
+
+            .job-tasks {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements-list {
+                grid-template-columns: 1fr;
+            }
+
+            .company-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .company-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== Smooth Scroll ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html"><img src="images/Logo_poeppel.png" alt="R. Pöppel Logo" class="logo-img"></a>
+            <a href="index.html" class="back-link">← Zurück zur Übersicht</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Verkaufsberater Außendienst (m/w/d)</h1>
+            <p class="location">📍 Memmingen | Vollzeit | Mit Firmenwagen</p>
+            <a href="bewerben.html?stelle=aussendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Das bieten wir dir</h2>
+            <div class="benefits-grid">
+                <div class="benefit-category">
+                    <h3>💰 Vergütung & Ausstattung</h3>
+                    <ul>
+                        <li>Attraktives Gehalt + Provisionen</li>
+                        <li>Firmenwagen zur Privatnutzung</li>
+                        <li>Moderne Arbeitsausstattung (Laptop, Smartphone)</li>
+                        <li>Erfolgsprämien und Bonussystem</li>
+                        <li>Betriebliche Altersvorsorge</li>
+                    </ul>
+                </div>
+                <div class="benefit-category">
+                    <h3>🚗 Eigenverantwortung</h3>
+                    <ul>
+                        <li>Eigenes Verkaufsgebiet</li>
+                        <li>Selbstständige Tourenplanung</li>
+                        <li>Kurze Entscheidungswege</li>
+                        <li>Raum für eigene Ideen</li>
+                        <li>Unternehmerisches Denken erwünscht</li>
+                        <li>Flache Hierarchien</li>
+                    </ul>
+                </div>
+                <div class="benefit-category">
+                    <h3>📚 Entwicklung</h3>
+                    <ul>
+                        <li>Systematische Einarbeitung</li>
+                        <li>Regelmäßige Produktschulungen</li>
+                        <li>Verkaufstrainings</li>
+                        <li>Herstellerschulungen</li>
+                        <li>Karrieremöglichkeiten</li>
+                    </ul>
+                </div>
+                <div class="benefit-category">
+                    <h3>👥 Team & Kultur</h3>
+                    <ul>
+                        <li>Familiäres Arbeitsklima</li>
+                        <li>Erfahrenes Vertriebsteam</li>
+                        <li>Unterstützung durch Innendienst</li>
+                        <li>Regelmäßige Team-Events</li>
+                        <li>Wertschätzende Führung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Divider -->
+    <section class="cta-divider">
+        <div class="container">
+            <a href="bewerben.html?stelle=aussendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Das sagen unsere Vertriebsmitarbeiter</h2>
+            <div class="testimonials-carousel">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Der Außendienst bei Pöppel gibt mir die Freiheit, meine Kunden individuell zu betreuen. Das Vertrauen der Geschäftsführung motiviert mich jeden Tag."</p>
+                    <p class="testimonial-author">— Stefan, Verkaufsberater Außendienst</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Die Produktschulungen sind top. Man spürt, dass das Unternehmen in seine Mitarbeiter investiert und uns bestmöglich vorbereitet."</p>
+                    <p class="testimonial-author">— Michael, Verkaufsberater Außendienst</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Als Quereinsteiger wurde ich super eingearbeitet. Das Team unterstützt sich gegenseitig und teilt Erfahrungen – das ist Gold wert."</p>
+                    <p class="testimonial-author">— Julia, Verkaufsberaterin Außendienst</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Das Sortiment ist breit und hochwertig. Unsere Kunden schätzen die Qualität der Produkte und die kompetente Beratung."</p>
+                    <p class="testimonial-author">— Thomas, Senior Verkaufsberater</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="bewerben.html?stelle=aussendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Description -->
+    <section class="job-description">
+        <div class="container">
+            <!-- Tasks -->
+            <div class="job-section">
+                <h2>Das ist dein Job</h2>
+                <div class="job-tasks">
+                    <div class="task-card">
+                        <div class="task-icon">🤝</div>
+                        <h3>Kundenbetreuung</h3>
+                        <p>Aktive Betreuung und Ausbau des bestehenden Kundenstamms im Handwerksbereich (Schreiner, Metallbauer, etc.)</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-icon">🎯</div>
+                        <h3>Neukundenakquise</h3>
+                        <p>Identifikation und Gewinnung neuer Kunden durch gezielte Ansprache und überzeugende Präsentationen</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-icon">💡</div>
+                        <h3>Beratung & Lösungen</h3>
+                        <p>Bedarfsanalyse und Entwicklung maßgeschneiderter Lösungen aus unserem breiten Sortiment</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-icon">📊</div>
+                        <h3>Verkaufsabschluss</h3>
+                        <p>Angebotserstellung, Verhandlung und erfolgreicher Abschluss von Verkaufsgesprächen</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align: center; margin: 3rem 0;">
+                <a href="bewerben.html?stelle=aussendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+            </div>
+
+            <!-- Requirements -->
+            <div class="job-section">
+                <h2>Das bringst du mit</h2>
+                <ul class="requirements-list">
+                    <li>Abgeschlossene kaufmännische oder technische Ausbildung, idealerweise im Handwerk</li>
+                    <li>Erste Vertriebserfahrung im B2B-Bereich wünschenswert (Quereinsteiger willkommen!)</li>
+                    <li>Begeisterung für Werkzeuge, Maschinen und technische Produkte</li>
+                    <li>Kommunikationsstärke und überzeugendes Auftreten</li>
+                    <li>Eigeninitiative, Zielstrebigkeit und Abschlussorientierung</li>
+                    <li>Gültige Fahrerlaubnis Klasse B (für Firmenwagen)</li>
+                    <li>Teamfähigkeit und Zuverlässigkeit</li>
+                    <li>PC-Kenntnisse (MS Office, CRM-Systeme von Vorteil)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Divider -->
+    <section class="cta-divider">
+        <div class="container">
+            <a href="bewerben.html?stelle=aussendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+        </div>
+    </section>
+
+    <!-- Company Profile -->
+    <section class="company-profile">
+        <div class="container">
+            <h2>Über R. Pöppel GmbH & Co. KG</h2>
+            <p class="company-intro">
+                Seit 1925 steht R. Pöppel für Qualität und Innovation im Handel mit Werkzeugmaschinen, Werkzeugen und Betriebseinrichtungen.
+                Als Familienunternehmen mit etwa 50 Mitarbeitern betreuen wir Handwerksbetriebe und Industriekunden in ganz Süddeutschland.
+                Unser breites Sortiment erstreckt sich von Holzbearbeitung über Metallbearbeitung bis hin zu modernsten Intralogistik-Lösungen.
+            </p>
+            <div class="company-stats">
+                <div class="stat-card">
+                    <div class="stat-number">100</div>
+                    <div class="stat-label">Jahre Tradition</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Mitarbeiter</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Zufriedene Kunden</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1925</div>
+                    <div class="stat-label">Gegründet</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-box">
+                <h2>Dein Ansprechpartner</h2>
+                <div class="contact-person">
+                    <div class="contact-name">Herr Sven Nürnberger</div>
+                    <p>Geschäftsführung / Personalleitung</p>
+                </div>
+                <div class="contact-details">
+                    <p>📞 <a href="tel:+498331955990">08331 9559-0</a></p>
+                    <p>📧 <a href="mailto:info@poeppel-wkz.de">info@poeppel-wkz.de</a></p>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <a href="bewerben.html?stelle=aussendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="images/Logo_poeppel.png" alt="Pöppel Logo" class="footer-logo">
+                <div class="footer-links">
+                    <a href="index.html">Zurück zur Übersicht</a>
+                    <a href="https://www.poeppel-wkz.de">Zur Hauptseite</a>
+                    <a href="https://www.poeppel-wkz.de/impressum">Impressum</a>
+                    <a href="https://www.poeppel-wkz.de/datenschutz">Datenschutz</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 R. Pöppel GmbH & Co. KG | Alpenstraße 45, D-87700 Memmingen</p>
+                <p style="margin-top: 0.5rem;">Qualität seit 1925</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        console.log('Pöppel Jobs - Verkaufsberater Außendienst');
+    </script>
+</body>
+</html>
