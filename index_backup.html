@@ -77,9 +77,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(190, 24, 35, 0.85) 0%, rgba(50, 55, 60, 0.92) 100%),
-                        linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="1920" height="1080" fill="%23be1823"/><rect width="1920" height="1080" fill="url(%23grid)"/></svg>');
+            background: linear-gradient(135deg, rgba(190, 24, 35, 0.75) 0%, rgba(50, 55, 60, 0.85) 100%),
+                        url('images/Headerbild_jobs.png');
             background-size: cover;
             background-position: center;
             color: var(--white);
@@ -157,17 +156,8 @@
         }
 
         .job-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, #9e1319 100%);
-            color: white;
-            border-radius: 20px;
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 8px 25px rgba(190, 24, 35, 0.25);
         }
 
         .job-card h3 {
@@ -251,55 +241,23 @@
 
         .value-card {
             text-align: center;
-            padding: 2.5rem;
-            background: var(--tertiary);
-            border-radius: 16px;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
-            transform: translateY(60px) scale(0.95);
-        }
-
-        .value-card.animated {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .value-card.animated:hover {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            padding: 2rem;
         }
 
         .value-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, #9e1319 100%);
-            color: white;
-            border-radius: 20px;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 25px rgba(190, 24, 35, 0.25);
-            transition: transform 0.4s ease;
-        }
-
-        .value-card:hover .value-icon {
-            transform: rotateY(360deg);
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
 
         .value-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
-            color: var(--dark);
-            font-family: var(--font-serif);
-            font-weight: 600;
+            color: var(--primary);
         }
 
         .value-card p {
-            line-height: 1.8;
+            line-height: 1.7;
             color: #666;
-            font-size: 1.05rem;
         }
 
         /* ===== Benefits Section ===== */
@@ -310,120 +268,63 @@
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
         .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
             background: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            border-top: 4px solid var(--primary);
-            opacity: 0;
-            transform: translateY(60px);
-        }
-
-        .benefit-item.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .benefit-item.animated:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .benefit-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, var(--primary) 0%, #9e1319 100%);
-            color: white;
-            border-radius: 16px;
             font-size: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(190, 24, 35, 0.2);
+            flex-shrink: 0;
         }
 
         .benefit-content h4 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
             color: var(--dark);
-            font-family: var(--font-serif);
-            font-weight: 600;
         }
 
         .benefit-content p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #666;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* ===== Company Stats ===== */
         .stats-section {
-            background: linear-gradient(135deg, rgba(190, 24, 35, 0.95), rgba(50, 55, 60, 0.95)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23be1823" width="1920" height="1080"/></svg>');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            padding: 5rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="none"/><path d="M50 0v100M0 50h100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
-            opacity: 0.3;
+            padding: 4rem 0;
+            background: var(--primary);
+            color: var(--white);
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            gap: 2rem;
         }
 
         .stat-item {
             text-align: center;
-            padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            background: rgba(255, 255, 255, 0.15);
         }
 
         .stat-number {
             font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: block;
-            line-height: 1.2;
+            font-weight: 600;
             font-family: var(--font-serif);
+            margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            font-size: 1.125rem;
+            font-size: 1.1rem;
             opacity: 0.9;
         }
 
@@ -543,9 +444,7 @@
             <div class="jobs-grid">
                 <!-- Job 1: Außendienst -->
                 <div class="job-card">
-                    <div class="job-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 70%; height: 70%;"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/><circle cx="7.5" cy="16.5" r="1.5"/><circle cx="16.5" cy="16.5" r="1.5"/></svg>
-                    </div>
+                    <div class="job-icon">🚗</div>
                     <h3>Verkaufsberater Außendienst</h3>
                     <div class="job-meta">
                         <span class="job-tag">Vollzeit</span>
@@ -566,9 +465,7 @@
 
                 <!-- Job 2: Innendienst -->
                 <div class="job-card">
-                    <div class="job-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 70%; height: 70%;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    </div>
+                    <div class="job-icon">📞</div>
                     <h3>Verkaufsberater Innendienst</h3>
                     <div class="job-meta">
                         <span class="job-tag">Vollzeit</span>
@@ -623,30 +520,22 @@
             </div>
             <div class="values-grid">
                 <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                    </div>
+                    <div class="value-icon">🎯</div>
                     <h3>Eigenverantwortung</h3>
                     <p>Losgelöst von starren Konzernstrukturen bieten wir Raum für neue Ideen und selbstständiges Arbeiten.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </div>
+                    <div class="value-icon">🤝</div>
                     <h3>Respektvolles Miteinander</h3>
                     <p>Gegenseitige Unterstützung und Wertschätzung sind die Basis unserer Zusammenarbeit.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    </div>
+                    <div class="value-icon">💡</div>
                     <h3>Innovation</h3>
                     <p>Bereit für Neues – wir fördern den Mut, neue Wege zu gehen und Innovationen voranzutreiben.</p>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    </div>
+                    <div class="value-icon">🌱</div>
                     <h3>Nachhaltigkeit</h3>
                     <p>Langfristige Perspektive statt kurzfristige Gewinnmaximierung prägt unser Handeln.</p>
                 </div>
@@ -663,54 +552,42 @@
             </div>
             <div class="benefits-grid">
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 70%; height: 70%;"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    </div>
+                    <div class="benefit-icon">💰</div>
                     <div class="benefit-content">
                         <h4>Attraktive Vergütung</h4>
                         <p>Leistungsgerechte Bezahlung plus Zusatzleistungen</p>
                     </div>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 70%; height: 70%;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-                    </div>
+                    <div class="benefit-icon">📚</div>
                     <div class="benefit-content">
                         <h4>Weiterbildung</h4>
                         <p>Regelmäßige Schulungen und Entwicklungsmöglichkeiten</p>
                     </div>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 70%; height: 70%;"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/><circle cx="7.5" cy="16.5" r="1.5"/><circle cx="16.5" cy="16.5" r="1.5"/></svg>
-                    </div>
+                    <div class="benefit-icon">🚗</div>
                     <div class="benefit-content">
                         <h4>Firmenwagen</h4>
                         <p>Für Außendienst-Positionen mit Privatnutzung</p>
                     </div>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 70%; height: 70%;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    </div>
+                    <div class="benefit-icon">⏰</div>
                     <div class="benefit-content">
                         <h4>Work-Life-Balance</h4>
                         <p>Flexible Arbeitszeiten nach Absprache</p>
                     </div>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 70%; height: 70%;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
+                    <div class="benefit-icon">👥</div>
                     <div class="benefit-content">
                         <h4>Teamgeist</h4>
                         <p>Familiäres Arbeitsklima mit flachen Hierarchien</p>
                     </div>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 70%; height: 70%;"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                    </div>
+                    <div class="benefit-icon">🏢</div>
                     <div class="benefit-content">
                         <h4>Moderne Ausstattung</h4>
                         <p>Top-Arbeitsplätze mit neuester Technik</p>
@@ -740,80 +617,7 @@
     </footer>
 
     <script>
-        // Intersection Observer für Scroll-Animationen
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('animated');
-                    }, index * 100);
-                }
-            });
-        }, observerOptions);
-
-        // Beobachte alle animierbaren Elemente
-        document.querySelectorAll('.benefit-item, .value-card, .job-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Counter Animation für Stats
-        function animateCounter(element, start, end, duration, suffix = '', isDecimal = false) {
-            const startTime = performance.now();
-            const range = end - start;
-
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                const current = start + (range * easeOutQuart);
-
-                if (isDecimal) {
-                    element.textContent = current.toFixed(1) + suffix;
-                } else {
-                    element.textContent = Math.round(current) + suffix;
-                }
-
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                } else {
-                    element.textContent = (isDecimal ? end.toFixed(1) : end) + suffix;
-                }
-            }
-
-            requestAnimationFrame(update);
-        }
-
-        // Observer für Stats-Sektion
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const stats = entry.target.querySelectorAll('.stat-number');
-                    stats.forEach((stat, index) => {
-                        const text = stat.textContent.trim();
-                        const isDecimal = text.includes('.');
-                        const suffix = text.replace(/[0-9.,]/g, '').trim();
-                        const number = parseFloat(text.replace(/[^0-9.]/g, ''));
-
-                        setTimeout(() => {
-                            animateCounter(stat, 0, number, 2000, suffix, isDecimal);
-                        }, index * 150);
-                    });
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        const statsSection = document.querySelector('.stats-section');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
-        }
-
-        console.log('Pöppel Karriere-Übersichtsseite mit Animationen geladen');
+        console.log('Pöppel Karriere-Übersichtsseite geladen');
     </script>
 </body>
 </html>
