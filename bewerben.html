@@ -300,14 +300,14 @@
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: var(--accent-green);
             color: var(--white);
         }
 
         .btn-primary:hover:not(:disabled) {
-            background: #9e1319;
+            background: #7aa51b;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(190, 24, 35, 0.3);
+            box-shadow: 0 6px 20px rgba(142, 191, 34, 0.3);
         }
 
         .btn-primary:disabled {
@@ -398,7 +398,7 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="logo">PÖPPEL</div>
+            <a href="index.html"><img src="images/Logo_poeppel.png" alt="R. Pöppel Logo" class="logo-img" style="height: 40px; width: auto;"></a>
         </div>
     </header>
 
@@ -417,13 +417,14 @@
                         <div class="progress-step" data-step="5">5</div>
                         <div class="progress-step" data-step="6">6</div>
                         <div class="progress-step" data-step="7">7</div>
+                        <div class="progress-step" data-step="8">8</div>
                     </div>
                 </div>
 
                 <!-- Step 1: Technical Experience -->
                 <div class="funnel-step active" data-step="1">
                     <h2 class="step-title">Technische Erfahrung</h2>
-                    <p class="step-subtitle">Hast du Erfahrung im technischen Bereich (z.B. Handwerk, Technik, Maschinenbau)?</p>
+                    <p class="step-subtitle">Hast du Erfahrung im technischen Bereich (z.B. Handwerk, Technik, Baubranche, Werkzeugverkauf)?</p>
 
                     <div class="radio-options">
                         <div class="radio-option">
@@ -448,12 +449,12 @@
                 <!-- Step 2: Sales Drive -->
                 <div class="funnel-step" data-step="2">
                     <h2 class="step-title">Verkaufsfreude</h2>
-                    <p class="step-subtitle">Macht es dir Freude, Menschen zu überzeugen und Produkte zu verkaufen?</p>
+                    <p class="step-subtitle">Macht es dir Freude, Menschen zu überzeugen und Produkte & Dienstleistungen zu verkaufen?</p>
 
                     <div class="radio-options">
                         <div class="radio-option">
-                            <input type="radio" name="sales" id="s1" value="Ja, das liegt mir sehr" data-points="10">
-                            <label for="s1" class="radio-label">Ja, das liegt mir sehr</label>
+                            <input type="radio" name="sales" id="s1" value="Das ist genau mein Ding" data-points="10">
+                            <label for="s1" class="radio-label">Das ist genau mein Ding</label>
                         </div>
                         <div class="radio-option">
                             <input type="radio" name="sales" id="s2" value="Ja, ich mag es" data-points="7">
@@ -545,8 +546,25 @@
                     </div>
                 </div>
 
-                <!-- Step 6: Mini-Case -->
+                <!-- Step 6: Sales Approach -->
                 <div class="funnel-step" data-step="6">
+                    <h2 class="step-title">Verkaufsansatz</h2>
+                    <p class="step-subtitle">Was ist dir wichtiger im Verkauf: ein Produkt erklären oder ein Problem lösen?</p>
+
+                    <div class="radio-options">
+                        <div class="radio-option">
+                            <input type="radio" name="approach" id="a1" value="Produkt erklären" data-points="5">
+                            <label for="a1" class="radio-label">Produkt erklären</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="approach" id="a2" value="Problem lösen" data-points="10">
+                            <label for="a2" class="radio-label">Problem lösen</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Mini-Case -->
+                <div class="funnel-step" data-step="7">
                     <h2 class="step-title">Mini-Praxisfall</h2>
                     <p class="step-subtitle">Ein Kunde hat ein Problem. Was machst du?</p>
 
@@ -570,8 +588,8 @@
                     </div>
                 </div>
 
-                <!-- Step 7: Contact Information -->
-                <div class="funnel-step" data-step="7">
+                <!-- Step 8: Contact Information -->
+                <div class="funnel-step" data-step="8">
                     <div id="scoreMessage" style="display: none; margin-bottom: 2rem; padding: 1.5rem; border-left: 4px solid var(--accent-green); border-radius: 6px;">
                         <h3 id="scoreTitle" style="margin-bottom: 0.5rem;"></h3>
                         <p id="scoreText" style="color: var(--dark); margin: 0;"></p>
@@ -611,7 +629,7 @@
                 </div>
 
                 <!-- Success Message -->
-                <div class="funnel-step" data-step="8">
+                <div class="funnel-step" data-step="9">
                     <div class="success-message">
                         <div class="success-icon">✓</div>
                         <h2>Vielen Dank!</h2>
@@ -645,7 +663,7 @@
     <script>
         // State management
         let currentStep = 1;
-        const totalSteps = 7; // Changed from 4 to 7 (6 questions + contact form)
+        const totalSteps = 8; // Changed from 7 to 8 (7 questions + contact form)
         let totalScore = 0;
         const formData = {
             technical: '',
@@ -653,6 +671,7 @@
             travel: '',
             organization: '',
             digital: '',
+            approach: '',
             case: '',
             name: '',
             email: '',
@@ -722,7 +741,7 @@
 
         // Navigation
         nextBtn.addEventListener('click', () => {
-            if (currentStep === 7) {
+            if (currentStep === 8) {
                 submitForm();
             } else {
                 nextStep();
