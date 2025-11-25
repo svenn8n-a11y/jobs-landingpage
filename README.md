@@ -33,7 +33,7 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 ## ✨ Features
 
 ### Design & UX
-- ✅ **Baufritz-inspiriert**: Struktur und Layout nach bewährtem Vorbild
+- ✅ **Struktur und Layout nach bewährtem Vorbild
 - ✅ **Pöppel CI**: Angepasst an Corporate Identity (#be1823 Rot)
 - ✅ **Fully Responsive**: Optimiert für Desktop, Tablet und Mobile
 - ✅ **Smooth Scrolling**: Sanfte Navigation und Animationen
