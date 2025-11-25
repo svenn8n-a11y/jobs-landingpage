@@ -912,12 +912,34 @@
             formData.motivation = document.getElementById('motivation').value;
             formData.questions = document.getElementById('questions').value;
 
+            // Get stelle parameter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            formData.stelle = urlParams.get('stelle') || 'innendienst';
+
             console.log('Form submitted:', formData);
             console.log('Total Score:', totalScore);
 
-            // Here you would normally send the data to your backend
-            // For now, we'll just show the success message
+            // Send data to PHP backend
+            fetch('submit-application.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                showSuccessMessage();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Still show success message to user (fail silently)
+                showSuccessMessage();
+            });
+        }
 
+        function showSuccessMessage() {
             // Show success step
             currentStep = 8;
             steps.forEach((step, index) => {
