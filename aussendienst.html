@@ -105,16 +105,20 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 8px;
             background: linear-gradient(90deg,
                 transparent 0%,
-                #c0c0c0 15%,
-                #e8e8e8 30%,
-                #ffffff 50%,
-                #e8e8e8 70%,
-                #c0c0c0 85%,
+                rgba(160, 160, 160, 0.3) 10%,
+                rgba(192, 192, 192, 0.6) 20%,
+                rgba(220, 220, 220, 0.8) 35%,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(220, 220, 220, 0.8) 65%,
+                rgba(192, 192, 192, 0.6) 80%,
+                rgba(160, 160, 160, 0.3) 90%,
                 transparent 100%);
-            opacity: 0.6;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5),
+                        0 -2px 8px rgba(255, 255, 255, 0.3);
+            opacity: 0.9;
         }
 
         .hero-content {
@@ -152,6 +156,16 @@
             box-shadow: 0 6px 20px rgba(190, 24, 35, 0.4);
             background: #9e1319;
             color: var(--white);
+        }
+
+        .hero .cta-button {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .hero .cta-button:hover {
+            background: var(--tertiary);
+            color: #9e1319;
         }
 
         /* ===== Intro Section ===== */
@@ -285,16 +299,20 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 8px;
             background: linear-gradient(90deg,
                 transparent 0%,
-                #c0c0c0 15%,
-                #e8e8e8 30%,
-                #ffffff 50%,
-                #e8e8e8 70%,
-                #c0c0c0 85%,
+                rgba(160, 160, 160, 0.3) 10%,
+                rgba(192, 192, 192, 0.6) 20%,
+                rgba(220, 220, 220, 0.8) 35%,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(220, 220, 220, 0.8) 65%,
+                rgba(192, 192, 192, 0.6) 80%,
+                rgba(160, 160, 160, 0.3) 90%,
                 transparent 100%);
-            opacity: 0.6;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5),
+                        0 -2px 8px rgba(255, 255, 255, 0.3);
+            opacity: 0.9;
         }
 
         .testimonials h2 {
@@ -345,6 +363,16 @@
         .testimonial-author {
             font-weight: 600;
             color: var(--tertiary);
+        }
+
+        .testimonials .cta-button {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .testimonials .cta-button:hover {
+            background: var(--tertiary);
+            color: #9e1319;
         }
 
         /* ===== Job Description ===== */

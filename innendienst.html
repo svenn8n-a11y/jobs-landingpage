@@ -104,16 +104,20 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 8px;
             background: linear-gradient(90deg,
                 transparent 0%,
-                #c0c0c0 15%,
-                #e8e8e8 30%,
-                #ffffff 50%,
-                #e8e8e8 70%,
-                #c0c0c0 85%,
+                rgba(160, 160, 160, 0.3) 10%,
+                rgba(192, 192, 192, 0.6) 20%,
+                rgba(220, 220, 220, 0.8) 35%,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(220, 220, 220, 0.8) 65%,
+                rgba(192, 192, 192, 0.6) 80%,
+                rgba(160, 160, 160, 0.3) 90%,
                 transparent 100%);
-            opacity: 0.6;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5),
+                        0 -2px 8px rgba(255, 255, 255, 0.3);
+            opacity: 0.9;
         }
 
         .hero-content {
@@ -260,10 +264,12 @@
 
         .cta-divider .cta-button {
             background: var(--primary);
+            color: var(--white);
         }
 
         .cta-divider .cta-button:hover {
             background: #9e1319;
+            color: var(--white);
         }
 
         /* ===== Testimonials Section ===== */
@@ -284,16 +290,20 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 8px;
             background: linear-gradient(90deg,
                 transparent 0%,
-                #c0c0c0 15%,
-                #e8e8e8 30%,
-                #ffffff 50%,
-                #e8e8e8 70%,
-                #c0c0c0 85%,
+                rgba(160, 160, 160, 0.3) 10%,
+                rgba(192, 192, 192, 0.6) 20%,
+                rgba(220, 220, 220, 0.8) 35%,
+                rgba(255, 255, 255, 1) 50%,
+                rgba(220, 220, 220, 0.8) 65%,
+                rgba(192, 192, 192, 0.6) 80%,
+                rgba(160, 160, 160, 0.3) 90%,
                 transparent 100%);
-            opacity: 0.6;
+            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.5),
+                        0 -2px 8px rgba(255, 255, 255, 0.3);
+            opacity: 0.9;
         }
 
         .testimonials h2 {
@@ -346,10 +356,30 @@
             color: var(--tertiary);
         }
 
+        .testimonials .cta-button {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .testimonials .cta-button:hover {
+            background: var(--tertiary);
+            color: #9e1319;
+        }
+
         /* ===== Job Description ===== */
         .job-description {
             padding: 5rem 0;
             background: var(--tertiary);
+        }
+
+        .job-description .cta-button {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .job-description .cta-button:hover {
+            background: #9e1319;
+            color: var(--white);
         }
 
         .job-section {
@@ -391,8 +421,10 @@
         }
 
         .task-icon {
-            font-size: 2.5rem;
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .task-card h3 {
@@ -490,6 +522,16 @@
         .contact-section {
             padding: 5rem 0;
             background: var(--tertiary);
+        }
+
+        .contact-section .cta-button {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .contact-section .cta-button:hover {
+            background: #9e1319;
+            color: var(--white);
         }
 
         .contact-box {
@@ -792,10 +834,6 @@
                     <p class="testimonial-quote">"Die Einarbeitung war strukturiert und umfassend. Man hat Zeit, sich in die Produkte und Systeme einzuarbeiten."</p>
                     <p class="testimonial-author">— Lisa, Verkaufsberaterin Innendienst</p>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Die Arbeitszeiten sind geregelt, das gibt mir Planungssicherheit. Und die Work-Life-Balance stimmt hier wirklich."</p>
-                    <p class="testimonial-author">— Daniel, Verkaufsberater Innendienst</p>
-                </div>
             </div>
             <div style="text-align: center;">
                 <a href="bewerben.html?stelle=innendienst" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
@@ -811,22 +849,30 @@
                 <h2>Das ist dein Job</h2>
                 <div class="job-tasks">
                     <div class="task-card">
-                        <div class="task-icon">📞</div>
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
                         <h3>Kundenberatung</h3>
                         <p>Kompetente telefonische und persönliche Beratung unserer Kunden zu unserem breiten Produktsortiment</p>
                     </div>
                     <div class="task-card">
-                        <div class="task-icon">📋</div>
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
                         <h3>Auftragsabwicklung</h3>
                         <p>Angebotserstellung, Auftragserfassung und -verfolgung bis zur erfolgreichen Lieferung</p>
                     </div>
                     <div class="task-card">
-                        <div class="task-icon">🤝</div>
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
                         <h3>Kundenbetreuung</h3>
                         <p>Pflege bestehender Kundenbeziehungen und aktive Unterstützung des Außendienstes</p>
                     </div>
                     <div class="task-card">
-                        <div class="task-icon">💡</div>
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        </div>
                         <h3>Lösungsfindung</h3>
                         <p>Bedarfsanalyse und Entwicklung passender Lösungen aus unserem Sortiment</p>
                     </div>
