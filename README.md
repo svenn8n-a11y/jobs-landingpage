@@ -2,10 +2,11 @@
 
 Eine moderne, professionelle Landingpage für Jobangebote bei R. Pöppel GmbH & Co. KG - Werkzeugmaschinen und Intralogistik-Spezialist aus Memmingen.
 
-![Version](https://img.shields.io/badge/version-3.0-blue)
+![Version](https://img.shields.io/badge/version-3.5-blue)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
 
 ## 📋 Inhaltsverzeichnis
 
@@ -33,32 +34,42 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 ## ✨ Features
 
 ### Design & UX
-- ✅ **Struktur und Layout nach bewährtem Vorbild
+- ✅ **Struktur und Layout** nach bewährtem Vorbild
 - ✅ **Pöppel CI**: Angepasst an Corporate Identity (#be1823 Rot)
 - ✅ **Fully Responsive**: Optimiert für Desktop, Tablet und Mobile
 - ✅ **Smooth Scrolling**: Sanfte Navigation und Animationen
 - ✅ **Hero-Bilder**: Professionelle Headerbilder mit Overlay
-- ✅ **Scroll-to-Top Button**: Sticky Button auf allen Seiten
-- ✅ **Silver Gradient Lines**: CI-konforme Silberstreifen auf roten Sektionen
+- ✅ **Scroll-to-Top Button**: Sticky Button auf allen Seiten (außer Bewerbungs-Funnel)
+- ✅ **Silver Gradient Lines**: Metallisch glänzende Silberstreifen als oberer Rand der nachfolgenden Sektionen
 - ✅ **Mobile Optimiert**: Background-attachment und Logo-Größe angepasst
+- ✅ **Button-Design-System**: Konsistente Farbgebung (Rot auf Weiß, Weiß auf Rot)
 
 ### Funktionalität
 - ✅ **Übersichtsseite**: Alle offenen Stellen auf einen Blick
-- ✅ **Detailseiten**: Ausführliche Stellenbeschreibungen
+- ✅ **Detailseiten**: Ausführliche Stellenbeschreibungen mit aktuellen Benefits
 - ✅ **8-stufiger Bewerbungs-Funnel**: Progressives Formular mit Auto-Advance und Scoring
+- ✅ **PHP-Mail-Integration**: Bewerbungen werden automatisch an job@poeppel-wkz.de versendet
 - ✅ **Multiple CTA-Buttons**: Strategisch platziert für hohe Conversion
-- ✅ **Testimonials mit echten Namen**: Authentische Mitarbeiterzitate (Uwe Hettl, Michael Wrage, Alois Aschenbrenner)
-- ✅ **Benefits-Grid**: 4-spaltig mit Icons
+- ✅ **Testimonials mit echten Namen**: Authentische Mitarbeiterzitate
+  - **Außendienst**: Uwe Hettl (30+ Jahre), Michael Wrage (10+ Jahre), Alois Aschenbrenner (20 Jahre)
+  - Alle mit Titel "Top-Verkaufsberater" bzw. "Verkaufsleiter"
+- ✅ **Benefits-Grid**: Aktualisiert mit modernen Arbeitgeberleistungen
+  - **Innendienst**: Edenred Gutscheinkarte, VWL, Jobrad, Gemeinschaftsraum
+  - **Außendienst**: Ohne Altersvorsorge & Flache Hierarchien
 - ✅ **Unternehmenswerte**: Visualisiert mit Icons und Mobile-Animationen
 - ✅ **Intro-Sektionen**: Kraftvolle Einleitungstexte ("Dein Herz schlägt für den Holzbau...")
+- ✅ **Vorqualifizierung**: Präzisierte Fragen (z.B. "Wie viel aktive Kundenansprache?")
 
 ### Technisch
-- ✅ **Zero Dependencies**: Kein jQuery, keine Frameworks
+- ✅ **Zero Dependencies (Frontend)**: Kein jQuery, keine Frameworks
+- ✅ **PHP-Backend**: E-Mail-Versand mit vollständiger Datenübermittlung
+- ✅ **Fetch API**: Moderne AJAX-Kommunikation mit Backend
 - ✅ **SEO-optimiert**: Semantisches HTML5, Meta-Tags
 - ✅ **Performance**: Lazy Loading, optimierte Assets
 - ✅ **Accessibility**: WCAG-konform, keyboard-navigierbar
 - ✅ **Intersection Observer**: Scroll-triggered Animationen
 - ✅ **Glassmorphism**: Moderne UI-Effekte mit backdrop-filter
+- ✅ **Fail-Safe**: Bewerbungsformular zeigt immer Erfolgsseite (auch bei Backend-Fehler)
 
 ## 🌐 Seitenübersicht
 
@@ -94,18 +105,18 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 - Problemlöser, Berater und Partner für Kunden aus dem Handwerk
 
 **Inhalte:**
-- **Benefits**: 4 Kategorien
-  - Vergütung & Ausstattung (mit korrektem Euro-Icon)
-  - Eigenverantwortung
-  - Entwicklung
-  - Team & Kultur
-- **Testimonials** (rote Sektion mit Glassmorphism):
-  - Uwe Hettl, Verkaufsberater Außendienst (seit über 20 Jahren bei Pöppel)
-  - Michael Wrage, Verkaufsleiter
-  - Alois Aschenbrenner, Verkaufsberater Außendienst (war vorher selbst Zimmermannsmeister)
+- **Benefits**: 4 Kategorien (aktualisiert)
+  - Vergütung & Ausstattung: Gehalt, Firmenwagen, Ausstattung, Prämien (ohne Altersvorsorge)
+  - Eigenverantwortung: Verkaufsgebiet, Tourenplanung, kurze Wege, Ideen, unternehmerisches Denken (ohne Flache Hierarchien)
+  - Entwicklung: Einarbeitung, Schulungen, Trainings, Karriere
+  - Team & Kultur: Familie, Vertriebsteam, Innendienst-Support, Events, Wertschätzung
+- **Testimonials** (rote Sektion mit Glassmorphism) - Vollständig überarbeitet:
+  - Uwe Hettl, Top-Verkaufsberater Außendienst (Zimmermannsmeister, 30+ Jahre): "Freiheit & Gestaltungsspielraum"
+  - Michael Wrage, Verkaufsleiter (10+ Jahre): "Offenheit für Ideen & Unterstützung"
+  - Alois Aschenbrenner, Top-Verkaufsberater Außendienst (Zimmermannsmeister, 20 Jahre): "Quereinstieg & Familie"
 - **Aufgaben**: Kundenbetreuung, Neukundenakquise, Beratung, Verkaufsabschluss
 - **Anforderungen**: 8 Punkte inkl. Fahrerlaubnis
-- **Ansprechpartner**: Andreas Bodenmiller (Geschäftsführung/Personalleitung)
+- **Ansprechpartner**: Andreas Bodenmiller (IT-Leitung / Personalleitung, 08331-9559-660, job@poeppel-wkz.de)
 
 **Mobile Optimierungen:**
 - Logo auf 30px verkleinert
@@ -120,11 +131,15 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 - Typ: Vollzeit, geregelte Arbeitszeiten
 
 **Inhalte:**
-- **Benefits**: Vergütung, Arbeitsklima, Arbeitsplatz, Work-Life-Balance
-- **Testimonials**: 4 Zitate von Innendienst-Mitarbeitern
-- **Aufgaben**: Kundenberatung, Auftragsabwicklung, Betreuung, Lösungsfindung
-- **Anforderungen**: 8 Punkte inkl. Kommunikationsstärke
-- **Ansprechpartner**: Andreas Bodenmiller
+- **Benefits**: 4 Kategorien (aktualisiert)
+  - Vergütung: Gehalt, Edenred Gutscheinkarte, VWL, Jobrad, Prämien, Rabatte (ohne Urlaubs-/Weihnachtsgeld & Altersvorsorge)
+  - Arbeitsklima: Familie, flache Hierarchien, Kommunikation, Wertschätzung, Events, Miteinander
+  - Arbeitsplatz: Büroausstattung, IT, Gemeinschaftsraum, helle Räume (ohne ergonomische Plätze & Getränke)
+  - Work-Life-Balance: Mo-Fr, 30 Tage, keine Schichten, Flexibilität, Einarbeitung, Weiterbildung
+- **Testimonials**: 3 Zitate von Innendienst-Mitarbeitern (Anna, Martin, Lisa)
+- **Aufgaben**: Kundenberatung (gekürzt), Auftragsabwicklung, Betreuung, Lösungsfindung
+- **Anforderungen**: 9 Punkte inkl. "Mitgestaltung des Verkaufsraumes und von Verkaufsaktionen"
+- **Ansprechpartner**: Andreas Bodenmiller (IT-Leitung / Personalleitung, 08331-9559-660, job@poeppel-wkz.de)
 
 **Mobile Optimierungen:**
 - Logo auf 30px verkleinert
@@ -134,7 +149,7 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 
 **8-stufiger Prozess mit Scoring:**
 1. **Technische Erfahrung**: Handwerk, Technik, Baubranche (0-10 Punkte)
-2. **Verkaufsfreude**: Menschen überzeugen (0-10 Punkte)
+2. **Verkaufsfreude**: "Wie viel aktive Kundenansprache hast du bisher gemacht?" - Täglich/Mehrmals pro Woche/Selten/Noch nie (0-10 Punkte)
 3. **Reisebereitschaft**: Täglich zu Kunden fahren (0-10 Punkte)
 4. **Selbstorganisation**: Arbeitstag selbst organisieren (0-10 Punkte)
 5. **Digitale Tools**: Offenheit für CRM, Apps (0-10 Punkte)
@@ -155,8 +170,10 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 - Echtzeit-Validierung
 - Motivation-Textfeld (Pflicht): "Warum möchtest Du für uns arbeiten?"
 - Fragen-Textfeld (optional, grauer Hintergrund): "Hast Du Fragen an uns?"
+- **PHP-Mail-Integration**: Automatischer Versand an job@poeppel-wkz.de
+- **Datenübermittlung**: Alle Antworten, Score, Kontaktdaten, Bewertung
 - Success-Seite mit Sicherheitshinweis
-- Scroll-to-Top Button
+- Kein Scroll-to-Top Button (bewusst entfernt für cleane Funnel-UX)
 
 **Mobile Optimierungen:**
 - Logo auf 30px verkleinert
@@ -171,6 +188,7 @@ jobs-landingpage/
 ├── aussendienst.html                   # Stellenanzeige Verkaufsberater Außendienst
 ├── innendienst.html                    # Stellenanzeige Verkaufsberater Innendienst
 ├── bewerben.html                       # 8-stufiger Bewerbungs-Funnel mit Scoring
+├── submit-application.php              # PHP-Backend für E-Mail-Versand
 ├── intralogistik-fachkraft.html        # Stellenanzeige Intralogistik (Vorlage)
 │
 ├── images/                             # Bilder und Assets
@@ -248,15 +266,27 @@ python -m http.server 8000
 
 ### Silber-Gradient (CI-Element)
 
+Positioniert als `::before` der nachfolgenden Sektion für bessere Sichtbarkeit:
+
 ```css
-background: linear-gradient(90deg,
-    transparent 0%,
-    #c0c0c0 15%,
-    #e8e8e8 30%,
-    #ffffff 50%,
-    #e8e8e8 70%,
-    #c0c0c0 85%,
-    transparent 100%);
+.intro-section::before,
+.job-description::before {
+    content: '';
+    display: block;
+    height: 8px;
+    background: linear-gradient(90deg,
+        #999 0%,
+        #aaa 10%,
+        #c0c0c0 20%,
+        #d3d3d3 35%,
+        #e8e8e8 50%,
+        #d3d3d3 65%,
+        #c0c0c0 80%,
+        #aaa 90%,
+        #999 100%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15),
+                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
 ```
 
 ### Typografie
@@ -313,19 +343,50 @@ Deployment-Schritte:
    - Publish directory: `/`
 5. Deploy klicken
 
-### Traditionelles Hosting
+### Traditionelles Hosting (mit PHP-Support)
+
+**Wichtig**: Server muss PHP unterstützen!
 
 Per FTP alle Dateien auf Webserver hochladen:
 - index.html (Root)
 - aussendienst.html
 - innendienst.html
 - bewerben.html
+- **submit-application.php** (für E-Mail-Versand)
 - images/ (alle Bilder)
 - Alle anderen Assets
 
+**PHP-Konfiguration prüfen:**
+```bash
+# Testen ob mail() funktioniert
+php -r "mail('test@example.com', 'Test', 'Test');"
+```
+
 ## 📝 Changelog
 
-### Version 3.0 (Januar 2025) - Aktuell
+### Version 3.5 (Januar 2025) - Aktuell
+- 🎉 **PHP-Mail-Integration**
+  - Automatischer E-Mail-Versand an job@poeppel-wkz.de
+  - Vollständige Übermittlung aller Vorqualifizierungsantworten
+  - Score-basierte Bewertung in E-Mail
+- ✨ **Content-Updates**
+  - **Index**: "Work-Life-Balance" → "Flexibilität - Gleitzeit"
+  - **Außendienst Benefits**: Entfernt "Betriebliche Altersvorsorge" & "Flache Hierarchien"
+  - **Außendienst Testimonials**: Komplett überarbeitet mit neuen Zitaten (Uwe Hettl 30+ Jahre, Michael Wrage 10+ Jahre, Alois Aschenbrenner 20 Jahre)
+  - **Innendienst Benefits**: Ersetzt durch Edenred Gutscheinkarte, VWL, Jobrad, Gemeinschaftsraum
+  - **Innendienst Anforderungen**: Hinzugefügt "Mitgestaltung des Verkaufsraumes"
+  - **Vorqualifizierung**: Frage 2 präzisiert ("Wie viel aktive Kundenansprache?")
+- 🔧 **Silberstreifen-Fix**
+  - Ohne Transparenz als oberer Rand der Folge-Sektion
+  - Metallisch glänzend mit inset box-shadow
+  - Deutlich besser sichtbar
+- 👤 **Ansprechpartner aktualisiert**
+  - Name: Herr Andreas Bodenmiller
+  - Position: IT-Leitung / Personalleitung
+  - Telefon: 08331-9559-660
+  - E-Mail: job@poeppel-wkz.de
+
+### Version 3.0 (Januar 2025)
 - 🎉 **Mobile Optimierungen**
   - Logo auf 30px verkleinert auf mobilen Geräten
   - `background-attachment: scroll` für iOS/Android
@@ -364,29 +425,44 @@ Per FTP alle Dateien auf Webserver hochladen:
 - 🎉 Initial Release
 - ✨ Projekt-Setup und Grundstruktur
 
-## 🔄 Backend-Integration (Optional)
+## 🔄 Backend-Integration
 
-Aktuell: Client-seitige Validierung & Console-Log
+**Aktuelle Implementierung: PHP-Mail-System**
 
-**Empfohlene Lösungen für E-Mail-Versand:**
+Die Bewerbungsformulare senden Daten via Fetch-API an `submit-application.php`:
 
-1. **Typeform** (Empfohlen für schnelle Integration)
-   - Professionelles Design
-   - DSGVO-konform
-   - E-Mail-Benachrichtigungen
-   - Einfach zu integrieren
+```javascript
+fetch('submit-application.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+})
+```
 
-2. **Formspree**
-   ```html
-   <form action="https://formspree.io/f/YOUR-ID" method="POST">
-   ```
+**PHP-Backend Features:**
+- ✅ E-Mail-Versand an job@poeppel-wkz.de
+- ✅ Vollständige Datenübermittlung (Antworten, Score, Kontaktdaten)
+- ✅ Input-Validierung & Sicherheit (XSS-Protection)
+- ✅ Automatische Bewertung basierend auf Score
+- ✅ Strukturierte Plain-Text E-Mail
 
-3. **EmailJS**
-   ```javascript
-   emailjs.send("service_id", "template_id", formData);
-   ```
+**E-Mail-Inhalt:**
+- Bewerberdaten (Name, E-Mail, Telefon, Stelle)
+- Motivation & Fragen
+- Alle 7 Vorqualifizierungsantworten
+- Gesamtscore mit Bewertung (Perfekt/Gut/Interessant/Gering)
+- Zeitstempel
 
-4. **Eigenes Backend** (PHP, Node.js, Python)
+**Server-Anforderungen:**
+- PHP 7.0+ mit `mail()` Funktion
+- SMTP-Server konfiguriert
+- Schreibrechte für PHP (für Logs, falls implementiert)
+
+**Alternative Lösungen:**
+1. **Typeform** - Professionelle Forms mit DSGVO-Konformität
+2. **Formspree** - Einfache Form-to-Email Integration
+3. **EmailJS** - JavaScript E-Mail-Versand
+4. **Node.js/Express** - Vollständiges Custom Backend
 
 ## 🎯 Nächste Schritte
 
@@ -412,7 +488,7 @@ Bei Fragen zur Webseite oder den Stellenangeboten:
 
 **Ansprechpartner Bewerbungen:**
 - Herr Andreas Bodenmiller
-- Geschäftsführung / Personalleitung
+- IT-Leitung / Personalleitung
 - 📞 08331-9559-660
 - 📧 job@poeppel-wkz.de
 
