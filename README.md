@@ -2,7 +2,7 @@
 
 Eine moderne, professionelle Landingpage für Jobangebote bei R. Pöppel GmbH & Co. KG - Werkzeugmaschinen und Intralogistik-Spezialist aus Memmingen.
 
-![Version](https://img.shields.io/badge/version-2.0-blue)
+![Version](https://img.shields.io/badge/version-3.0-blue)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
@@ -38,39 +38,49 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 - ✅ **Fully Responsive**: Optimiert für Desktop, Tablet und Mobile
 - ✅ **Smooth Scrolling**: Sanfte Navigation und Animationen
 - ✅ **Hero-Bilder**: Professionelle Headerbilder mit Overlay
+- ✅ **Scroll-to-Top Button**: Sticky Button auf allen Seiten
+- ✅ **Silver Gradient Lines**: CI-konforme Silberstreifen auf roten Sektionen
+- ✅ **Mobile Optimiert**: Background-attachment und Logo-Größe angepasst
 
 ### Funktionalität
 - ✅ **Übersichtsseite**: Alle offenen Stellen auf einen Blick
 - ✅ **Detailseiten**: Ausführliche Stellenbeschreibungen
-- ✅ **4-stufiger Bewerbungs-Funnel**: Progressives Formular mit Auto-Advance
-- ✅ **7x CTA-Buttons**: Strategisch platziert für hohe Conversion
-- ✅ **Testimonials**: Authentische Mitarbeiterzitate
+- ✅ **8-stufiger Bewerbungs-Funnel**: Progressives Formular mit Auto-Advance und Scoring
+- ✅ **Multiple CTA-Buttons**: Strategisch platziert für hohe Conversion
+- ✅ **Testimonials mit echten Namen**: Authentische Mitarbeiterzitate (Uwe Hettl, Michael Wrage, Alois Aschenbrenner)
 - ✅ **Benefits-Grid**: 4-spaltig mit Icons
-- ✅ **Unternehmenswerte**: Visualisiert mit Icons
+- ✅ **Unternehmenswerte**: Visualisiert mit Icons und Mobile-Animationen
+- ✅ **Intro-Sektionen**: Kraftvolle Einleitungstexte ("Dein Herz schlägt für den Holzbau...")
 
 ### Technisch
 - ✅ **Zero Dependencies**: Kein jQuery, keine Frameworks
 - ✅ **SEO-optimiert**: Semantisches HTML5, Meta-Tags
 - ✅ **Performance**: Lazy Loading, optimierte Assets
 - ✅ **Accessibility**: WCAG-konform, keyboard-navigierbar
+- ✅ **Intersection Observer**: Scroll-triggered Animationen
+- ✅ **Glassmorphism**: Moderne UI-Effekte mit backdrop-filter
 
 ## 🌐 Seitenübersicht
 
 ### 1. Übersichtsseite ([index.html](index.html))
 
 **Hero-Sektion:**
-- Großflächiges Hintergrundbild (images/Headerbild_jobs.png)
+- Großflächiges Hintergrundbild (images/headerbild_index.jpg)
 - "Karriere bei Pöppel" + Tagline
 - Firmenlogo im Header
+- Silberstreifen am unteren Rand
 
 **Job-Cards (2 Stellen):**
 - 🚗 **Verkaufsberater Außendienst**: Mit Firmenwagen
 - 📞 **Verkaufsberater Innendienst**: Geregelte Arbeitszeiten
 
 **Weitere Sektionen:**
-- Statistik-Banner: 100 Jahre, 50+ MA, 1000+ Kunden, 1925 gegründet
+- Statistik-Banner: 100 Jahre, 50+ MA, 1000+ Kunden, 1925 gegründet (mit Silberstreifen)
 - Unternehmenswerte: 4 Säulen (Eigenverantwortung, Miteinander, Innovation, Nachhaltigkeit)
+  - Mobile: Pulse-Animation auf Icons
 - Benefits-Grid: 6 Kategorien mit Icons
+  - CTA-Button "Zu den Jobs" nach Benefits-Sektion
+- Scroll-to-Top Button (erscheint nach 300px)
 
 ### 2. Außendienst-Stellenanzeige ([aussendienst.html](aussendienst.html))
 
@@ -79,13 +89,28 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 - Standort: Memmingen
 - Typ: Vollzeit mit Firmenwagen
 
+**Intro-Sektion:**
+- Kraftvoller Einstieg: "Dein Herz schlägt für den Holzbau und Du möchtest Handwerksunternehmen aktiv dabei unterstützen..."
+- Problemlöser, Berater und Partner für Kunden aus dem Handwerk
+
 **Inhalte:**
-- **Benefits**: Vergütung & Ausstattung, Eigenverantwortung, Entwicklung, Team & Kultur
-- **Testimonials**: 4 Zitate von Vertriebsmitarbeitern
+- **Benefits**: 4 Kategorien
+  - Vergütung & Ausstattung (mit korrektem Euro-Icon)
+  - Eigenverantwortung
+  - Entwicklung
+  - Team & Kultur
+- **Testimonials** (rote Sektion mit Glassmorphism):
+  - Uwe Hettl, Verkaufsberater Außendienst (seit über 20 Jahren bei Pöppel)
+  - Michael Wrage, Verkaufsleiter
+  - Alois Aschenbrenner, Verkaufsberater Außendienst (war vorher selbst Zimmermannsmeister)
 - **Aufgaben**: Kundenbetreuung, Neukundenakquise, Beratung, Verkaufsabschluss
 - **Anforderungen**: 8 Punkte inkl. Fahrerlaubnis
-- **Firmenprofil**: Text + 4 Statistiken
-- **Ansprechpartner**: Sven Nürnberger mit Kontaktdaten
+- **Ansprechpartner**: Andreas Bodenmiller (Geschäftsführung/Personalleitung)
+
+**Mobile Optimierungen:**
+- Logo auf 30px verkleinert
+- Background-attachment: scroll statt fixed
+- Silberstreifen auf Hero und Testimonials
 
 ### 3. Innendienst-Stellenanzeige ([innendienst.html](innendienst.html))
 
@@ -99,27 +124,43 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 - **Testimonials**: 4 Zitate von Innendienst-Mitarbeitern
 - **Aufgaben**: Kundenberatung, Auftragsabwicklung, Betreuung, Lösungsfindung
 - **Anforderungen**: 8 Punkte inkl. Kommunikationsstärke
-- **Firmenprofil**: Text + 4 Statistiken
-- **Ansprechpartner**: Sven Nürnberger mit Kontaktdaten
+- **Ansprechpartner**: Andreas Bodenmiller
+
+**Mobile Optimierungen:**
+- Logo auf 30px verkleinert
+- Background-attachment: scroll
 
 ### 4. Bewerbungs-Funnel ([bewerben.html](bewerben.html))
 
-**4-stufiger Prozess:**
-1. **Qualifikation**: Fachkraft, Fachlagerist, Quereinsteiger, Berufseinsteiger
-2. **Startdatum**: Sofort, 1-3 Monate, 3-6 Monate, Weiß noch nicht
-3. **Erfahrung**: >5 Jahre, 2-5 Jahre, <2 Jahre, Keine
-4. **Kontaktdaten**: Name, E-Mail, Telefon, Nachricht, DSGVO-Checkbox
+**8-stufiger Prozess mit Scoring:**
+1. **Technische Erfahrung**: Handwerk, Technik, Baubranche (0-10 Punkte)
+2. **Verkaufsfreude**: Menschen überzeugen (0-10 Punkte)
+3. **Reisebereitschaft**: Täglich zu Kunden fahren (0-10 Punkte)
+4. **Selbstorganisation**: Arbeitstag selbst organisieren (0-10 Punkte)
+5. **Digitale Tools**: Offenheit für CRM, Apps (0-10 Punkte)
+6. **Verkaufsansatz**: Produkt erklären vs. Problem lösen (5-10 Punkte)
+7. **Mini-Praxisfall**: Kundenreaktion (0-10 Punkte)
+8. **Kontaktdaten**: Name, E-Mail, Telefon, Motivation, Fragen (optional), DSGVO
+
+**Scoring-System:**
+- 50-60 Punkte: "Perfekt! Du passt hervorragend zu uns!"
+- 35-49 Punkte: "Guter Fit! Lass uns sprechen."
+- 20-34 Punkte: "Interessant! Wir melden uns bei dir."
+- 0-19 Punkte: "Danke für dein Interesse!"
 
 **Features:**
-- Progress-Bar mit visueller Anzeige
+- Progress-Bar mit 8 Schritten
 - Auto-Advance bei Radio-Auswahl
-- "Glückwunsch"-Meldung vor Kontaktformular
+- Score-basierte Feedback-Nachricht vor Kontaktformular
 - Echtzeit-Validierung
-- Success-Seite mit Sicherheitshinweis 🔒
+- Motivation-Textfeld (Pflicht): "Warum möchtest Du für uns arbeiten?"
+- Fragen-Textfeld (optional, grauer Hintergrund): "Hast Du Fragen an uns?"
+- Success-Seite mit Sicherheitshinweis
+- Scroll-to-Top Button
 
-### 5. Intralogistik-Fachkraft ([intralogistik-fachkraft.html](intralogistik-fachkraft.html))
-
-Ursprüngliche Stellenanzeige für Fachkraft Intralogistik (m/w/d) – als Vorlage für weitere Stellenanzeigen verfügbar.
+**Mobile Optimierungen:**
+- Logo auf 30px verkleinert
+- Zurück-Button führt zu index.html#jobs
 
 ## 📁 Dateistruktur
 
@@ -129,19 +170,18 @@ jobs-landingpage/
 ├── index.html                          # Übersichtsseite mit allen Stellen
 ├── aussendienst.html                   # Stellenanzeige Verkaufsberater Außendienst
 ├── innendienst.html                    # Stellenanzeige Verkaufsberater Innendienst
-├── bewerben.html                       # 4-stufiger Bewerbungs-Funnel
+├── bewerben.html                       # 8-stufiger Bewerbungs-Funnel mit Scoring
 ├── intralogistik-fachkraft.html        # Stellenanzeige Intralogistik (Vorlage)
 │
 ├── images/                             # Bilder und Assets
-│   ├── Logo_poeppel.png                # Firmenlogo (38KB)
-│   └── Headerbild_jobs.png             # Hero-Hintergrundbild (1MB, in .gitignore)
+│   ├── Logo_poeppel.png                # Firmenlogo
+│   ├── headerbild_index.jpg            # Hero-Hintergrundbild Index
+│   └── Headerbild_jobs.png             # Hero-Hintergrundbild Jobs
 │
 ├── README.md                           # Haupt-Dokumentation (diese Datei)
 ├── .gitignore                          # Große Binärdateien ausgeschlossen
 └── Jobs Landingpage.code-workspace     # VS Code Workspace-Datei
 ```
-
-**Hinweis**: Das Headerbild (1MB) ist zu groß für GitHub und daher in `.gitignore` ausgeschlossen. Es muss separat hochgeladen werden.
 
 ## 🚀 Installation & Verwendung
 
@@ -158,9 +198,6 @@ git clone https://github.com/svenn8n-a11y/jobs-landingpage.git
 
 # In Verzeichnis wechseln
 cd jobs-landingpage
-
-# WICHTIG: Headerbild manuell hinzufügen
-# Kopiere Headerbild_jobs.png nach images/
 
 # index.html im Browser öffnen (Doppelklick)
 ```
@@ -186,12 +223,15 @@ python -m http.server 8000
   - Media Queries für Responsive Design
   - Smooth Transitions & Animations
   - `clamp()` für Fluid Typography
+  - Glassmorphism mit `backdrop-filter`
+  - Pseudo-Elemente (::after) für dekorative Effekte
 - **Vanilla JavaScript**:
   - ES6+ Features
   - DOM-Manipulation
   - Event-Handling
-  - Form-Validierung
+  - Form-Validierung mit Scoring
   - Smooth Scrolling
+  - Intersection Observer API
 
 ### Farbschema (Pöppel CI)
 
@@ -204,6 +244,19 @@ python -m http.server 8000
     --accent-green: #8ebf22;     /* Pöppel Grün für Success */
     --white: #ffffff;
 }
+```
+
+### Silber-Gradient (CI-Element)
+
+```css
+background: linear-gradient(90deg,
+    transparent 0%,
+    #c0c0c0 15%,
+    #e8e8e8 30%,
+    #ffffff 50%,
+    #e8e8e8 70%,
+    #c0c0c0 85%,
+    transparent 100%);
 ```
 
 ### Typografie
@@ -219,10 +272,8 @@ python -m http.server 8000
 /* Mobile First Ansatz */
 @media (max-width: 768px) {
     /* Mobile & Tablet */
-}
-
-@media (max-width: 480px) {
-    /* Small Mobile */
+    .logo-img { height: 30px; }
+    .hero { background-attachment: scroll; }
 }
 ```
 
@@ -236,20 +287,21 @@ Getestet und kompatibel mit:
 | Firefox | 88+ | ✅ Vollständig |
 | Safari | 14+ | ✅ Vollständig |
 | Edge | 90+ | ✅ Vollständig |
-| iOS Safari | 14+ | ✅ Vollständig |
+| iOS Safari | 14+ | ✅ Vollständig (background-attachment: scroll) |
 | Chrome Android | 90+ | ✅ Vollständig |
 
 **Hinweis**: IE11 wird nicht unterstützt (End of Life)
 
 ## 📦 Deployment
 
-### GitHub Pages
+### GitHub Pages (Live)
 
-1. In Repository Settings → Pages gehen
-2. Branch "main" auswählen
-3. Save klicken
-4. **WICHTIG**: Headerbild manuell hochladen (images/Headerbild_jobs.png)
-5. URL: `https://svenn8n-a11y.github.io/jobs-landingpage/`
+URL: **https://svenn8n-a11y.github.io/jobs-landingpage/**
+
+Deployment-Schritte:
+1. Code auf `main` Branch pushen
+2. GitHub Actions deployed automatisch
+3. Änderungen sind nach ~1 Minute live
 
 ### Netlify
 
@@ -259,8 +311,7 @@ Getestet und kompatibel mit:
 4. Deploy settings:
    - Build command: (leer)
    - Publish directory: `/`
-5. **WICHTIG**: Headerbild über Netlify Dashboard hochladen
-6. Deploy klicken
+5. Deploy klicken
 
 ### Traditionelles Hosting
 
@@ -269,10 +320,32 @@ Per FTP alle Dateien auf Webserver hochladen:
 - aussendienst.html
 - innendienst.html
 - bewerben.html
-- images/ (inkl. Headerbild!)
+- images/ (alle Bilder)
 - Alle anderen Assets
 
 ## 📝 Changelog
+
+### Version 3.0 (Januar 2025) - Aktuell
+- 🎉 **Mobile Optimierungen**
+  - Logo auf 30px verkleinert auf mobilen Geräten
+  - `background-attachment: scroll` für iOS/Android
+  - Kein Überlappen von Logo und Zurück-Button
+- ✨ **Silber-Gradient Lines** auf allen roten Sektionen (CI-konform)
+- ✨ **Scroll-to-Top Button** auf allen 4 Seiten
+- ✨ **Intro-Sektion Aussendienst** mit kraftvollem Einstieg
+- ✨ **Testimonials mit echten Namen**:
+  - Uwe Hettl (20+ Jahre bei Pöppel)
+  - Alois Aschenbrenner (ehemaliger Zimmermannsmeister)
+  - Michael Wrage (Verkaufsleiter)
+- ✨ **8-stufiger Bewerbungs-Funnel** mit Scoring (0-60 Punkte)
+  - 7 Qualifikations-Fragen
+  - Motivation-Feld (Pflicht)
+  - Fragen-Feld (optional)
+  - Score-basiertes Feedback
+- 🔧 **Euro-Icon korrigiert** in Benefits-Sektion
+- 🔧 **Zurück-Button** führt zu index.html#jobs
+- 🎨 **Icon-Animationen** auf Mobile (Pulse-Effekt)
+- 🎨 **Glassmorphism** auf Testimonials (backdrop-filter)
 
 ### Version 2.0 (Januar 2025)
 - 🎉 **Vollständiger Relaunch**
@@ -281,11 +354,10 @@ Per FTP alle Dateien auf Webserver hochladen:
 - ✨ **Innendienst-Stellenanzeige** (Verkaufsberater)
 - ✨ **4-stufiger Bewerbungs-Funnel** mit Progress-Bar
 - 🎨 **Baufritz-Struktur** mit Pöppel CI-Farben
-- 🖼️ **Assets integriert**: Logo und Headerbild
-- 📄 **Inhalte basierend** auf Karriere-Seite von poeppel-wkz.de
+- 🖼️ **Assets integriert**: Logo und Headerbilder
+- 📄 **Inhalte basierend** auf Karriere-Seite
 - 💬 **Testimonials** von Mitarbeitern
 - 📊 **Benefits-Grid** (4-spaltig)
-- 🎯 **7x CTA-Buttons** pro Stellenanzeige
 - 📱 **Fully Responsive** mit Mobile-First Ansatz
 
 ### Version 1.0 (Januar 2025)
@@ -316,6 +388,14 @@ Aktuell: Client-seitige Validierung & Console-Log
 
 4. **Eigenes Backend** (PHP, Node.js, Python)
 
+## 🎯 Nächste Schritte
+
+- [ ] Backend-Integration für Bewerbungs-Formular
+- [ ] Google Analytics / Matomo Integration
+- [ ] A/B-Testing für CTA-Buttons
+- [ ] Weitere Stellenanzeigen hinzufügen
+- [ ] Video-Testimonials einbinden
+
 ## 📄 Lizenz
 
 Copyright © 2025 R. Pöppel GmbH & Co. KG. Alle Rechte vorbehalten.
@@ -331,8 +411,10 @@ Bei Fragen zur Webseite oder den Stellenangeboten:
 - 🌐 Web: www.poeppel-wkz.de
 
 **Ansprechpartner Bewerbungen:**
-- Herr Sven Nürnberger
+- Herr Andreas Bodenmiller
 - Geschäftsführung / Personalleitung
+- 📞 08331-9559-660
+- 📧 job@poeppel-wkz.de
 
 ---
 
