@@ -50,6 +50,15 @@
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .container {
@@ -63,6 +72,28 @@
             font-weight: 700;
             color: var(--primary);
             text-align: center;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .back-link:hover {
+            background: var(--tertiary);
+            color: #9e1319;
         }
 
         /* ===== Main Content ===== */
@@ -360,6 +391,46 @@
             color: #666;
         }
 
+        /* ===== Scroll to Top Button ===== */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, #9e1319 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(190, 24, 35, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, #9e1319 0%, var(--primary) 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(190, 24, 35, 0.6);
+        }
+
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
         /* ===== Responsive ===== */
         @media (max-width: 768px) {
             .funnel-container {
@@ -398,7 +469,14 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <a href="index.html"><img src="images/Logo_poeppel.png" alt="R. Pöppel Logo" class="logo-img" style="height: 40px; width: auto;"></a>
+            <a href="index.html"><img src="images/Logo_poeppel.png" alt="R. Pöppel Logo" class="logo-img"></a>
+            <a href="index.html#jobs" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Zurück
+            </a>
         </div>
     </header>
 
@@ -615,8 +693,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Deine Nachricht (optional)</label>
-                            <textarea id="message" name="message" placeholder="Erzähl uns etwas über dich..."></textarea>
+                            <label for="motivation">Warum möchtest Du für uns arbeiten? * (1-2 Sätze)</label>
+                            <textarea id="motivation" name="motivation" rows="3" required placeholder="Erzähle uns in ein bis zwei Sätzen, was dich motiviert..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="questions">Hast Du Fragen an uns? (optional)</label>
+                            <textarea id="questions" name="questions" rows="3" placeholder="Stelle uns gerne deine Fragen..." style="background-color: #f5f5f5;"></textarea>
                         </div>
 
                         <div class="checkbox-group">
@@ -676,7 +759,8 @@
             name: '',
             email: '',
             phone: '',
-            message: '',
+            motivation: '',
+            questions: '',
             privacy: false,
             score: 0
         };
@@ -733,9 +817,10 @@
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
+            const motivation = document.getElementById('motivation').value.trim();
             const privacy = document.getElementById('privacy').checked;
 
-            const isValid = name && email && phone && privacy;
+            const isValid = name && email && phone && motivation && privacy;
             nextBtn.disabled = !isValid;
         }
 
@@ -860,7 +945,8 @@
             formData.name = document.getElementById('name').value;
             formData.email = document.getElementById('email').value;
             formData.phone = document.getElementById('phone').value;
-            formData.message = document.getElementById('message').value;
+            formData.motivation = document.getElementById('motivation').value;
+            formData.questions = document.getElementById('questions').value;
 
             console.log('Form submitted:', formData);
             console.log('Total Score:', totalScore);
@@ -888,6 +974,31 @@
 
         // Log initialization
         console.log('Pöppel Bewerbungs-Funnel geladen');
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Nach oben scrollen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
 </body>
 </html>

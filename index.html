@@ -87,6 +87,24 @@
             padding: 4rem 2rem;
         }
 
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                #c0c0c0 15%,
+                #e8e8e8 30%,
+                #ffffff 50%,
+                #e8e8e8 70%,
+                #c0c0c0 85%,
+                transparent 100%);
+            opacity: 0.6;
+        }
+
         .hero-content {
             max-width: 900px;
             z-index: 2;
@@ -280,8 +298,24 @@
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .value-card:hover .value-icon {
+        .value-card:hover .value-icon,
+        .value-card.icon-animated .value-icon {
             transform: rotateY(360deg);
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .value-card .value-icon {
+                animation: iconPulse 2s ease-in-out infinite;
+            }
+        }
+
+        @keyframes iconPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
         }
 
         .value-card h3 {
@@ -383,6 +417,25 @@
             opacity: 0.3;
         }
 
+        .stats-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                #c0c0c0 15%,
+                #e8e8e8 30%,
+                #ffffff 50%,
+                #e8e8e8 70%,
+                #c0c0c0 85%,
+                transparent 100%);
+            opacity: 0.6;
+            z-index: 2;
+        }
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -465,6 +518,46 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
             opacity: 0.8;
+        }
+
+        /* ===== Scroll to Top Button ===== */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, #9e1319 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(190, 24, 35, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, #9e1319 0%, var(--primary) 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(190, 24, 35, 0.6);
+        }
+
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
         }
 
         /* ===== Responsive ===== */
@@ -641,7 +734,7 @@
                 </div>
                 <div class="value-card">
                     <div class="value-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 100%; height: 100%;"><path d="M12 22c5-4 8-9 8-13 0-3.31-2.69-6-6-6-2 0-3.5 1-4 2-.5-1-2-2-4-2-3.31 0-6 2.69-6 6 0 4 3 9 8 13z"/><path d="M12 22V12"/><path d="m8 15 4-3 4 3"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 85%; height: 85%;"><path d="M12 22c5-4 8-9 8-13 0-3.31-2.69-6-6-6-2 0-3.5 1-4 2-.5-1-2-2-4-2-3.31 0-6 2.69-6 6 0 4 3 9 8 13z"/><path d="M12 22V12"/><path d="m8 15 4-3 4 3"/></svg>
                     </div>
                     <h3>Nachhaltigkeit</h3>
                     <p>Langfristige Perspektive statt kurzfristige Gewinnmaximierung prägt unser Handeln.</p>
@@ -712,6 +805,9 @@
                         <p>Top-Arbeitsplätze mit neuester Technik</p>
                     </div>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#jobs" class="cta-button" style="max-width: 400px; margin: 0 auto;">Zu den Jobs</a>
             </div>
         </div>
     </section>
@@ -810,6 +906,31 @@
         }
 
         console.log('Pöppel Karriere-Übersichtsseite mit Animationen geladen');
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Nach oben scrollen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
 </body>
 </html>

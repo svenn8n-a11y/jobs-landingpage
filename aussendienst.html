@@ -99,6 +99,24 @@
             padding: 4rem 2rem;
         }
 
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                #c0c0c0 15%,
+                #e8e8e8 30%,
+                #ffffff 50%,
+                #e8e8e8 70%,
+                #c0c0c0 85%,
+                transparent 100%);
+            opacity: 0.6;
+        }
+
         .hero-content {
             max-width: 900px;
             z-index: 2;
@@ -119,8 +137,8 @@
         .cta-button {
             display: inline-block;
             padding: 1.2rem 2.5rem;
-            background: var(--white);
-            color: var(--primary);
+            background: var(--primary);
+            color: var(--white);
             text-decoration: none;
             border-radius: 4px;
             font-weight: 600;
@@ -131,15 +149,46 @@
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            background: var(--tertiary);
-            color: #9e1319;
+            box-shadow: 0 6px 20px rgba(190, 24, 35, 0.4);
+            background: #9e1319;
+            color: var(--white);
+        }
+
+        /* ===== Intro Section ===== */
+        .intro-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-content h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .intro-content p {
+            font-size: 1.15rem;
+            color: var(--dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-content .highlight {
+            color: var(--primary);
+            font-weight: 600;
         }
 
         /* ===== Benefits Section ===== */
         .benefits {
             padding: 5rem 0;
-            background: var(--tertiary);
+            background: var(--white);
         }
 
         .benefits h2 {
@@ -221,13 +270,38 @@
         /* ===== Testimonials Section ===== */
         .testimonials {
             padding: 5rem 0;
-            background: var(--white);
+            background: linear-gradient(135deg, rgba(190, 24, 35, 0.95), rgba(50, 55, 60, 0.95)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23be1823" width="1920" height="1080"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            position: relative;
+        }
+
+        .testimonials::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                #c0c0c0 15%,
+                #e8e8e8 30%,
+                #ffffff 50%,
+                #e8e8e8 70%,
+                #c0c0c0 85%,
+                transparent 100%);
+            opacity: 0.6;
         }
 
         .testimonials h2 {
             text-align: center;
             font-size: clamp(2rem, 4vw, 2.75rem);
             margin-bottom: 4rem;
+            color: var(--white);
         }
 
         .testimonials-carousel {
@@ -238,10 +312,12 @@
         }
 
         .testimonial-card {
-            background: var(--tertiary);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             opacity: 0;
             transform: translateY(60px);
@@ -254,7 +330,8 @@
 
         .testimonial-card.animated:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            background: rgba(255, 255, 255, 0.22);
         }
 
         .testimonial-quote {
@@ -262,17 +339,18 @@
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
             line-height: 1.7;
+            color: var(--white);
         }
 
         .testimonial-author {
             font-weight: 600;
-            color: var(--primary);
+            color: var(--tertiary);
         }
 
         /* ===== Job Description ===== */
         .job-description {
             padding: 5rem 0;
-            background: var(--tertiary);
+            background: var(--white);
         }
 
         .job-section {
@@ -392,7 +470,7 @@
         .stat-card {
             text-align: center;
             padding: 2rem;
-            background: var(--tertiary);
+            background: var(--white);
             border-radius: 8px;
         }
 
@@ -412,7 +490,7 @@
         /* ===== Contact Section ===== */
         .contact-section {
             padding: 5rem 0;
-            background: var(--tertiary);
+            background: var(--white);
         }
 
         .contact-box {
@@ -500,6 +578,46 @@
             opacity: 0.8;
         }
 
+        /* ===== Scroll to Top Button ===== */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, #9e1319 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(190, 24, 35, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, #9e1319 0%, var(--primary) 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(190, 24, 35, 0.6);
+        }
+
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
         /* ===== Responsive ===== */
         @media (max-width: 768px) {
             .hero {
@@ -570,13 +688,36 @@
         </div>
     </section>
 
+    <!-- Intro Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Deine Karriere im Außendienst – Mit Leidenschaft für Technik und Menschen</h2>
+                <p style="font-size: 1.25rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem;">
+                    Dein Herz schlägt für den Holzbau und Du möchtest Handwerksunternehmen aktiv dabei unterstützen,
+                    ihre Projekte mit den richtigen Werkzeugen und Lösungen zum Erfolg zu führen?
+                </p>
+                <p>
+                    Dann bist du bei uns genau richtig! Als <span class="highlight">Verkaufsberater im Außendienst</span>
+                    bist du mehr als nur Verkäufer – du bist <span class="highlight">Problemlöser, Berater und Partner</span>
+                    für unsere Kunden aus dem Handwerk. Du liebst es, Menschen zu begeistern, technische Lösungen zu verkaufen
+                    und langfristige Kundenbeziehungen aufzubauen.
+                </p>
+                <p>
+                    Bei uns betreust du eigenverantwortlich dein Verkaufsgebiet und sorgst dafür, dass unsere Kunden
+                    genau die Werkzeuge und innovative Intralogistik-Lösungen erhalten, die sie für ihren Erfolg brauchen.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Benefits Section -->
     <section class="benefits">
         <div class="container">
             <h2>Das bieten wir dir</h2>
             <div class="benefits-grid">
                 <div class="benefit-category">
-                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M3.06 13a9 9 0 1 0 5.97-8"/><line x1="12" y1="0" x2="12" y2="12"/><path d="M9 17c0 1.5 1.5 3 3 3s3-1.5 3-3-1.5-1-3-1-3 .5-3 2z"/><path d="M9 7c0-1.5 1.5-3 3-3s3 1.5 3 3-1.5 1-3 1-3-.5-3-2z"/></svg>Vergütung & Ausstattung</h3>
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M19 5h-3C14.3 5 13 6.3 13 8v8c0 1.7 1.3 3 3 3h3"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="15" x2="15" y2="15"/></svg>Vergütung & Ausstattung</h3>
                     <ul>
                         <li>Attraktives Gehalt + Provisionen</li>
                         <li>Firmenwagen zur Privatnutzung</li>
@@ -634,15 +775,15 @@
             <div class="testimonials-carousel">
                 <div class="testimonial-card">
                     <p class="testimonial-quote">"Der Außendienst bei Pöppel gibt mir die Freiheit, meine Kunden individuell zu betreuen. Das Vertrauen der Geschäftsführung motiviert mich jeden Tag."</p>
-                    <p class="testimonial-author">— Stefan, Verkaufsberater Außendienst</p>
+                    <p class="testimonial-author">— Uwe Hettl, Verkaufsberater Außendienst<br><span style="font-size: 0.9em; opacity: 0.9;">seit über 20 Jahren bei Pöppel</span></p>
                 </div>
                 <div class="testimonial-card">
                     <p class="testimonial-quote">"Die Produktschulungen sind top. Man spürt, dass das Unternehmen in seine Mitarbeiter investiert und uns bestmöglich vorbereitet."</p>
-                    <p class="testimonial-author">— Michael, Verkaufsberater Außendienst</p>
+                    <p class="testimonial-author">— Michael Wrage, Verkaufsleiter</p>
                 </div>
                 <div class="testimonial-card">
                     <p class="testimonial-quote">"Als Quereinsteiger wurde ich super eingearbeitet. Das Team unterstützt sich gegenseitig und teilt Erfahrungen – das ist Gold wert."</p>
-                    <p class="testimonial-author">— Julia, Verkaufsberaterin Außendienst</p>
+                    <p class="testimonial-author">— Alois Aschenbrenner, Verkaufsberater Außendienst<br><span style="font-size: 0.9em; opacity: 0.9;">war vorher selbst Zimmermannsmeister</span></p>
                 </div>
             </div>
             <div style="text-align: center;">
@@ -830,6 +971,31 @@
         });
 
         console.log('Pöppel Jobs - Verkaufsberater Außendienst mit Animationen');
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     </script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Nach oben scrollen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
 </body>
 </html>
