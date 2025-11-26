@@ -1084,61 +1084,75 @@
         const stelle = urlParams.get('stelle') || 'innendienst';
 
         if (stelle === 'innendienst') {
-            // Frage 2: Kundenberatung am Telefon/persönlich
-            document.querySelector('[data-step="2"] .step-title').textContent = 'Kundenberatung';
-            document.querySelector('[data-step="2"] .step-subtitle').textContent = 'Wie viel Erfahrung hast du in der Kundenberatung (telefonisch oder persönlich)?';
-            document.querySelector('#s1').value = 'Täglich im Kundenkontakt';
-            document.querySelector('label[for="s1"]').textContent = 'Täglich im Kundenkontakt';
-            document.querySelector('#s2').value = 'Regelmäßig';
-            document.querySelector('label[for="s2"]').textContent = 'Regelmäßig';
-            document.querySelector('#s3').value = 'Gelegentlich';
-            document.querySelector('label[for="s3"]').textContent = 'Gelegentlich';
-            document.querySelector('#s4').value = 'Noch nie';
-            document.querySelector('label[for="s4"]').textContent = 'Noch nie';
+            // Frage 1: Bleibt gleich (Technisches Know-How)
 
-            // Frage 3: Büroarbeit & strukturiertes Arbeiten
-            document.querySelector('[data-step="3"] .step-title').textContent = 'Büroarbeit';
-            document.querySelector('[data-step="3"] .step-subtitle').textContent = 'Arbeitest du gerne im Büro mit geregelten Arbeitszeiten?';
-            document.querySelector('#tr1').value = 'Ja, sehr gerne!';
-            document.querySelector('label[for="tr1"]').textContent = 'Ja, sehr gerne!';
-            document.querySelector('#tr2').value = 'Ja, das passt gut';
-            document.querySelector('label[for="tr2"]').textContent = 'Ja, das passt gut';
-            document.querySelector('#tr3').value = 'Neutral';
-            document.querySelector('label[for="tr3"]').textContent = 'Neutral';
-            document.querySelector('#tr4').value = 'Nein, lieber unterwegs';
-            document.querySelector('label[for="tr4"]').textContent = 'Nein, lieber unterwegs';
+            // Frage 2: Kommunikationsstärke
+            document.querySelector('[data-step="2"] .step-title').textContent = 'Kommunikationsstärke';
+            document.querySelector('[data-step="2"] .step-subtitle').textContent = 'Wie gut kannst du komplexe technische Zusammenhänge verständlich erklären?';
+            document.querySelector('#s1').value = 'Sehr gut - ich erkläre oft technische Dinge';
+            document.querySelector('label[for="s1"]').textContent = 'Sehr gut - ich erkläre oft technische Dinge';
+            document.querySelector('#s2').value = 'Gut - ich finde meistens die richtigen Worte';
+            document.querySelector('label[for="s2"]').textContent = 'Gut - ich finde meistens die richtigen Worte';
+            document.querySelector('#s3').value = 'Es geht - mit Übung wird es besser';
+            document.querySelector('label[for="s3"]').textContent = 'Es geht - mit Übung wird es besser';
+            document.querySelector('#s4').value = 'Schwierig für mich';
+            document.querySelector('label[for="s4"]').textContent = 'Schwierig für mich';
 
-            // Frage 4: Multitasking
-            document.querySelector('[data-step="4"] .step-title').textContent = 'Multitasking';
-            document.querySelector('[data-step="4"] .step-subtitle').textContent = 'Kannst du mehrere Aufträge parallel bearbeiten und Prioritäten setzen?';
-            document.querySelector('#o1').value = 'Ja, sehr gut';
-            document.querySelector('label[for="o1"]').textContent = 'Ja, sehr gut';
-            document.querySelector('#o2').value = 'Ja, meistens';
-            document.querySelector('label[for="o2"]').textContent = 'Ja, meistens';
-            document.querySelector('#o3').value = 'Mit Struktur schon';
-            document.querySelector('label[for="o3"]').textContent = 'Mit Struktur schon';
-            document.querySelector('#o4').value = 'Schwierig für mich';
-            document.querySelector('label[for="o4"]').textContent = 'Schwierig für mich';
+            // Frage 3: Multitasking
+            document.querySelector('[data-step="3"] .step-title').textContent = 'Multitasking';
+            document.querySelector('[data-step="3"] .step-subtitle').textContent = 'Mehrere Anrufe, E-Mails und Aufträge gleichzeitig - kein Problem für dich?';
+            document.querySelector('#tr1').value = 'Ja, ich behalte den Überblick';
+            document.querySelector('label[for="tr1"]').textContent = 'Ja, ich behalte den Überblick';
+            document.querySelector('#tr2').value = 'Ja, meistens klappt das gut';
+            document.querySelector('label[for="tr2"]').textContent = 'Ja, meistens klappt das gut';
+            document.querySelector('#tr3').value = 'Mit guter Organisation schon';
+            document.querySelector('label[for="tr3"]').textContent = 'Mit guter Organisation schon';
+            document.querySelector('#tr4').value = 'Ich arbeite lieber eine Sache nach der anderen ab';
+            document.querySelector('label[for="tr4"]').textContent = 'Ich arbeite lieber eine Sache nach der anderen ab';
+
+            // Frage 4: Ticketsysteme & CRM
+            document.querySelector('[data-step="4"] .step-title').textContent = 'Digitale Systeme';
+            document.querySelector('[data-step="4"] .step-subtitle').textContent = 'Hast du Erfahrung mit Ticketsystemen, CRM oder ERP-Software?';
+            document.querySelector('#o1').value = 'Ja, täglich genutzt';
+            document.querySelector('label[for="o1"]').textContent = 'Ja, täglich genutzt';
+            document.querySelector('#o2').value = 'Ja, habe damit gearbeitet';
+            document.querySelector('label[for="o2"]').textContent = 'Ja, habe damit gearbeitet';
+            document.querySelector('#o3').value = 'Grundkenntnisse vorhanden';
+            document.querySelector('label[for="o3"]').textContent = 'Grundkenntnisse vorhanden';
+            document.querySelector('#o4').value = 'Noch keine Erfahrung, aber lernbereit';
+            document.querySelector('label[for="o4"]').textContent = 'Noch keine Erfahrung, aber lernbereit';
+
+            // Frage 5: Beratung im Geschäft (bleibt Digital Tools)
+            document.querySelector('[data-step="5"] .step-title').textContent = 'Beratung im Geschäft';
+            document.querySelector('[data-step="5"] .step-subtitle').textContent = 'Ein Kunde steht im Laden und braucht Beratung zu Holzbearbeitungsmaschinen. Wie gehst du vor?';
+            document.querySelector('#d1').value = 'Ich berate aktiv und zeige Lösungen';
+            document.querySelector('label[for="d1"]').textContent = 'Ich berate aktiv und zeige Lösungen';
+            document.querySelector('#d2').value = 'Ich höre zu und berate dann';
+            document.querySelector('label[for="d2"]').textContent = 'Ich höre zu und berate dann';
+            document.querySelector('#d3').value = 'Ich hole einen erfahrenen Kollegen dazu';
+            document.querySelector('label[for="d3"]').textContent = 'Ich hole einen erfahrenen Kollegen dazu';
+            document.querySelector('#d4').value = 'Ich bin eher unsicher bei persönlicher Beratung';
+            document.querySelector('label[for="d4"]').textContent = 'Ich bin eher unsicher bei persönlicher Beratung';
 
             // Frage 6: Beratungsansatz
             document.querySelector('[data-step="6"] .step-title').textContent = 'Beratungsansatz';
-            document.querySelector('[data-step="6"] .step-subtitle').textContent = 'Was ist dir wichtiger in der Kundenberatung?';
-            document.querySelector('#a1').value = 'Produkte präsentieren';
-            document.querySelector('label[for="a1"]').textContent = 'Produkte präsentieren';
-            document.querySelector('#a2').value = 'Kundenbedürfnisse verstehen und Lösungen finden';
-            document.querySelector('label[for="a2"]').textContent = 'Kundenbedürfnisse verstehen und Lösungen finden';
+            document.querySelector('[data-step="6"] .step-subtitle').textContent = 'Was ist dir wichtiger: Den Kunden schnell bedienen oder die perfekte Lösung finden?';
+            document.querySelector('#a1').value = 'Schnelle Bedienung - Zeit ist Geld';
+            document.querySelector('label[for="a1"]').textContent = 'Schnelle Bedienung - Zeit ist Geld';
+            document.querySelector('#a2').value = 'Die perfekte Lösung - auch wenn es länger dauert';
+            document.querySelector('label[for="a2"]').textContent = 'Die perfekte Lösung - auch wenn es länger dauert';
 
             // Frage 7: Mini-Praxisfall Innendienst
             document.querySelector('[data-step="7"] .step-title').textContent = 'Mini-Praxisfall';
-            document.querySelector('[data-step="7"] .step-subtitle').textContent = 'Ein Kunde ruft an und braucht dringend eine Holzbearbeitungsmaschine. Was machst du?';
-            document.querySelector('#c1').value = 'Verfügbarkeit prüfen';
-            document.querySelector('label[for="c1"]').textContent = 'Ich prüfe die Verfügbarkeit und mache ein Angebot';
-            document.querySelector('#c2').value = 'Bedarf klären und beraten';
-            document.querySelector('label[for="c2"]').textContent = 'Ich frage nach dem genauen Bedarf und berate zu passenden Maschinen';
-            document.querySelector('#c3').value = 'Außendienst kontaktieren';
-            document.querySelector('label[for="c3"]').textContent = 'Ich kontaktiere einen Kollegen im Außendienst';
-            document.querySelector('#c4').value = 'Weiß nicht';
-            document.querySelector('label[for="c4"]').textContent = 'Weiß ich nicht';
+            document.querySelector('[data-step="7"] .step-subtitle').textContent = 'Ein Handwerker ruft an: "Ich brauche dringend eine Säge für Balken!" Was fragst du zuerst?';
+            document.querySelector('#c1').value = 'Welche Säge genau?';
+            document.querySelector('label[for="c1"]').textContent = '"Welche Säge haben Sie denn bisher?"';
+            document.querySelector('#c2').value = 'Balkenstärke und Holzart?';
+            document.querySelector('label[for="c2"]').textContent = '"Welche Balkenstärke und Holzart verarbeiten Sie?"';
+            document.querySelector('#c3').value = 'Preis und Verfügbarkeit?';
+            document.querySelector('label[for="c3"]').textContent = '"Welches Budget haben Sie eingeplant?"';
+            document.querySelector('#c4').value = 'Außendienst-Kollegen fragen';
+            document.querySelector('label[for="c4"]').textContent = '"Moment, ich frage einen Kollegen"';
         }
 
         // Log initialization
