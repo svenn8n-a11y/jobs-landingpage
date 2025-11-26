@@ -749,7 +749,7 @@
                             <input type="tel" id="phone" name="phone" required>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="motivationField">
                             <label for="motivation">Warum möchtest Du für uns arbeiten? * (1-2 Sätze)</label>
                             <textarea id="motivation" name="motivation" rows="3" required placeholder="Erzähle uns in ein bis zwei Sätzen, was dich motiviert..."></textarea>
                         </div>
@@ -895,10 +895,17 @@
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
-            const motivation = document.getElementById('motivation').value.trim();
             const privacy = document.getElementById('privacy').checked;
 
-            const isValid = name && email && phone && motivation && privacy;
+            // For Innendienst, motivation is asked in step 6, not in step 9
+            let isValid;
+            if (stelle === 'innendienst') {
+                isValid = name && email && phone && privacy;
+            } else {
+                const motivation = document.getElementById('motivation').value.trim();
+                isValid = name && email && phone && motivation && privacy;
+            }
+
             nextBtn.disabled = !isValid;
         }
 
@@ -1042,7 +1049,14 @@
             formData.name = document.getElementById('name').value;
             formData.email = document.getElementById('email').value;
             formData.phone = document.getElementById('phone').value;
-            formData.motivation = document.getElementById('motivation').value;
+
+            // For Innendienst, use motivation from step 6, for Außendienst from step 9
+            if (stelle === 'innendienst') {
+                formData.motivation = formData.innendienstMotivation || '';
+            } else {
+                formData.motivation = document.getElementById('motivation').value;
+            }
+
             formData.questions = document.getElementById('questions').value;
 
             // Get stelle parameter from URL
@@ -1161,6 +1175,14 @@
             // Frage 7: Hide this step for Innendienst (not needed)
             document.querySelector('[data-step="7"]').style.display = 'none';
             document.querySelector('.progress-step[data-step="7"]').style.display = 'none';
+
+            // Hide motivation field in step 9 (already asked in step 6 for Innendienst)
+            const motivationField = document.getElementById('motivationField');
+            const motivationTextarea = document.getElementById('motivation');
+            if (motivationField) {
+                motivationField.style.display = 'none';
+                motivationTextarea.removeAttribute('required');
+            }
         }
 
         // Log initialization
