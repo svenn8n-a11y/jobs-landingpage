@@ -2,7 +2,7 @@
 
 Eine moderne, professionelle Landingpage für Jobangebote bei R. Pöppel GmbH & Co. KG - Werkzeugmaschinen und Intralogistik-Spezialist aus Memmingen.
 
-![Version](https://img.shields.io/badge/version-3.5-blue)
+![Version](https://img.shields.io/badge/version-3.6-blue)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
@@ -135,8 +135,11 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
   - Vergütung: Gehalt, Edenred Gutscheinkarte, VWL, Jobrad, Prämien, Rabatte (ohne Urlaubs-/Weihnachtsgeld & Altersvorsorge)
   - Arbeitsklima: Familie, flache Hierarchien, Kommunikation, Wertschätzung, Events, Miteinander
   - Arbeitsplatz: Büroausstattung, IT, Gemeinschaftsraum, helle Räume (ohne ergonomische Plätze & Getränke)
-  - Work-Life-Balance: Mo-Fr, 30 Tage, keine Schichten, Flexibilität, Einarbeitung, Weiterbildung
-- **Testimonials**: 3 Zitate von Innendienst-Mitarbeitern (Anna, Martin, Lisa)
+  - Arbeitszeit: Mo-Fr, 30 Tage, keine Schichten, Einarbeitung, Weiterbildung (ohne Flexibilität nach Absprache)
+- **Testimonials** (rote Sektion mit Glassmorphism) - Authentische Mitarbeiterzitate:
+  - Sarah Birk, Verkaufsberaterin Innendienst: "Strukturierte Einarbeitung & hilfsbereit Kollegen"
+  - Maximilian Straub, Verkaufsberater Innendienst Zerspanung: "Familienfreundlichkeit"
+  - Harald Hartl, Verkaufsberater Innendienst Holzbau: "Vielseitigkeit & Abwechslung"
 - **Aufgaben**: Kundenberatung (gekürzt), Auftragsabwicklung, Betreuung, Lösungsfindung
 - **Anforderungen**: 9 Punkte inkl. "Mitgestaltung des Verkaufsraumes und von Verkaufsaktionen"
 - **Ansprechpartner**: Andreas Bodenmiller (IT-Leitung / Personalleitung, 08331-9559-660, job@poeppel-wkz.de)
@@ -147,32 +150,52 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 
 ### 4. Bewerbungs-Funnel ([bewerben.html](bewerben.html))
 
-**8-stufiger Prozess mit Scoring:**
+**9-stufiger Prozess mit Scoring (variiert je nach Stelle):**
+
+**Außendienst (stelle=aussendienst):**
 1. **Technische Erfahrung**: Handwerk, Technik, Baubranche (0-10 Punkte)
-2. **Verkaufsfreude**: "Wie viel aktive Kundenansprache hast du bisher gemacht?" - Täglich/Mehrmals pro Woche/Selten/Noch nie (0-10 Punkte)
+2. **Verkaufsfreude**: "Wie viel aktive Kundenansprache hast du bisher gemacht?" (0-10 Punkte)
 3. **Reisebereitschaft**: Täglich zu Kunden fahren (0-10 Punkte)
 4. **Selbstorganisation**: Arbeitstag selbst organisieren (0-10 Punkte)
 5. **Digitale Tools**: Offenheit für CRM, Apps (0-10 Punkte)
 6. **Verkaufsansatz**: Produkt erklären vs. Problem lösen (5-10 Punkte)
 7. **Mini-Praxisfall**: Kundenreaktion (0-10 Punkte)
-8. **Kontaktdaten**: Name, E-Mail, Telefon, Motivation, Fragen (optional), DSGVO
+8. **Erreichbarkeit**: Beste Zeit für Rückruf
+9. **Kontaktdaten**: Name, E-Mail, Telefon, Motivation, Fragen (optional), DSGVO
+
+**Innendienst (stelle=innendienst):**
+1. **Technische Erfahrung**: Gleich wie Außendienst (0-10 Punkte)
+2. **Kommunikationsstärke**: Technische Zusammenhänge erklären (0-10 Punkte)
+3. **Multitasking**: Mehrere Aufgaben gleichzeitig (0-10 Punkte)
+4. **Digitale Systeme**: Erfahrung mit Ticketsystemen, CRM, ERP (0-10 Punkte)
+5. **Beratung im Haus**: Persönliche Kundenberatung vor Ort (0-10 Punkte)
+6. **Motivation**: Freitextfeld "Was motiviert Dich als Verkaufsberater bei uns zu arbeiten?"
+7. ~~Mini-Praxisfall~~ (übersprungen für Innendienst)
+8. **Erreichbarkeit**: Beste Zeit für Rückruf
+9. **Kontaktdaten**: Name, E-Mail, Telefon, Fragen (optional), DSGVO (ohne Motivation-Feld)
 
 **Scoring-System:**
 - 50-60 Punkte: "Perfekt! Du passt hervorragend zu uns!"
 - 35-49 Punkte: "Guter Fit! Lass uns sprechen."
 - 20-34 Punkte: "Interessant! Wir melden uns bei dir."
 - 0-19 Punkte: "Danke für dein Interesse!"
+- **Hinweis**: Innendienst hat nur 5 Scoring-Fragen (max. 50 Punkte), Außendienst 7 Fragen (max. 70 Punkte)
 
 **Features:**
-- Progress-Bar mit 8 Schritten
+- Progress-Bar mit 9 Schritten
 - Auto-Advance bei Radio-Auswahl
+- **Positionsspezifischer Funnel**: Fragen passen sich automatisch an Innendienst/Außendienst an
+- **Intelligente Navigation**: Schritt 7 wird für Innendienst automatisch übersprungen
 - Score-basierte Feedback-Nachricht vor Kontaktformular
 - Echtzeit-Validierung
-- Motivation-Textfeld (Pflicht): "Warum möchtest Du für uns arbeiten?"
+- **Motivation-Feld**:
+  - **Innendienst**: Freitextfeld in Schritt 6 (Pflicht)
+  - **Außendienst**: Textfeld in Schritt 9 Kontaktformular (Pflicht)
 - Fragen-Textfeld (optional, grauer Hintergrund): "Hast Du Fragen an uns?"
+- Erreichbarkeit-Auswahl (Schritt 8): Vormittags/Nachmittags/Abends/Jederzeit
 - **PHP-Mail-Integration**: Automatischer Versand an job@poeppel-wkz.de
-- **Datenübermittlung**: Alle Antworten, Score, Kontaktdaten, Bewertung
-- Success-Seite mit Sicherheitshinweis
+- **Datenübermittlung**: Alle Antworten, Score, Kontaktdaten, Erreichbarkeit, Bewertung
+- Success-Popup + Success-Seite mit Sicherheitshinweis
 - Kein Scroll-to-Top Button (bewusst entfernt für cleane Funnel-UX)
 
 **Mobile Optimierungen:**
@@ -364,7 +387,25 @@ php -r "mail('test@example.com', 'Test', 'Test');"
 
 ## 📝 Changelog
 
-### Version 3.5 (Januar 2025) - Aktuell
+### Version 3.6 (Januar 2025) - Aktuell
+- 🎯 **Innendienst-Funnel komplett überarbeitet**
+  - Frage 5: "Beratung im Haus" mit 4 spezifischen Antworten (10/7/4/0 Punkte)
+  - Frage 6: Freitextfeld "Was motiviert Dich als Verkaufsberater bei uns zu arbeiten?" (ersetzt Radio-Buttons)
+  - Frage 7: Automatisch übersprungen für Innendienst (Navigation-Skip-Logik)
+  - Motivation-Feld in Schritt 9 ausgeblendet für Innendienst (bereits in Schritt 6 abgefragt)
+  - Positionsspezifische Validierung und Datensammlung
+- 👥 **Innendienst Testimonials mit echten Namen**
+  - Sarah Birk (Verkaufsberaterin Innendienst): "Strukturierte Einarbeitung & hilfsbereit Kollegen"
+  - Maximilian Straub (Zerspanung): "Familienfreundlichkeit"
+  - Harald Hartl (Holzbau): "Vielseitigkeit & Abwechslung"
+- 🏷️ **Benefits-Kategorie umbenannt**
+  - "Work-Life-Balance" → "Arbeitszeit"
+  - Punkt "Flexibilität nach Absprache" entfernt
+- ⏰ **Erreichbarkeit-Auswahl hinzugefügt**
+  - Neuer Schritt 8: Vormittags/Nachmittags/Abends/Jederzeit
+  - Wird in E-Mail übermittelt für besseres Bewerbermanagement
+
+### Version 3.5 (Januar 2025)
 - 🎉 **PHP-Mail-Integration**
   - Automatischer E-Mail-Versand an job@poeppel-wkz.de
   - Vollständige Übermittlung aller Vorqualifizierungsantworten
@@ -372,7 +413,7 @@ php -r "mail('test@example.com', 'Test', 'Test');"
 - ✨ **Content-Updates**
   - **Index**: "Work-Life-Balance" → "Flexibilität - Gleitzeit"
   - **Außendienst Benefits**: Entfernt "Betriebliche Altersvorsorge" & "Flache Hierarchien"
-  - **Außendienst Testimonials**: Komplett überarbeitet mit neuen Zitaten (Uwe Hettl 30+ Jahre, Michael Wrage 10+ Jahre, Alois Aschenbrenner 20 Jahre)
+  - **Außendienst Testimonials**: Komplett überarbeitet mit neuen Zitaten (Uwe Hettl 30+ Jahre, Michael Wrage 13+ Jahre, Alois Aschenbrenner 20 Jahre)
   - **Innendienst Benefits**: Ersetzt durch Edenred Gutscheinkarte, VWL, Jobrad, Gemeinschaftsraum
   - **Innendienst Anforderungen**: Hinzugefügt "Mitgestaltung des Verkaufsraumes"
   - **Vorqualifizierung**: Frage 2 präzisiert ("Wie viel aktive Kundenansprache?")
