@@ -665,12 +665,23 @@
                     </div>
                 </div>
 
-                <!-- Step 6: Motivation (Innendienst only, becomes free-text) -->
+                <!-- Step 6: Sales Approach (Außendienst) / Motivation (Innendienst) -->
                 <div class="funnel-step" data-step="6">
-                    <h2 class="step-title">Deine Motivation</h2>
-                    <p class="step-subtitle">Was motiviert Dich als Verkaufsberater bei uns zu arbeiten?</p>
+                    <h2 class="step-title">Verkaufsansatz</h2>
+                    <p class="step-subtitle">Was ist dir beim Verkaufen wichtiger?</p>
 
-                    <textarea id="innendienstMotivation" name="innendienstMotivation" rows="6" style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: inherit; resize: vertical;" placeholder="Erzähl uns, was dich antreibt..."></textarea>
+                    <div class="radio-options" id="step6RadioButtons">
+                        <div class="radio-option">
+                            <input type="radio" name="approach" id="a1" value="Das Produkt erklären" data-points="5">
+                            <label for="a1" class="radio-label">Das Produkt erklären</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="approach" id="a2" value="Das Problem des Kunden lösen" data-points="10">
+                            <label for="a2" class="radio-label">Das Problem des Kunden lösen</label>
+                        </div>
+                    </div>
+
+                    <textarea id="innendienstMotivation" name="innendienstMotivation" rows="6" style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: inherit; resize: vertical; display: none;" placeholder="Erzähl uns, was dich antreibt..."></textarea>
                 </div>
 
                 <!-- Step 7: Mini-Case -->
@@ -1169,8 +1180,11 @@
             document.querySelector('#d4').value = 'Unsicher - Telefonberatung fällt mir leichter';
             document.querySelector('label[for="d4"]').textContent = 'Unsicher - Telefonberatung fällt mir leichter';
 
-            // Frage 6: Keep as free-text motivation field (already set in HTML)
-            // No customization needed - the motivation field is the default for Innendienst
+            // Frage 6: Replace radio buttons with textarea for Innendienst
+            document.querySelector('[data-step="6"] .step-title').textContent = 'Deine Motivation';
+            document.querySelector('[data-step="6"] .step-subtitle').textContent = 'Was motiviert Dich als Verkaufsberater bei uns zu arbeiten?';
+            document.getElementById('step6RadioButtons').style.display = 'none';
+            document.getElementById('innendienstMotivation').style.display = 'block';
 
             // Frage 7: Hide this step for Innendienst (not needed)
             document.querySelector('[data-step="7"]').style.display = 'none';
