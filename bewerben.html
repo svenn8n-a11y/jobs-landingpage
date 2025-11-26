@@ -665,21 +665,12 @@
                     </div>
                 </div>
 
-                <!-- Step 6: Sales Approach -->
+                <!-- Step 6: Motivation (Innendienst only, becomes free-text) -->
                 <div class="funnel-step" data-step="6">
-                    <h2 class="step-title">Verkaufsansatz</h2>
-                    <p class="step-subtitle">Was ist dir wichtiger im Verkauf: ein Produkt erklären oder ein Problem lösen?</p>
+                    <h2 class="step-title">Deine Motivation</h2>
+                    <p class="step-subtitle">Was motiviert Dich als Verkaufsberater bei uns zu arbeiten?</p>
 
-                    <div class="radio-options">
-                        <div class="radio-option">
-                            <input type="radio" name="approach" id="a1" value="Produkt erklären" data-points="5">
-                            <label for="a1" class="radio-label">Produkt erklären</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" name="approach" id="a2" value="Problem lösen" data-points="10">
-                            <label for="a2" class="radio-label">Problem lösen</label>
-                        </div>
-                    </div>
+                    <textarea id="innendienstMotivation" name="innendienstMotivation" rows="6" style="width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; font-family: inherit; resize: vertical;" placeholder="Erzähl uns, was dich antreibt..."></textarea>
                 </div>
 
                 <!-- Step 7: Mini-Case -->
@@ -879,6 +870,17 @@
             });
         });
 
+        // Textarea listener for Innendienst motivation field (step 6)
+        const innendienstMotivationField = document.getElementById('innendienstMotivation');
+        if (innendienstMotivationField) {
+            innendienstMotivationField.addEventListener('input', () => {
+                if (stelle === 'innendienst' && currentStep === 6) {
+                    nextBtn.disabled = !innendienstMotivationField.value.trim();
+                    formData.innendienstMotivation = innendienstMotivationField.value;
+                }
+            });
+        }
+
         // Form validation for step 9 (contact form)
         const contactForm = document.getElementById('contactForm');
         const formInputs = contactForm.querySelectorAll('input[required], textarea[required]');
@@ -912,6 +914,12 @@
         prevBtn.addEventListener('click', () => {
             if (currentStep > 1) {
                 currentStep--;
+
+                // Skip step 7 for Innendienst (step is hidden)
+                if (stelle === 'innendienst' && currentStep === 7) {
+                    currentStep--;
+                }
+
                 updateStep();
             }
         });
@@ -919,6 +927,12 @@
         function nextStep() {
             if (currentStep < totalSteps) {
                 currentStep++;
+
+                // Skip step 7 for Innendienst (step is hidden)
+                if (stelle === 'innendienst' && currentStep === 7) {
+                    currentStep++;
+                }
+
                 updateStep();
             }
         }
@@ -944,9 +958,16 @@
                 displayScoreMessage();
             } else {
                 nextBtn.textContent = 'Weiter';
-                const currentRadios = document.querySelectorAll(`.funnel-step[data-step="${currentStep}"] input[type="radio"]`);
-                const isSelected = Array.from(currentRadios).some(radio => radio.checked);
-                nextBtn.disabled = !isSelected;
+
+                // Special handling for step 6 Innendienst (textarea instead of radio buttons)
+                if (stelle === 'innendienst' && currentStep === 6) {
+                    const textarea = document.getElementById('innendienstMotivation');
+                    nextBtn.disabled = !textarea.value.trim();
+                } else {
+                    const currentRadios = document.querySelectorAll(`.funnel-step[data-step="${currentStep}"] input[type="radio"]`);
+                    const isSelected = Array.from(currentRadios).some(radio => radio.checked);
+                    nextBtn.disabled = !isSelected;
+                }
             }
 
             // Scroll to top
@@ -1122,37 +1143,24 @@
             document.querySelector('#o4').value = 'Noch keine Erfahrung, aber lernbereit';
             document.querySelector('label[for="o4"]').textContent = 'Noch keine Erfahrung, aber lernbereit';
 
-            // Frage 5: Beratung im Geschäft (bleibt Digital Tools)
-            document.querySelector('[data-step="5"] .step-title').textContent = 'Beratung im Geschäft';
-            document.querySelector('[data-step="5"] .step-subtitle').textContent = 'Ein Kunde steht im Laden und braucht Beratung zu Holzbearbeitungsmaschinen. Wie gehst du vor?';
-            document.querySelector('#d1').value = 'Ich berate aktiv und zeige Lösungen';
-            document.querySelector('label[for="d1"]').textContent = 'Ich berate aktiv und zeige Lösungen';
-            document.querySelector('#d2').value = 'Ich höre zu und berate dann';
-            document.querySelector('label[for="d2"]').textContent = 'Ich höre zu und berate dann';
-            document.querySelector('#d3').value = 'Ich hole einen erfahrenen Kollegen dazu';
-            document.querySelector('label[for="d3"]').textContent = 'Ich hole einen erfahrenen Kollegen dazu';
-            document.querySelector('#d4').value = 'Ich bin eher unsicher bei persönlicher Beratung';
-            document.querySelector('label[for="d4"]').textContent = 'Ich bin eher unsicher bei persönlicher Beratung';
+            // Frage 5: Beratung im Haus
+            document.querySelector('[data-step="5"] .step-title').textContent = 'Beratung im Haus';
+            document.querySelector('[data-step="5"] .step-subtitle').textContent = 'Ein Kunde kommt ins Geschäft und möchte eine Holzbearbeitungsmaschine vor Ort anschauen. Wie fühlst du dich dabei?';
+            document.querySelector('#d1').value = 'Perfekt - ich berate gerne persönlich und zeige die Maschinen';
+            document.querySelector('label[for="d1"]').textContent = 'Perfekt - ich berate gerne persönlich und zeige die Maschinen';
+            document.querySelector('#d2').value = 'Gut - mit etwas Vorbereitung berate ich gerne';
+            document.querySelector('label[for="d2"]').textContent = 'Gut - mit etwas Vorbereitung berate ich gerne';
+            document.querySelector('#d3').value = 'Okay - ich hole lieber einen Kollegen dazu';
+            document.querySelector('label[for="d3"]').textContent = 'Okay - ich hole lieber einen Kollegen dazu';
+            document.querySelector('#d4').value = 'Unsicher - Telefonberatung fällt mir leichter';
+            document.querySelector('label[for="d4"]').textContent = 'Unsicher - Telefonberatung fällt mir leichter';
 
-            // Frage 6: Beratungsansatz
-            document.querySelector('[data-step="6"] .step-title').textContent = 'Beratungsansatz';
-            document.querySelector('[data-step="6"] .step-subtitle').textContent = 'Was ist dir wichtiger: Den Kunden schnell bedienen oder die perfekte Lösung finden?';
-            document.querySelector('#a1').value = 'Schnelle Bedienung - Zeit ist Geld';
-            document.querySelector('label[for="a1"]').textContent = 'Schnelle Bedienung - Zeit ist Geld';
-            document.querySelector('#a2').value = 'Die perfekte Lösung - auch wenn es länger dauert';
-            document.querySelector('label[for="a2"]').textContent = 'Die perfekte Lösung - auch wenn es länger dauert';
+            // Frage 6: Keep as free-text motivation field (already set in HTML)
+            // No customization needed - the motivation field is the default for Innendienst
 
-            // Frage 7: Mini-Praxisfall Innendienst
-            document.querySelector('[data-step="7"] .step-title').textContent = 'Mini-Praxisfall';
-            document.querySelector('[data-step="7"] .step-subtitle').textContent = 'Ein Handwerker ruft an: "Ich brauche dringend eine Säge für Balken!" Was fragst du zuerst?';
-            document.querySelector('#c1').value = 'Welche Säge genau?';
-            document.querySelector('label[for="c1"]').textContent = '"Welche Säge haben Sie denn bisher?"';
-            document.querySelector('#c2').value = 'Balkenstärke und Holzart?';
-            document.querySelector('label[for="c2"]').textContent = '"Welche Balkenstärke und Holzart verarbeiten Sie?"';
-            document.querySelector('#c3').value = 'Preis und Verfügbarkeit?';
-            document.querySelector('label[for="c3"]').textContent = '"Welches Budget haben Sie eingeplant?"';
-            document.querySelector('#c4').value = 'Außendienst-Kollegen fragen';
-            document.querySelector('label[for="c4"]').textContent = '"Moment, ich frage einen Kollegen"';
+            // Frage 7: Hide this step for Innendienst (not needed)
+            document.querySelector('[data-step="7"]').style.display = 'none';
+            document.querySelector('.progress-step[data-step="7"]').style.display = 'none';
         }
 
         // Log initialization
