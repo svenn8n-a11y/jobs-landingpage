@@ -66,7 +66,7 @@ $availability = isset($data['availability']) ? htmlspecialchars(strip_tags($data
 $stellenbezeichnung = ($stelle === 'aussendienst') ? 'Verkaufsberater Außendienst' : 'Verkaufsberater Innendienst';
 
 // E-Mail-Empfänger
-$to = 'job@poeppel-wkz.de';
+$to = 'support@poeppel-wkz.de';
 
 // E-Mail-Betreff
 $subject = 'Neue Bewerbung: ' . $stellenbezeichnung . ' - ' . $name;

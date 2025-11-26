@@ -48,7 +48,7 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 - ✅ **Übersichtsseite**: Alle offenen Stellen auf einen Blick
 - ✅ **Detailseiten**: Ausführliche Stellenbeschreibungen mit aktuellen Benefits
 - ✅ **8-stufiger Bewerbungs-Funnel**: Progressives Formular mit Auto-Advance und Scoring
-- ✅ **PHP-Mail-Integration**: Bewerbungen werden automatisch an job@poeppel-wkz.de versendet
+- ✅ **PHP-Mail-Integration**: Bewerbungen werden automatisch an support@poeppel-wkz.de versendet
 - ✅ **Multiple CTA-Buttons**: Strategisch platziert für hohe Conversion
 - ✅ **Testimonials mit echten Namen**: Authentische Mitarbeiterzitate
   - **Außendienst**: Uwe Hettl (30+ Jahre), Michael Wrage (10+ Jahre), Alois Aschenbrenner (20 Jahre)
@@ -116,7 +116,7 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
   - Alois Aschenbrenner, Top-Verkaufsberater Außendienst (Zimmermannsmeister, 20 Jahre): "Quereinstieg & Familie"
 - **Aufgaben**: Kundenbetreuung, Neukundenakquise, Beratung, Verkaufsabschluss
 - **Anforderungen**: 8 Punkte inkl. Fahrerlaubnis
-- **Ansprechpartner**: Andreas Bodenmiller (IT-Leitung / Personalleitung, 08331-9559-660, job@poeppel-wkz.de)
+- **Ansprechpartner**: Andreas Bodenmiller (IT-Leitung / Personalleitung, 08331-9559-660, support@poeppel-wkz.de)
 
 **Mobile Optimierungen:**
 - Logo auf 30px verkleinert
@@ -142,7 +142,7 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
   - Harald Hartl, Verkaufsberater Innendienst Holzbau: "Vielseitigkeit & Abwechslung"
 - **Aufgaben**: Kundenberatung (gekürzt), Auftragsabwicklung, Betreuung, Lösungsfindung
 - **Anforderungen**: 9 Punkte inkl. "Mitgestaltung des Verkaufsraumes und von Verkaufsaktionen"
-- **Ansprechpartner**: Andreas Bodenmiller (IT-Leitung / Personalleitung, 08331-9559-660, job@poeppel-wkz.de)
+- **Ansprechpartner**: Andreas Bodenmiller (IT-Leitung / Personalleitung, 08331-9559-660, support@poeppel-wkz.de)
 
 **Mobile Optimierungen:**
 - Logo auf 30px verkleinert
@@ -193,7 +193,7 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
   - **Außendienst**: Textfeld in Schritt 9 Kontaktformular (Pflicht)
 - Fragen-Textfeld (optional, grauer Hintergrund): "Hast Du Fragen an uns?"
 - Erreichbarkeit-Auswahl (Schritt 8): Vormittags/Nachmittags/Abends/Jederzeit
-- **PHP-Mail-Integration**: Automatischer Versand an job@poeppel-wkz.de
+- **PHP-Mail-Integration**: Automatischer Versand an support@poeppel-wkz.de
 - **Datenübermittlung**: Alle Antworten, Score, Kontaktdaten, Erreichbarkeit, Bewertung
 - Success-Popup + Success-Seite mit Sicherheitshinweis
 - Kein Scroll-to-Top Button (bewusst entfernt für cleane Funnel-UX)
@@ -407,7 +407,7 @@ php -r "mail('test@example.com', 'Test', 'Test');"
 
 ### Version 3.5 (Januar 2025)
 - 🎉 **PHP-Mail-Integration**
-  - Automatischer E-Mail-Versand an job@poeppel-wkz.de
+  - Automatischer E-Mail-Versand an support@poeppel-wkz.de
   - Vollständige Übermittlung aller Vorqualifizierungsantworten
   - Score-basierte Bewertung in E-Mail
 - ✨ **Content-Updates**
@@ -425,7 +425,7 @@ php -r "mail('test@example.com', 'Test', 'Test');"
   - Name: Herr Andreas Bodenmiller
   - Position: IT-Leitung / Personalleitung
   - Telefon: 08331-9559-660
-  - E-Mail: job@poeppel-wkz.de
+  - E-Mail: support@poeppel-wkz.de
 
 ### Version 3.0 (Januar 2025)
 - 🎉 **Mobile Optimierungen**
@@ -481,7 +481,7 @@ fetch('submit-application.php', {
 ```
 
 **PHP-Backend Features:**
-- ✅ E-Mail-Versand an job@poeppel-wkz.de
+- ✅ E-Mail-Versand an support@poeppel-wkz.de
 - ✅ Vollständige Datenübermittlung (Antworten, Score, Kontaktdaten)
 - ✅ Input-Validierung & Sicherheit (XSS-Protection)
 - ✅ Automatische Bewertung basierend auf Score
@@ -531,7 +531,7 @@ Bei Fragen zur Webseite oder den Stellenangeboten:
 - Herr Andreas Bodenmiller
 - IT-Leitung / Personalleitung
 - 📞 08331-9559-660
-- 📧 job@poeppel-wkz.de
+- 📧 support@poeppel-wkz.de
 
 ---
 
