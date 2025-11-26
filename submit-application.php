@@ -60,6 +60,7 @@ $organization = isset($data['organization']) ? htmlspecialchars(strip_tags($data
 $digital = isset($data['digital']) ? htmlspecialchars(strip_tags($data['digital'])) : '';
 $approach = isset($data['approach']) ? htmlspecialchars(strip_tags($data['approach'])) : '';
 $case = isset($data['case']) ? htmlspecialchars(strip_tags($data['case'])) : '';
+$availability = isset($data['availability']) ? htmlspecialchars(strip_tags($data['availability'])) : '';
 
 // Stellenbezeichnung
 $stellenbezeichnung = ($stelle === 'aussendienst') ? 'Verkaufsberater Außendienst' : 'Verkaufsberater Innendienst';
@@ -72,38 +73,47 @@ $subject = 'Neue Bewerbung: ' . $stellenbezeichnung . ' - ' . $name;
 
 // E-Mail-Nachricht zusammenstellen
 $message = "
-Neue Bewerbung über die Jobs-Landingpage
-==========================================
+╔═══════════════════════════════════════════════════════════════╗
+║           NEUE BEWERBUNG - JOBS LANDINGPAGE                   ║
+╚═══════════════════════════════════════════════════════════════╝
 
-BEWERBERDATEN
--------------
-Name: $name
-E-Mail: $email
-Telefon: $phone
-Stelle: $stellenbezeichnung
+┌─────────────────────────────────────────────────────────────┐
+│ BEWERBERDATEN                                               │
+└─────────────────────────────────────────────────────────────┘
+  Name:              $name
+  E-Mail:            $email
+  Telefon:           $phone
+  Stelle:            $stellenbezeichnung
+  Erreichbarkeit:    $availability
 
-MOTIVATION
-----------
+┌─────────────────────────────────────────────────────────────┐
+│ MOTIVATION                                                  │
+└─────────────────────────────────────────────────────────────┘
 $motivation
 
-FRAGEN AN UNS
--------------
+┌─────────────────────────────────────────────────────────────┐
+│ FRAGEN AN UNS                                               │
+└─────────────────────────────────────────────────────────────┘
 $questions
 
-VORQUALIFIZIERUNG
------------------
-Gesamtpunktzahl: $score von 70 möglichen Punkten
+┌─────────────────────────────────────────────────────────────┐
+│ VORQUALIFIZIERUNG                                           │
+└─────────────────────────────────────────────────────────────┘
+  Gesamtpunktzahl: $score von 70 Punkten
 
-1. Technische Erfahrung: $technical
-2. Verkaufsfreude: $sales
-3. Reisebereitschaft: $travel
-4. Selbstorganisation: $organization
-5. Digitale Tools: $digital
-6. Verkaufsansatz: $approach
-7. Mini-Praxisfall: $case
+  Frage                     │ Antwort
+  ──────────────────────────┼─────────────────────────────────
+  1. Technische Erfahrung   │ $technical
+  2. Verkaufsfreude         │ $sales
+  3. Reisebereitschaft      │ $travel
+  4. Selbstorganisation     │ $organization
+  5. Digitale Tools         │ $digital
+  6. Verkaufsansatz         │ $approach
+  7. Mini-Praxisfall        │ $case
 
-BEWERTUNG
----------
+┌─────────────────────────────────────────────────────────────┐
+│ BEWERTUNG                                                   │
+└─────────────────────────────────────────────────────────────┘
 ";
 
 if ($score >= 50) {
@@ -118,8 +128,9 @@ if ($score >= 50) {
 
 $message .= "
 
-==========================================
+═══════════════════════════════════════════════════════════════
 Gesendet: " . date('d.m.Y H:i:s') . "
+═══════════════════════════════════════════════════════════════
 ";
 
 // E-Mail-Header

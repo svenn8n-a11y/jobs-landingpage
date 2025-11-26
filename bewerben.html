@@ -427,6 +427,82 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
+
+        /* ===== Success Popup Modal ===== */
+        .success-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .success-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-popup-content {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .success-popup.active .success-popup-content {
+            transform: scale(1);
+        }
+
+        .success-popup-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 3rem;
+            color: var(--white);
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .success-popup h2 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .success-popup p {
+            color: #666;
+            font-size: 1.1rem;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -460,6 +536,7 @@
                         <div class="progress-step" data-step="6">6</div>
                         <div class="progress-step" data-step="7">7</div>
                         <div class="progress-step" data-step="8">8</div>
+                        <div class="progress-step" data-step="9">9</div>
                     </div>
                 </div>
 
@@ -630,8 +707,33 @@
                     </div>
                 </div>
 
-                <!-- Step 8: Contact Information -->
+                <!-- Step 8: Availability -->
                 <div class="funnel-step" data-step="8">
+                    <h2 class="step-title">Erreichbarkeit</h2>
+                    <p class="step-subtitle">Wann können wir Dich am besten erreichen?</p>
+
+                    <div class="radio-options">
+                        <div class="radio-option">
+                            <input type="radio" name="availability" id="av1" value="Vormittags (8-12 Uhr)">
+                            <label for="av1" class="radio-label">Vormittags (8-12 Uhr)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="availability" id="av2" value="Nachmittags (12-17 Uhr)">
+                            <label for="av2" class="radio-label">Nachmittags (12-17 Uhr)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="availability" id="av3" value="Abends (17-20 Uhr)">
+                            <label for="av3" class="radio-label">Abends (17-20 Uhr)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="availability" id="av4" value="Jederzeit">
+                            <label for="av4" class="radio-label">Jederzeit</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 9: Contact Information -->
+                <div class="funnel-step" data-step="9">
                     <div id="scoreMessage" style="display: none; margin-bottom: 2rem; padding: 1.5rem; border-left: 4px solid var(--accent-green); border-radius: 6px;">
                         <h3 id="scoreTitle" style="margin-bottom: 0.5rem;"></h3>
                         <p id="scoreText" style="color: var(--dark); margin: 0;"></p>
@@ -676,7 +778,7 @@
                 </div>
 
                 <!-- Success Message -->
-                <div class="funnel-step" data-step="9">
+                <div class="funnel-step" data-step="10">
                     <div class="success-message">
                         <div class="success-icon">✓</div>
                         <h2>Vielen Dank!</h2>
@@ -707,10 +809,19 @@
         <p>&copy; 2025 R. Pöppel GmbH & Co. KG</p>
     </footer>
 
+    <!-- Success Popup Modal -->
+    <div class="success-popup" id="successPopup">
+        <div class="success-popup-content">
+            <div class="success-popup-icon">✓</div>
+            <h2>Erfolgreich versendet</h2>
+            <p>Vielen Dank für Deine Bewerbung!</p>
+        </div>
+    </div>
+
     <script>
         // State management
         let currentStep = 1;
-        const totalSteps = 8; // Changed from 7 to 8 (7 questions + contact form)
+        const totalSteps = 9; // 7 qualification questions + availability + contact form
         let totalScore = 0;
         const formData = {
             technical: '',
@@ -720,6 +831,7 @@
             digital: '',
             approach: '',
             case: '',
+            availability: '',
             name: '',
             email: '',
             phone: '',
@@ -767,17 +879,17 @@
             });
         });
 
-        // Form validation for step 7 (contact form)
+        // Form validation for step 9 (contact form)
         const contactForm = document.getElementById('contactForm');
         const formInputs = contactForm.querySelectorAll('input[required], textarea[required]');
 
         formInputs.forEach(input => {
-            input.addEventListener('input', validateStep7);
+            input.addEventListener('input', validateStep9);
         });
 
-        document.getElementById('privacy').addEventListener('change', validateStep7);
+        document.getElementById('privacy').addEventListener('change', validateStep9);
 
-        function validateStep7() {
+        function validateStep9() {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
@@ -790,7 +902,7 @@
 
         // Navigation
         nextBtn.addEventListener('click', () => {
-            if (currentStep === 8) {
+            if (currentStep === 9) {
                 submitForm();
             } else {
                 nextStep();
@@ -826,7 +938,7 @@
             if (currentStep === totalSteps) {
                 nextBtn.textContent = 'Bewerbung absenden';
                 nextBtn.disabled = true;
-                validateStep7();
+                validateStep9();
 
                 // Show score-based message
                 displayScoreMessage();
@@ -940,26 +1052,97 @@
         }
 
         function showSuccessMessage() {
-            // Show success step
-            currentStep = 8;
-            steps.forEach((step, index) => {
-                step.classList.toggle('active', index + 1 === currentStep);
-            });
-            buttonGroup.style.display = 'none';
+            // Show popup modal
+            const popup = document.getElementById('successPopup');
+            popup.classList.add('active');
 
-            // Mark all progress steps as completed
-            progressSteps.forEach(step => {
-                step.classList.add('completed');
-                step.classList.remove('active');
-            });
-            progressLine.style.width = '100%';
+            // Auto-close popup after 3 seconds and show success page
+            setTimeout(() => {
+                popup.classList.remove('active');
 
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Show success step (step 10)
+                currentStep = 10;
+                steps.forEach((step, index) => {
+                    step.classList.toggle('active', index + 1 === currentStep);
+                });
+                buttonGroup.style.display = 'none';
+
+                // Mark all progress steps as completed
+                progressSteps.forEach(step => {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                });
+                progressLine.style.width = '100%';
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 3000);
+        }
+
+        // Adapt questions for Innendienst
+        const urlParams = new URLSearchParams(window.location.search);
+        const stelle = urlParams.get('stelle') || 'innendienst';
+
+        if (stelle === 'innendienst') {
+            // Frage 2: Kundenberatung am Telefon/persönlich
+            document.querySelector('[data-step="2"] .step-title').textContent = 'Kundenberatung';
+            document.querySelector('[data-step="2"] .step-subtitle').textContent = 'Wie viel Erfahrung hast du in der Kundenberatung (telefonisch oder persönlich)?';
+            document.querySelector('#s1').value = 'Täglich im Kundenkontakt';
+            document.querySelector('label[for="s1"]').textContent = 'Täglich im Kundenkontakt';
+            document.querySelector('#s2').value = 'Regelmäßig';
+            document.querySelector('label[for="s2"]').textContent = 'Regelmäßig';
+            document.querySelector('#s3').value = 'Gelegentlich';
+            document.querySelector('label[for="s3"]').textContent = 'Gelegentlich';
+            document.querySelector('#s4').value = 'Noch nie';
+            document.querySelector('label[for="s4"]').textContent = 'Noch nie';
+
+            // Frage 3: Büroarbeit & strukturiertes Arbeiten
+            document.querySelector('[data-step="3"] .step-title').textContent = 'Büroarbeit';
+            document.querySelector('[data-step="3"] .step-subtitle').textContent = 'Arbeitest du gerne im Büro mit geregelten Arbeitszeiten?';
+            document.querySelector('#tr1').value = 'Ja, sehr gerne!';
+            document.querySelector('label[for="tr1"]').textContent = 'Ja, sehr gerne!';
+            document.querySelector('#tr2').value = 'Ja, das passt gut';
+            document.querySelector('label[for="tr2"]').textContent = 'Ja, das passt gut';
+            document.querySelector('#tr3').value = 'Neutral';
+            document.querySelector('label[for="tr3"]').textContent = 'Neutral';
+            document.querySelector('#tr4').value = 'Nein, lieber unterwegs';
+            document.querySelector('label[for="tr4"]').textContent = 'Nein, lieber unterwegs';
+
+            // Frage 4: Multitasking
+            document.querySelector('[data-step="4"] .step-title').textContent = 'Multitasking';
+            document.querySelector('[data-step="4"] .step-subtitle').textContent = 'Kannst du mehrere Aufträge parallel bearbeiten und Prioritäten setzen?';
+            document.querySelector('#o1').value = 'Ja, sehr gut';
+            document.querySelector('label[for="o1"]').textContent = 'Ja, sehr gut';
+            document.querySelector('#o2').value = 'Ja, meistens';
+            document.querySelector('label[for="o2"]').textContent = 'Ja, meistens';
+            document.querySelector('#o3').value = 'Mit Struktur schon';
+            document.querySelector('label[for="o3"]').textContent = 'Mit Struktur schon';
+            document.querySelector('#o4').value = 'Schwierig für mich';
+            document.querySelector('label[for="o4"]').textContent = 'Schwierig für mich';
+
+            // Frage 6: Beratungsansatz
+            document.querySelector('[data-step="6"] .step-title').textContent = 'Beratungsansatz';
+            document.querySelector('[data-step="6"] .step-subtitle').textContent = 'Was ist dir wichtiger in der Kundenberatung?';
+            document.querySelector('#a1').value = 'Produkte präsentieren';
+            document.querySelector('label[for="a1"]').textContent = 'Produkte präsentieren';
+            document.querySelector('#a2').value = 'Kundenbedürfnisse verstehen und Lösungen finden';
+            document.querySelector('label[for="a2"]').textContent = 'Kundenbedürfnisse verstehen und Lösungen finden';
+
+            // Frage 7: Mini-Praxisfall Innendienst
+            document.querySelector('[data-step="7"] .step-title').textContent = 'Mini-Praxisfall';
+            document.querySelector('[data-step="7"] .step-subtitle').textContent = 'Ein Kunde ruft an und braucht dringend eine Holzbearbeitungsmaschine. Was machst du?';
+            document.querySelector('#c1').value = 'Verfügbarkeit prüfen';
+            document.querySelector('label[for="c1"]').textContent = 'Ich prüfe die Verfügbarkeit und mache ein Angebot';
+            document.querySelector('#c2').value = 'Bedarf klären und beraten';
+            document.querySelector('label[for="c2"]').textContent = 'Ich frage nach dem genauen Bedarf und berate zu passenden Maschinen';
+            document.querySelector('#c3').value = 'Außendienst kontaktieren';
+            document.querySelector('label[for="c3"]').textContent = 'Ich kontaktiere einen Kollegen im Außendienst';
+            document.querySelector('#c4').value = 'Weiß nicht';
+            document.querySelector('label[for="c4"]').textContent = 'Weiß ich nicht';
         }
 
         // Log initialization
-        console.log('Pöppel Bewerbungs-Funnel geladen');
+        console.log('Pöppel Bewerbungs-Funnel geladen - Stelle: ' + stelle);
     </script>
 </body>
 </html>
