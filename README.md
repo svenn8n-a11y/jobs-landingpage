@@ -2,7 +2,7 @@
 
 Eine moderne, professionelle Landingpage für Jobangebote bei R. Pöppel GmbH & Co. KG - Werkzeugmaschinen und Intralogistik-Spezialist aus Memmingen.
 
-![Version](https://img.shields.io/badge/version-3.7-blue)
+![Version](https://img.shields.io/badge/version-3.8-blue)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
@@ -437,7 +437,19 @@ php -r "mail('test@example.com', 'Test', 'Test');"
 
 ## 📝 Changelog
 
-### Version 3.7 (Januar 2025) - Aktuell
+### Version 3.8 (Januar 2025) - Aktuell
+- ✉️ **HTML-E-Mails mit Klassifizierung**
+  - E-Mails als professionell gestaltetes HTML (statt Plain-Text)
+  - Klassifizierung mit Emojis in Betreffzeile: 🌟 PERFEKT (50+ Punkte), ✅ GEEIGNET (35+ Punkte), 💡 INTERESSANT (20+ Punkte), ⚠️ UNPASSEND (<20 Punkte)
+  - Farbcodierte Badges und Score-Boxen im E-Mail-Layout
+  - Gradient Header, strukturierte Sektionen, responsive Design
+  - Content-Type: text/html; charset=UTF-8
+- 🎨 **Favicon-Optimierung**
+  - Doppelte Favicon-Deklaration für bessere Browser-Kompatibilität
+  - PNG und SVG Fallback auf allen Seiten (index, aussendienst, innendienst, bewerben)
+  - Favicon_Poeppel.svg wird korrekt geladen
+
+### Version 3.7 (Januar 2025)
 - 🖼️ **Job-Kachel Bilder auf Index**
   - Banner-Bilder "Kachel Außendienst.png" und "Kachel Innendienst.png" eingefügt
   - Ersetzen die SVG-Icons in den Job-Cards
@@ -457,6 +469,12 @@ php -r "mail('test@example.com', 'Test', 'Test');"
   - UTF-8 Base64-Encoding für Betreff (Umlaute)
   - Optimierte Mail-Header für bessere Zustellbarkeit
   - test-mail.php für Debugging hinzugefügt
+- 👥 **Testimonials & Über uns**
+  - 4 Mitarbeiter-Testimonials mit echten Namen und Positionen
+  - "Über R. Pöppel GmbH & Co. KG" Sektion mit Firmengeschichte
+  - Zusätzlicher "Zu den Jobs" Button nach About-Sektion
+- 🎨 **Favicon hinzugefügt**
+  - Favicon_Poeppel.svg auf allen Seiten implementiert
 
 ### Version 3.6 (Januar 2025)
 - 🎯 **Innendienst-Funnel komplett überarbeitet**
