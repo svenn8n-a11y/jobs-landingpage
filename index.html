@@ -498,6 +498,90 @@
             opacity: 0.9;
         }
 
+        /* ===== Testimonials Section ===== */
+        .testimonials-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(190, 24, 35, 0.95), rgba(50, 55, 60, 0.95)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23be1823" width="1920" height="1080"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            position: relative;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 4rem;
+            color: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .testimonial-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card.animated:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--white);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--tertiary);
+        }
+
+        /* ===== About Section ===== */
+        .about-section {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .about-section h2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #666;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
         /* ===== Footer ===== */
         footer {
             background: var(--dark);
@@ -590,6 +674,10 @@
             }
 
             .stats-section {
+                background-attachment: scroll;
+            }
+
+            .testimonials-section {
                 background-attachment: scroll;
             }
 
@@ -835,6 +923,44 @@
         </div>
     </section>
 
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>Das sagen unsere Mitarbeiter</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">„Ich schätze meine Arbeit, weil jeder Tag neue Aufgaben und Abwechslung bringt. Ich kann selbständig arbeiten, mich kreativ einzubringen – sowohl im Team als auch in der Weiterentwicklung der Firma. Und ich habe genug Zeit für meine Freizeitgestaltung."</p>
+                    <p class="testimonial-author">— Marc Heine, Abteilungsleiter Reparaturservice</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">„Der Außendienst bei Pöppel gibt mir die Freiheit, meine Kunden individuell zu betreuen und lässt mir Gestaltungsspielraum. Meinen Arbeitstag gestalte ich selbstständig und das möchte ich nicht mehr hergeben."</p>
+                    <p class="testimonial-author">— Uwe Hettl, Top-Verkaufsberater Außendienst</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">„Die Geschäftsführung ist offen für neue Ideen und Pöppel entwickelt sich stetig weiter. Man spürt, dass das Unternehmen in seine Mitarbeiter investiert und uns bestmöglich unterstützt."</p>
+                    <p class="testimonial-author">— Michael Wrage, Verkaufsleiter Holzbau</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">„Die Firma Pöppel ist sehr familienfreundlich und geht gut auf die Bedürfnisse von Eltern und Kindern ein. Man fühlt sich hier wirklich wohl, weil Familie hier zählt."</p>
+                    <p class="testimonial-author">— Maximilian Straub, Verkaufsberater Innendienst Zerspanung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Company -->
+    <section class="about-section">
+        <div class="container">
+            <h2>Über R. Pöppel GmbH & Co. KG</h2>
+            <p class="about-text">
+                Seit 1925 steht R. Pöppel für Qualität und Innovation im Handel mit Werkzeugmaschinen, Werkzeugen und Betriebseinrichtungen. Als Familienunternehmen mit etwa 40 Mitarbeitern betreuen wir Handwerksbetriebe und Industriekunden in ganz Süddeutschland. Unser breites Sortiment erstreckt sich von Holzbearbeitung über Metallbearbeitung bis hin zu modernsten umfassenden Lösungen für Workwear-Management, Intralogistik und digitalem Beschaffungswesen.
+            </p>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#jobs" class="cta-button" style="max-width: 400px; margin: 0 auto;">Zu den Jobs</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -872,7 +998,7 @@
         }, observerOptions);
 
         // Beobachte alle animierbaren Elemente
-        document.querySelectorAll('.benefit-item, .value-card, .job-card').forEach(el => {
+        document.querySelectorAll('.benefit-item, .value-card, .job-card, .testimonial-card').forEach(el => {
             observer.observe(el);
         });
 
