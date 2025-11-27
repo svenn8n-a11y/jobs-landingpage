@@ -935,6 +935,11 @@
             if (currentStep > 1) {
                 currentStep--;
 
+                // Skip step 6 & 7 for Lager when going back (jump from 8 to 5)
+                if (stelle === 'lager' && currentStep === 7) {
+                    currentStep = 5; // Jump back to last question
+                }
+
                 // Skip step 7 for Innendienst (step is hidden)
                 if (stelle === 'innendienst' && currentStep === 7) {
                     currentStep--;
@@ -947,6 +952,11 @@
         function nextStep() {
             if (currentStep < totalSteps) {
                 currentStep++;
+
+                // Skip step 6 & 7 for Lager (steps are hidden)
+                if (stelle === 'lager' && currentStep === 6) {
+                    currentStep = 8; // Jump directly to contact form
+                }
 
                 // Skip step 7 for Innendienst (step is hidden)
                 if (stelle === 'innendienst' && currentStep === 7) {

@@ -118,6 +118,12 @@ $maxScore = ($stelle === 'lager') ? 50 : 70;
 
 // Fragetabelle abhängig von der Stelle
 if ($stelle === 'lager') {
+    // Für Lager werden die Input-Namen wiederverwendet, aber mit anderen Bedeutungen
+    // technical = Lager-Erfahrung
+    // sales = Gabelstapler-Führerschein
+    // travel = Fitness
+    // organization = Selbstständigkeit & Verantwortung
+    // digital = Verfügbarkeit (wiederverwendet, da Frage 5 unterschiedlich ist)
     $questionTable = "
                 <tr>
                     <td>1. Lager-Erfahrung</td>
