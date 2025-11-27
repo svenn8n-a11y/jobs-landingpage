@@ -935,9 +935,10 @@
             if (currentStep > 1) {
                 currentStep--;
 
-                // Skip step 6, 7 & 8 for Lager when going back (jump from 9 to 5)
-                if (stelle === 'lager' && currentStep === 8) {
-                    currentStep = 5; // Jump back to last question (Verfügbarkeit)
+                // Skip step 6 & 7 for Lager when going back
+                // From step 8 (Erreichbarkeit) jump to step 5 (Verfügbarkeit)
+                if (stelle === 'lager' && currentStep === 7) {
+                    currentStep = 5; // Jump back from step 8 to step 5 (skip 6 & 7)
                 }
 
                 // Skip step 7 for Innendienst (step is hidden)
@@ -953,10 +954,10 @@
             if (currentStep < totalSteps) {
                 currentStep++;
 
-                // Skip step 6, 7 & 8 for Lager (steps are hidden)
-                // Jump directly from Frage 5 to Kontaktdaten (Step 9)
+                // Skip step 6 & 7 for Lager (steps are hidden)
+                // Jump from Frage 5 to Erreichbarkeit (Step 8)
                 if (stelle === 'lager' && currentStep === 6) {
-                    currentStep = 9; // Jump directly to contact form
+                    currentStep = 8; // Jump to erreichbarkeit (step 8)
                 }
 
                 // Skip step 7 for Innendienst (step is hidden)
@@ -1316,17 +1317,15 @@
             document.querySelector('label[for="d4"]').textContent = 'Später';
             document.querySelector('#d4').setAttribute('data-points', '3');
 
-            // Frage 6, 7 & 8 (Erreichbarkeit): Für Lager nicht benötigt - verstecken
-            // (Verfügbarkeit ist bereits in Frage 5 integriert)
+            // Frage 6 & 7: Für Lager nicht benötigt - verstecken
+            // (Step 8 "Erreichbarkeit" bleibt sichtbar!)
             document.querySelector('[data-step="6"]').style.display = 'none';
             document.querySelector('.progress-step[data-step="6"]').style.display = 'none';
             document.querySelector('[data-step="7"]').style.display = 'none';
             document.querySelector('.progress-step[data-step="7"]').style.display = 'none';
-            document.querySelector('[data-step="8"]').style.display = 'none';
-            document.querySelector('.progress-step[data-step="8"]').style.display = 'none';
 
             // Adjust total steps for progress calculation
-            totalSteps = 7; // 5 questions + contact/motivation + submit
+            totalSteps = 8; // 5 questions + erreichbarkeit + contact/motivation + submit
         }
 
         // Log initialization
