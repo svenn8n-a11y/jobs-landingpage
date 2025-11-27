@@ -217,12 +217,58 @@ jobs-landingpage/
 ├── images/                             # Bilder und Assets
 │   ├── Logo_poeppel.png                # Firmenlogo
 │   ├── headerbild_index.jpg            # Hero-Hintergrundbild Index
-│   └── Headerbild_jobs.png             # Hero-Hintergrundbild Jobs
+│   ├── Headerbild_jobs.png             # Hero-Hintergrundbild Jobs
+│   ├── Banner Außendienst.png          # Desktop-Banner Außendienst
+│   ├── Banner_Aussendienst_mobile.png  # Mobile-Banner (1024×632px, Golden Ratio)
+│   └── headerbild_vertrieb.png         # Hero-Hintergrundbild Vertrieb
 │
 ├── README.md                           # Haupt-Dokumentation (diese Datei)
 ├── .gitignore                          # Große Binärdateien ausgeschlossen
 └── Jobs Landingpage.code-workspace     # VS Code Workspace-Datei
 ```
+
+## 🖼️ Responsive Banner-System
+
+Die Stellenanzeigen verwenden ein intelligentes responsive Banner-System, das automatisch optimierte Bilder für verschiedene Geräte lädt.
+
+### Implementierung
+
+Verwendet wird das HTML5 `<picture>`-Element mit Media Queries:
+
+```html
+<picture>
+    <source media="(max-width: 767px)" srcset="images/Banner_Aussendienst_mobile.png">
+    <source media="(min-width: 768px)" srcset="images/Banner Außendienst.png">
+    <img src="images/Banner Außendienst.png" alt="Pöppel Außendienst" style="width: 100%; height: auto; display: block;">
+</picture>
+```
+
+### Breakpoints
+
+- **Mobile** (`max-width: 767px`): Lädt optimierte Mobile-Version
+- **Desktop** (`min-width: 768px`): Lädt hochauflösende Desktop-Version
+- **Fallback**: Standard `<img>`-Tag für ältere Browser
+
+### Mobile-Banner Spezifikationen
+
+**Format basiert auf Goldenem Schnitt (φ ≈ 1.618):**
+- Dimension: 1024×632px
+- Aspect Ratio: ~1.62:1 (nahe am goldenen Schnitt)
+- Optimiert für: Bessere Lesbarkeit auf kleinen Bildschirmen
+- Dateigröße: ~600KB (komprimiert)
+
+### Vorteile
+
+- ✅ **Performance**: Kleinere Datei für Mobile-Geräte
+- ✅ **UX**: Text besser lesbar auf mobilen Displays
+- ✅ **Zero JavaScript**: Native Browser-Unterstützung
+- ✅ **Automatisch**: Browserbezogene Auswahl ohne Interaktion
+- ✅ **SEO-freundlich**: Semantisches HTML mit alt-Attributen
+
+### Verwendete Seiten
+
+- [aussendienst.html](aussendienst.html) (Zeile 895-899)
+- [innendienst.html](innendienst.html) (Zeile 908-912)
 
 ## 🚀 Installation & Verwendung
 

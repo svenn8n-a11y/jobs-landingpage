@@ -68,8 +68,8 @@ $stellenbezeichnung = ($stelle === 'aussendienst') ? 'Verkaufsberater Außendien
 // E-Mail-Empfänger
 $to = 'support@poeppel-wkz.de';
 
-// E-Mail-Betreff
-$subject = 'Neue Bewerbung: ' . $stellenbezeichnung . ' - ' . $name;
+// E-Mail-Betreff mit Encoding
+$subject = '=?UTF-8?B?' . base64_encode('Neue Bewerbung: ' . $stellenbezeichnung . ' - ' . $name) . '?=';
 
 // E-Mail-Nachricht zusammenstellen
 $message = "
@@ -133,14 +133,18 @@ Gesendet: " . date('d.m.Y H:i:s') . "
 ═══════════════════════════════════════════════════════════════
 ";
 
-// E-Mail-Header
-$headers = "From: Pöppel Jobs <noreply@poeppel-wkz.de>\r\n";
+// E-Mail-Header - optimiert für Serverkompatibilität
+$headers = "From: support@poeppel-wkz.de\r\n";
 $headers .= "Reply-To: $email\r\n";
+$headers .= "Return-Path: support@poeppel-wkz.de\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion();
+$headers .= "Content-Transfer-Encoding: 8bit\r\n";
+$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+$headers .= "X-Priority: 1\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
 
-// E-Mail senden
-$mailSent = mail($to, $subject, $message, $headers);
+// E-Mail senden mit zusätzlichen Parametern
+$mailSent = mail($to, $subject, $message, $headers, '-f support@poeppel-wkz.de');
 
 if ($mailSent) {
     echo json_encode([
