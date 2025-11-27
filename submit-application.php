@@ -134,9 +134,9 @@ Gesendet: " . date('d.m.Y H:i:s') . "
 ";
 
 // E-Mail-Header - optimiert für Serverkompatibilität
-$headers = "From: support@poeppel-wkz.de\r\n";
+$headers = "From: noreply@poeppel-wkz.com\r\n";
 $headers .= "Reply-To: $email\r\n";
-$headers .= "Return-Path: support@poeppel-wkz.de\r\n";
+$headers .= "Return-Path: noreply@poeppel-wkz.com\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "Content-Transfer-Encoding: 8bit\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
@@ -144,7 +144,7 @@ $headers .= "X-Priority: 1\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 
 // E-Mail senden mit zusätzlichen Parametern
-$mailSent = mail($to, $subject, $message, $headers, '-f support@poeppel-wkz.de');
+$mailSent = mail($to, $subject, $message, $headers, '-f noreply@poeppel-wkz.com');
 
 if ($mailSent) {
     echo json_encode([

@@ -24,9 +24,9 @@ if (isset($_GET['test'])) {
     $message .= "PHP Version: " . phpversion() . "\n\n";
     $message .= "Wenn Sie diese E-Mail erhalten, funktioniert die Mail-Funktion korrekt.";
 
-    $headers = "From: support@poeppel-wkz.de\r\n";
-    $headers .= "Reply-To: support@poeppel-wkz.de\r\n";
-    $headers .= "Return-Path: support@poeppel-wkz.de\r\n";
+    $headers = "From: noreply@poeppel-wkz.com\r\n";
+    $headers .= "Reply-To: noreply@poeppel-wkz.com\r\n";
+    $headers .= "Return-Path: noreply@poeppel-wkz.com\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $headers .= "Content-Transfer-Encoding: 8bit\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
@@ -34,9 +34,9 @@ if (isset($_GET['test'])) {
 
     echo "<h2>Sende Test-Mail...</h2>";
     echo "<p><strong>An:</strong> $to</p>";
-    echo "<p><strong>Von:</strong> support@poeppel-wkz.de</p>";
+    echo "<p><strong>Von:</strong> noreply@poeppel-wkz.com</p>";
 
-    $result = mail($to, $subject, $message, $headers, '-f support@poeppel-wkz.de');
+    $result = mail($to, $subject, $message, $headers, '-f noreply@poeppel-wkz.com');
 
     if ($result) {
         echo "<p style='color: green; font-weight: bold;'>✓ Mail-Funktion hat TRUE zurückgegeben</p>";
@@ -47,7 +47,7 @@ if (isset($_GET['test'])) {
         echo "<ul>";
         echo "<li>PHP mail() Funktion ist nicht konfiguriert</li>";
         echo "<li>SMTP Server ist nicht erreichbar</li>";
-        echo "<li>Die Domain support@poeppel-wkz.de ist nicht autorisiert</li>";
+        echo "<li>Die Domain noreply@poeppel-wkz.com ist nicht autorisiert</li>";
         echo "<li>Firewall blockiert ausgehende Mails</li>";
         echo "</ul>";
     }
