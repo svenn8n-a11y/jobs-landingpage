@@ -641,7 +641,7 @@
             <div class="jobs-grid">
                 <!-- Job 1: Außendienst -->
                 <div class="job-card">
-                    <img src="images/Kachel Außendienst.png" alt="Außendienst" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0; margin: -2.5rem -2.5rem 1.5rem -2.5rem;">
+                    <img src="images/Kachel Außendienst.png" alt="Außendienst" style="width: calc(100% + 5rem); height: 200px; object-fit: cover; border-radius: 8px 8px 0 0; margin: -2.5rem -2.5rem 1.5rem -2.5rem; display: block;">
                     <h3>Verkaufsberater Außendienst</h3>
                     <div class="job-meta">
                         <span class="job-tag">Vollzeit</span>
@@ -662,7 +662,7 @@
 
                 <!-- Job 2: Innendienst -->
                 <div class="job-card">
-                    <img src="images/Kachel Innendienst.png" alt="Innendienst" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px 8px 0 0; margin: -2.5rem -2.5rem 1.5rem -2.5rem;">
+                    <img src="images/Kachel Innendienst.png" alt="Innendienst" style="width: calc(100% + 5rem); height: 200px; object-fit: cover; border-radius: 8px 8px 0 0; margin: -2.5rem -2.5rem 1.5rem -2.5rem; display: block;">
                     <h3>Verkaufsberater Innendienst</h3>
                     <div class="job-meta">
                         <span class="job-tag">Vollzeit</span>
@@ -888,6 +888,12 @@
                     const stats = entry.target.querySelectorAll('.stat-number');
                     stats.forEach((stat, index) => {
                         const text = stat.textContent.trim();
+
+                        // Wenn Text einen Schrägstrich enthält (wie "1/2 Mio."), keine Animation
+                        if (text.includes('/')) {
+                            return; // Keine Animation für Brüche
+                        }
+
                         const isDecimal = text.includes('.');
                         const suffix = text.replace(/[0-9.,]/g, '').trim();
                         const number = parseFloat(text.replace(/[^0-9.]/g, ''));
