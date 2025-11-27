@@ -1324,6 +1324,10 @@
             document.querySelector('[data-step="7"]').style.display = 'none';
             document.querySelector('.progress-step[data-step="7"]').style.display = 'none';
 
+            // Progress Bar umnummerieren: Zeige 1-7 statt 1,2,3,4,5,8,9
+            document.querySelector('.progress-step[data-step="8"]').textContent = '6';
+            document.querySelector('.progress-step[data-step="9"]').textContent = '7';
+
             // Adjust total steps for progress calculation
             totalSteps = 8; // 5 questions + erreichbarkeit + contact/motivation + submit
         }
