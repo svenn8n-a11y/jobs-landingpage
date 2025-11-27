@@ -63,30 +63,113 @@ $case = isset($data['case']) ? htmlspecialchars(strip_tags($data['case'])) : '';
 $availability = isset($data['availability']) ? htmlspecialchars(strip_tags($data['availability'])) : '';
 
 // Stellenbezeichnung
-$stellenbezeichnung = ($stelle === 'aussendienst') ? 'Verkaufsberater Außendienst' : 'Verkaufsberater Innendienst';
+if ($stelle === 'aussendienst') {
+    $stellenbezeichnung = 'Verkaufsberater Außendienst';
+} elseif ($stelle === 'lager') {
+    $stellenbezeichnung = 'Lagermitarbeiter';
+} else {
+    $stellenbezeichnung = 'Verkaufsberater Innendienst';
+}
 
 // E-Mail-Empfänger
 $to = 'support@poeppel-wkz.de';
 
-// Klassifizierung für Betreff bestimmen
+// Klassifizierung für Betreff bestimmen (unterschiedliche Schwellenwerte für Lager vs. Verkauf)
 $classification = '';
 $classificationColor = '';
-if ($score >= 50) {
-    $classification = '🌟 PERFEKT';
-    $classificationColor = '#27ae60';
-} elseif ($score >= 35) {
-    $classification = '✅ GEEIGNET';
-    $classificationColor = '#2ecc71';
-} elseif ($score >= 20) {
-    $classification = '💡 INTERESSANT';
-    $classificationColor = '#f39c12';
+
+if ($stelle === 'lager') {
+    // Lager: max 50 Punkte
+    if ($score >= 36) {
+        $classification = '🌟 PERFEKT';
+        $classificationColor = '#27ae60';
+    } elseif ($score >= 25) {
+        $classification = '✅ GEEIGNET';
+        $classificationColor = '#2ecc71';
+    } elseif ($score >= 15) {
+        $classification = '💡 INTERESSANT';
+        $classificationColor = '#f39c12';
+    } else {
+        $classification = '⚠️ UNPASSEND';
+        $classificationColor = '#e74c3c';
+    }
 } else {
-    $classification = '⚠️ UNPASSEND';
-    $classificationColor = '#e74c3c';
+    // Verkaufspositionen: max 70 Punkte
+    if ($score >= 50) {
+        $classification = '🌟 PERFEKT';
+        $classificationColor = '#27ae60';
+    } elseif ($score >= 35) {
+        $classification = '✅ GEEIGNET';
+        $classificationColor = '#2ecc71';
+    } elseif ($score >= 20) {
+        $classification = '💡 INTERESSANT';
+        $classificationColor = '#f39c12';
+    } else {
+        $classification = '⚠️ UNPASSEND';
+        $classificationColor = '#e74c3c';
+    }
 }
 
 // E-Mail-Betreff mit Klassifizierung und Encoding
 $subject = '=?UTF-8?B?' . base64_encode($classification . ' | Bewerbung: ' . $stellenbezeichnung . ' - ' . $name) . '?=';
+
+// Maximale Punktzahl abhängig von der Stelle
+$maxScore = ($stelle === 'lager') ? 50 : 70;
+
+// Fragetabelle abhängig von der Stelle
+if ($stelle === 'lager') {
+    $questionTable = "
+                <tr>
+                    <td>1. Lager-Erfahrung</td>
+                    <td>$technical</td>
+                </tr>
+                <tr>
+                    <td>2. Gabelstapler-Führerschein</td>
+                    <td>$sales</td>
+                </tr>
+                <tr>
+                    <td>3. Fitness</td>
+                    <td>$travel</td>
+                </tr>
+                <tr>
+                    <td>4. Selbstständigkeit & Verantwortung</td>
+                    <td>$organization</td>
+                </tr>
+                <tr>
+                    <td>5. Verfügbarkeit</td>
+                    <td>$digital</td>
+                </tr>";
+} else {
+    $questionTable = "
+                <tr>
+                    <td>1. Technische Erfahrung</td>
+                    <td>$technical</td>
+                </tr>
+                <tr>
+                    <td>2. Verkaufsfreude</td>
+                    <td>$sales</td>
+                </tr>
+                <tr>
+                    <td>3. Reisebereitschaft</td>
+                    <td>$travel</td>
+                </tr>
+                <tr>
+                    <td>4. Selbstorganisation</td>
+                    <td>$organization</td>
+                </tr>
+                <tr>
+                    <td>5. Digitale Tools</td>
+                    <td>$digital</td>
+                </tr>
+                <tr>
+                    <td>6. Verkaufsansatz</td>
+                    <td>$approach</td>
+                </tr>
+                <tr>
+                    <td>7. Mini-Praxisfall</td>
+                    <td>$case</td>
+                </tr>";
+}
 
 // HTML E-Mail-Nachricht zusammenstellen
 $message = "
@@ -159,40 +242,13 @@ $message = "
 
         <div class=\"section\">
             <div class=\"section-title\">📊 Vorqualifizierung</div>
-            <div class=\"score-box\">$score von 70 Punkten</div>
+            <div class=\"score-box\">$score von $maxScore Punkten</div>
             <table>
                 <tr>
                     <th>Frage</th>
                     <th>Antwort</th>
                 </tr>
-                <tr>
-                    <td>1. Technische Erfahrung</td>
-                    <td>$technical</td>
-                </tr>
-                <tr>
-                    <td>2. Verkaufsfreude</td>
-                    <td>$sales</td>
-                </tr>
-                <tr>
-                    <td>3. Reisebereitschaft</td>
-                    <td>$travel</td>
-                </tr>
-                <tr>
-                    <td>4. Selbstorganisation</td>
-                    <td>$organization</td>
-                </tr>
-                <tr>
-                    <td>5. Digitale Tools</td>
-                    <td>$digital</td>
-                </tr>
-                <tr>
-                    <td>6. Verkaufsansatz</td>
-                    <td>$approach</td>
-                </tr>
-                <tr>
-                    <td>7. Mini-Praxisfall</td>
-                    <td>$case</td>
-                </tr>
+                $questionTable
             </table>
         </div>
 

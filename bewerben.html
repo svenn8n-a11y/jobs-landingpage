@@ -1022,22 +1022,43 @@
 
             let title, text, bgColor, borderColor;
 
-            // Scoring system:
-            // 50-60: Perfect fit
-            // 35-49: Good fit
-            // 20-34: Interesting
-            // 0-19: Not optimal
-            if (totalScore >= 50) {
+            // Different scoring thresholds for Lager (50 points max) vs. Sales positions (70 points max)
+            const urlParams = new URLSearchParams(window.location.search);
+            const stelle = urlParams.get('stelle') || 'innendienst';
+
+            let perfectThreshold, goodThreshold, interestingThreshold;
+
+            if (stelle === 'lager') {
+                // Scoring for Lager (max 50 points):
+                // 36-50: Perfect fit (72%+)
+                // 25-35: Good fit (50-70%)
+                // 15-24: Interesting (30-48%)
+                // 0-14: Not optimal (<30%)
+                perfectThreshold = 36;
+                goodThreshold = 25;
+                interestingThreshold = 15;
+            } else {
+                // Scoring for Sales positions (max 70 points):
+                // 50-70: Perfect fit (71%+)
+                // 35-49: Good fit (50-70%)
+                // 20-34: Interesting (29-49%)
+                // 0-19: Not optimal (<29%)
+                perfectThreshold = 50;
+                goodThreshold = 35;
+                interestingThreshold = 20;
+            }
+
+            if (totalScore >= perfectThreshold) {
                 title = '🎉 Perfekt! Du passt hervorragend zu uns!';
                 text = 'Deinen Angaben zufolge bringst du alles mit, was wir suchen. Wir freuen uns sehr darauf, dich kennenzulernen!';
                 bgColor = 'var(--secondary)';
                 borderColor = 'var(--accent-green)';
-            } else if (totalScore >= 35) {
+            } else if (totalScore >= goodThreshold) {
                 title = '👍 Guter Fit! Lass uns sprechen.';
                 text = 'Deine Antworten zeigen, dass du gut zu uns passen könntest. Wir sind gespannt, mehr über dich zu erfahren!';
                 bgColor = '#e8f5e9';
                 borderColor = 'var(--accent-green)';
-            } else if (totalScore >= 20) {
+            } else if (totalScore >= interestingThreshold) {
                 title = '💡 Interessant! Wir melden uns bei dir.';
                 text = 'Danke für deine Offenheit. Wir schauen uns deine Bewerbung an und melden uns zeitnah.';
                 bgColor = '#fff3e0';
@@ -1199,6 +1220,99 @@
                 motivationField.style.display = 'none';
                 motivationTextarea.removeAttribute('required');
             }
+        } else if (stelle === 'lager') {
+            // Anpassungen für Lagermitarbeiter - 5 Fragen, max. 50 Punkte
+
+            // Frage 1: Lager-Erfahrung
+            document.querySelector('[data-step="1"] .step-title').textContent = 'Deine Lager-Erfahrung';
+            document.querySelector('[data-step="1"] .step-subtitle').textContent = 'Hast du bereits Erfahrung in der Lagerlogistik?';
+            document.querySelector('#t1').value = 'Abgeschlossene Ausbildung als Fachlagerist/Fachkraft';
+            document.querySelector('label[for="t1"]').textContent = 'Abgeschlossene Ausbildung als Fachlagerist/Fachkraft';
+            document.querySelector('#t1').setAttribute('data-points', '10');
+            document.querySelector('#t2').value = 'Mehrere Jahre Berufserfahrung im Lager';
+            document.querySelector('label[for="t2"]').textContent = 'Mehrere Jahre Berufserfahrung im Lager';
+            document.querySelector('#t2').setAttribute('data-points', '8');
+            document.querySelector('#t3').value = 'Erste Erfahrungen gesammelt';
+            document.querySelector('label[for="t3"]').textContent = 'Erste Erfahrungen gesammelt';
+            document.querySelector('#t3').setAttribute('data-points', '5');
+            document.querySelector('#t4').value = 'Keine Erfahrung, aber motiviert zu lernen';
+            document.querySelector('label[for="t4"]').textContent = 'Keine Erfahrung, aber motiviert zu lernen';
+            document.querySelector('#t4').setAttribute('data-points', '3');
+
+            // Frage 2: Gabelstapler-Führerschein
+            document.querySelector('[data-step="2"] .step-title').textContent = 'Gabelstapler-Führerschein';
+            document.querySelector('[data-step="2"] .step-subtitle').textContent = 'Besitzt du einen Gabelstapler-Führerschein?';
+            document.querySelector('#s1').value = 'Ja, mit regelmäßiger Praxis';
+            document.querySelector('label[for="s1"]').textContent = 'Ja, mit regelmäßiger Praxis';
+            document.querySelector('#s1').setAttribute('data-points', '10');
+            document.querySelector('#s2').value = 'Ja, aber wenig genutzt';
+            document.querySelector('label[for="s2"]').textContent = 'Ja, aber wenig genutzt';
+            document.querySelector('#s2').setAttribute('data-points', '7');
+            document.querySelector('#s3').value = 'Nein, aber bereit ihn zu machen';
+            document.querySelector('label[for="s3"]').textContent = 'Nein, aber bereit ihn zu machen';
+            document.querySelector('#s3').setAttribute('data-points', '5');
+            document.querySelector('#s4').value = 'Nein';
+            document.querySelector('label[for="s4"]').textContent = 'Nein';
+            document.querySelector('#s4').setAttribute('data-points', '0');
+
+            // Frage 3: Fitness
+            document.querySelector('[data-step="3"] .step-title').textContent = 'Fitness';
+            document.querySelector('[data-step="3"] .step-subtitle').textContent = 'Die Arbeit im Lager kann körperlich anstrengend sein. Wie schätzt du dich ein?';
+            document.querySelector('#tr1').value = 'Körperlich fit und belastbar';
+            document.querySelector('label[for="tr1"]').textContent = 'Körperlich fit und belastbar';
+            document.querySelector('#tr1').setAttribute('data-points', '10');
+            document.querySelector('#tr2').value = 'Normal belastbar';
+            document.querySelector('label[for="tr2"]').textContent = 'Normal belastbar';
+            document.querySelector('#tr2').setAttribute('data-points', '7');
+            document.querySelector('#tr3').value = 'Es geht';
+            document.querySelector('label[for="tr3"]').textContent = 'Es geht';
+            document.querySelector('#tr3').setAttribute('data-points', '3');
+            document.querySelector('#tr4').value = '';
+            document.querySelector('label[for="tr4"]').textContent = '';
+            document.querySelector('#tr4').style.display = 'none';
+            document.querySelector('label[for="tr4"]').style.display = 'none';
+
+            // Frage 4: Selbstständigkeit & Verantwortung
+            document.querySelector('[data-step="4"] .step-title').textContent = 'Selbstständigkeit & Verantwortung';
+            document.querySelector('[data-step="4"] .step-subtitle').textContent = 'Wie arbeitest du am liebsten?';
+            document.querySelector('#o1').value = 'Eigenverantwortlich - ich übernehme gerne Verantwortung';
+            document.querySelector('label[for="o1"]').textContent = 'Eigenverantwortlich - ich übernehme gerne Verantwortung';
+            document.querySelector('#o1').setAttribute('data-points', '10');
+            document.querySelector('#o2').value = 'Selbstständig mit gelegentlicher Rücksprache';
+            document.querySelector('label[for="o2"]').textContent = 'Selbstständig mit gelegentlicher Rücksprache';
+            document.querySelector('#o2').setAttribute('data-points', '7');
+            document.querySelector('#o3').value = 'Ich brauche klare Anweisungen';
+            document.querySelector('label[for="o3"]').textContent = 'Ich brauche klare Anweisungen';
+            document.querySelector('#o3').setAttribute('data-points', '3');
+            document.querySelector('#o4').value = '';
+            document.querySelector('label[for="o4"]').textContent = '';
+            document.querySelector('#o4').style.display = 'none';
+            document.querySelector('label[for="o4"]').style.display = 'none';
+
+            // Frage 5: Verfügbarkeit
+            document.querySelector('[data-step="5"] .step-title').textContent = 'Verfügbarkeit';
+            document.querySelector('[data-step="5"] .step-subtitle').textContent = 'Wann könntest du bei uns starten?';
+            document.querySelector('#d1').value = 'Sofort / sehr kurzfristig';
+            document.querySelector('label[for="d1"]').textContent = 'Sofort / sehr kurzfristig';
+            document.querySelector('#d1').setAttribute('data-points', '10');
+            document.querySelector('#d2').value = 'In 1-2 Wochen';
+            document.querySelector('label[for="d2"]').textContent = 'In 1-2 Wochen';
+            document.querySelector('#d2').setAttribute('data-points', '8');
+            document.querySelector('#d3').value = 'In 1-2 Monaten';
+            document.querySelector('label[for="d3"]').textContent = 'In 1-2 Monaten';
+            document.querySelector('#d3').setAttribute('data-points', '5');
+            document.querySelector('#d4').value = 'Später';
+            document.querySelector('label[for="d4"]').textContent = 'Später';
+            document.querySelector('#d4').setAttribute('data-points', '3');
+
+            // Frage 6 & 7: Für Lager nicht benötigt - verstecken
+            document.querySelector('[data-step="6"]').style.display = 'none';
+            document.querySelector('.progress-step[data-step="6"]').style.display = 'none';
+            document.querySelector('[data-step="7"]').style.display = 'none';
+            document.querySelector('.progress-step[data-step="7"]').style.display = 'none';
+
+            // Adjust total steps for progress calculation
+            totalSteps = 8; // 5 questions + contact + motivation + submit
         }
 
         // Log initialization
