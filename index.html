@@ -305,16 +305,38 @@
 
         @media (hover: none) and (pointer: coarse) {
             .value-card .value-icon {
-                animation: iconPulse 2s ease-in-out infinite;
+                animation: iconBounceRotate 3s ease-in-out infinite;
+            }
+
+            .value-card:nth-child(1) .value-icon {
+                animation-delay: 0s;
+            }
+
+            .value-card:nth-child(2) .value-icon {
+                animation-delay: 0.3s;
+            }
+
+            .value-card:nth-child(3) .value-icon {
+                animation-delay: 0.6s;
+            }
+
+            .value-card:nth-child(4) .value-icon {
+                animation-delay: 0.9s;
             }
         }
 
-        @keyframes iconPulse {
+        @keyframes iconBounceRotate {
             0%, 100% {
-                transform: scale(1);
+                transform: scale(1) rotate(0deg);
+            }
+            25% {
+                transform: scale(1.15) rotate(-10deg);
             }
             50% {
-                transform: scale(1.1);
+                transform: scale(1.25) rotate(10deg);
+            }
+            75% {
+                transform: scale(1.15) rotate(-5deg);
             }
         }
 
