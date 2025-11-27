@@ -2,7 +2,7 @@
 
 Eine moderne, professionelle Landingpage für Jobangebote bei R. Pöppel GmbH & Co. KG - Werkzeugmaschinen und Intralogistik-Spezialist aus Memmingen.
 
-![Version](https://img.shields.io/badge/version-3.6-blue)
+![Version](https://img.shields.io/badge/version-3.7-blue)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
@@ -82,13 +82,13 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 - Silberstreifen am unteren Rand
 
 **Job-Cards (2 Stellen):**
-- 🚗 **Verkaufsberater Außendienst**: Mit Firmenwagen
-- 📞 **Verkaufsberater Innendienst**: Geregelte Arbeitszeiten
+- 🖼️ **Verkaufsberater Außendienst**: Mit Banner-Bild "Kachel Außendienst.png"
+- 🖼️ **Verkaufsberater Innendienst**: Mit Banner-Bild "Kachel Innendienst.png"
 
 **Weitere Sektionen:**
-- Statistik-Banner: 100 Jahre, 50+ MA, 1000+ Kunden, 1925 gegründet (mit Silberstreifen)
+- Statistik-Banner: 100 Jahre, 40+ MA, 1/2 Mio. Artikel (mit Silberstreifen)
 - Unternehmenswerte: 4 Säulen (Eigenverantwortung, Miteinander, Innovation, Nachhaltigkeit)
-  - Mobile: Pulse-Animation auf Icons
+  - Mobile: BounceRotate-Animation auf Icons (lebendiger als Pulse)
 - Benefits-Grid: 6 Kategorien mit Icons
   - CTA-Button "Zu den Jobs" nach Benefits-Sektion
 - Scroll-to-Top Button (erscheint nach 300px)
@@ -212,6 +212,7 @@ jobs-landingpage/
 ├── innendienst.html                    # Stellenanzeige Verkaufsberater Innendienst
 ├── bewerben.html                       # 8-stufiger Bewerbungs-Funnel mit Scoring
 ├── submit-application.php              # PHP-Backend für E-Mail-Versand
+├── test-mail.php                       # Test-Script für Mail-Debugging
 ├── intralogistik-fachkraft.html        # Stellenanzeige Intralogistik (Vorlage)
 │
 ├── images/                             # Bilder und Assets
@@ -220,6 +221,9 @@ jobs-landingpage/
 │   ├── Headerbild_jobs.png             # Hero-Hintergrundbild Jobs
 │   ├── Banner Außendienst.png          # Desktop-Banner Außendienst
 │   ├── Banner_Aussendienst_mobile.png  # Mobile-Banner (1024×632px, Golden Ratio)
+│   ├── Banner Innendienst.png          # Desktop-Banner Innendienst
+│   ├── Kachel Außendienst.png          # Job-Card Banner Index Außendienst
+│   ├── Kachel Innendienst.png          # Job-Card Banner Index Innendienst
 │   └── headerbild_vertrieb.png         # Hero-Hintergrundbild Vertrieb
 │
 ├── README.md                           # Haupt-Dokumentation (diese Datei)
@@ -433,7 +437,28 @@ php -r "mail('test@example.com', 'Test', 'Test');"
 
 ## 📝 Changelog
 
-### Version 3.6 (Januar 2025) - Aktuell
+### Version 3.7 (Januar 2025) - Aktuell
+- 🖼️ **Job-Kachel Bilder auf Index**
+  - Banner-Bilder "Kachel Außendienst.png" und "Kachel Innendienst.png" eingefügt
+  - Ersetzen die SVG-Icons in den Job-Cards
+  - Volle Breite der Kacheln (calc(100% + 5rem))
+  - 200px Höhe mit object-fit: cover
+- 📊 **Stats-Animation Fix**
+  - "1/2 Mio. Artikel" wird korrekt angezeigt (kein "12.0 Mio." mehr)
+  - Schrägstrich-Erkennung im JavaScript verhindert Animation von Brüchen
+- 📱 **Mobile Icon-Animation verbessert**
+  - Neue "iconBounceRotate" Animation für "Unsere Werte" Sektion
+  - Kombination aus Bounce-Effekt (Scale bis 1.25x) und Rotation (±10°)
+  - Gestaffelte Animation mit Welleneffekt (0.3s delay zwischen Icons)
+  - Deutlich lebendiger als vorherige Puls-Animation
+- ✉️ **Mail-System korrigiert**
+  - Absender: noreply@poeppel-wkz.com (behebt Server-Routing-Problem)
+  - Empfänger: support@poeppel-wkz.de (unverändert)
+  - UTF-8 Base64-Encoding für Betreff (Umlaute)
+  - Optimierte Mail-Header für bessere Zustellbarkeit
+  - test-mail.php für Debugging hinzugefügt
+
+### Version 3.6 (Januar 2025)
 - 🎯 **Innendienst-Funnel komplett überarbeitet**
   - Frage 5: "Beratung im Haus" mit 4 spezifischen Antworten (10/7/4/0 Punkte)
   - Frage 6: Freitextfeld "Was motiviert Dich als Verkaufsberater bei uns zu arbeiten?" (ersetzt Radio-Buttons)
@@ -528,10 +553,13 @@ fetch('submit-application.php', {
 
 **PHP-Backend Features:**
 - ✅ E-Mail-Versand an support@poeppel-wkz.de
+- ✅ Absender: noreply@poeppel-wkz.com (optimiert für Server-Routing)
+- ✅ UTF-8 Base64-Encoding für deutschen Betreff
 - ✅ Vollständige Datenübermittlung (Antworten, Score, Kontaktdaten)
 - ✅ Input-Validierung & Sicherheit (XSS-Protection)
 - ✅ Automatische Bewertung basierend auf Score
 - ✅ Strukturierte Plain-Text E-Mail
+- ✅ Test-Script (test-mail.php) für Debugging
 
 **E-Mail-Inhalt:**
 - Bewerberdaten (Name, E-Mail, Telefon, Stelle)
