@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lagermitarbeiter (m/w/d) bei R. Pöppel - Werde Teil unseres Logistik-Teams in Memmingen">
+    <meta name="keywords" content="Jobs, Lagermitarbeiter, Lagerlogistik, Kommissionierung, Pöppel, Memmingen">
+    <title>Lagermitarbeiter (m/w/d) | Pöppel Jobs</title>
+    <link rel="icon" type="image/png" href="images/Favicon_Poeppel.png">
+    <link rel="icon" type="image/svg+xml" href="images/Favicon_Poeppel.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== CSS Variables (Pöppel CI) ===== */
+        :root {
+            --primary: #be1823;
+            --secondary: #ffe8e9;
+            --tertiary: #F6F6F6;
+            --dark: #32373c;
+            --accent-green: #8ebf22;
+            --white: #ffffff;
+            --font-serif: 'Source Serif Pro', Georgia, serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* ===== Reset & Base ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        /* ===== Header ===== */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            cursor: pointer;
+        }
+
+        .back-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(190, 24, 35, 0.75) 0%, rgba(50, 55, 60, 0.85) 100%),
+                        url('images/Headerbild_jobs.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.25rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .hero .location {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(190, 24, 35, 0.4);
+            background: #9e1319;
+            color: var(--white);
+        }
+
+        .hero .cta-button {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .hero .cta-button:hover {
+            background: var(--tertiary);
+            color: #9e1319;
+        }
+
+        /* ===== Intro Section ===== */
+        .intro-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-content h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .intro-content p {
+            font-size: 1.15rem;
+            color: var(--dark);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-content .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== Benefits Section ===== */
+        .benefits {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .benefits h2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 4rem;
+            color: var(--dark);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .benefit-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border-top: 4px solid var(--primary);
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .benefit-category.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-category.animated:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .benefit-category h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .benefit-category ul {
+            list-style: none;
+        }
+
+        .benefit-category li {
+            padding: 0.6rem 0 0.6rem 1.8rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .benefit-category li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* ===== CTA Divider ===== */
+        .cta-divider {
+            background: var(--secondary);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .cta-divider .cta-button {
+            background: var(--primary);
+        }
+
+        .cta-divider .cta-button:hover {
+            background: #9e1319;
+        }
+
+        /* ===== Testimonials Section ===== */
+        .testimonials {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(190, 24, 35, 0.95), rgba(50, 55, 60, 0.95)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23be1823" width="1920" height="1080"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            position: relative;
+        }
+
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 4rem;
+            color: var(--white);
+        }
+
+        .testimonials-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .testimonial-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card.animated:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--white);
+        }
+
+        .testimonial-author {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--tertiary);
+        }
+
+        .testimonials .cta-button {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .testimonials .cta-button:hover {
+            background: var(--tertiary);
+            color: #9e1319;
+        }
+
+        /* ===== Job Description ===== */
+        .job-description {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .job-section {
+            margin-bottom: 4rem;
+        }
+
+        .job-section h2 {
+            text-align: left;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 2.5rem;
+            color: var(--dark);
+        }
+
+        .job-tasks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .task-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .task-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .task-card.animated:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .task-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .task-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .requirements-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .requirements-list li {
+            padding: 1.2rem 1.5rem 1.2rem 3rem;
+            background: var(--white);
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 3px solid var(--primary);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        .requirements-list li.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .requirements-list li.animated:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .requirements-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 1rem;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* ===== Company Profile ===== */
+        .company-profile {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .company-profile h2 {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 2rem;
+        }
+
+        .company-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .company-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-family: var(--font-serif);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== Contact Section ===== */
+        .contact-section {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .contact-person {
+            margin: 2rem 0;
+        }
+
+        .contact-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details {
+            margin-top: 1.5rem;
+            line-height: 2;
+        }
+
+        .contact-details a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 3rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            height: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== Scroll to Top Button ===== */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, #9e1319 100%);
+            color: var(--white);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(190, 24, 35, 0.6);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 99999;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            background: linear-gradient(135deg, #9e1319 0%, var(--primary) 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(190, 24, 35, 0.6);
+        }
+
+        .scroll-to-top svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 60vh;
+                background-attachment: scroll;
+            }
+
+            .testimonials {
+                background-attachment: scroll;
+            }
+
+            .logo-img {
+                height: 30px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .testimonials-carousel {
+                grid-template-columns: 1fr;
+            }
+
+            .job-tasks {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements-list {
+                grid-template-columns: 1fr;
+            }
+
+            .company-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .company-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== Smooth Scroll ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html"><img src="images/Logo_poeppel.png" alt="R. Pöppel Logo" class="logo-img"></a>
+            <a href="index.html" class="back-link">← Zurück zur Übersicht</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Lagermitarbeiter (m/w/d)</h1>
+            <p class="location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Memmingen | Vollzeit | Unbefristet
+            </p>
+            <a href="bewerben.html?stelle=lager" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Deine Karriere in der Logistik – Packst du mit an?</h2>
+                <p style="font-size: 1.25rem; font-weight: 600; color: var(--primary); margin-bottom: 1.5rem;">
+                    Du sorgst gerne dafür, dass alles am richtigen Platz ist und der Warenfluss reibungslos läuft?
+                    Du arbeitest gerne mit den Händen und im Team?
+                </p>
+                <p>
+                    Dann bist du bei uns genau richtig! Als <span class="highlight">Lagermitarbeiter</span>
+                    bist du das <span class="highlight">Rückgrat unserer Logistik</span> und sorgst dafür, dass unsere Kunden
+                    pünktlich beliefert werden. Von der Warenannahme über die Kommissionierung bis zur Auslieferung –
+                    du behältst den Überblick und packst mit an.
+                </p>
+                <p>
+                    Bei uns erwartet dich ein <span class="highlight">familiäres Team</span>, geregelte Arbeitszeiten ohne Schichtarbeit
+                    und ein unbefristeter Arbeitsvertrag mit Perspektive.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Das bieten wir dir</h2>
+            <div class="benefits-grid">
+                <div class="benefit-category">
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M19 5h-3C14.3 5 13 6.3 13 8v8c0 1.7 1.3 3 3 3h3"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="15" x2="15" y2="15"/></svg>Vergütung</h3>
+                    <ul>
+                        <li>Attraktive Vergütung</li>
+                        <li>Kostenfreie Arbeitskleidung bereits zum Start</li>
+                        <li>Kostenlose Parkmöglichkeiten</li>
+                        <li>Eldorado-Karte</li>
+                        <li>Jobrad</li>
+                    </ul>
+                </div>
+                <div class="benefit-category">
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Arbeitszeit</h3>
+                    <ul>
+                        <li>Geregelte Arbeitszeiten (Mo-Fr)</li>
+                        <li>Unbefristeter Arbeitsvertrag mit langfristiger Perspektive</li>
+                        <li>30 Tage Urlaub</li>
+                        <li>Keine Schichtarbeit</li>
+                        <li>Systematische Einarbeitung</li>
+                        <li>Weiterbildungsmöglichkeiten</li>
+                    </ul>
+                </div>
+                <div class="benefit-category">
+                    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 8px;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Arbeitsklima</h3>
+                    <ul>
+                        <li>Familiäres Team</li>
+                        <li>Gemeinschaftsraum</li>
+                        <li>Flache Hierarchien</li>
+                        <li>Offene Kommunikation</li>
+                        <li>Wertschätzende Führung</li>
+                        <li>Betriebsfeste & Events</li>
+                        <li>Kollegiales Miteinander</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Divider -->
+    <section class="cta-divider">
+        <div class="container">
+            <a href="bewerben.html?stelle=lager" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Das sagen unsere Mitarbeiter</h2>
+            <div class="testimonials-carousel">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Ich schätze meine Arbeit, weil jeder Tag neue Aufgaben und Abwechslung bringt. Ich kann selbständig arbeiten, mich kreativ einzubringen – sowohl im Team als auch in der Weiterentwicklung der Firma. Und ich habe genug Zeit für meine Freizeitgestaltung."</p>
+                    <p class="testimonial-author">— Marc Heine, Abteilungsleiter Reparaturservice</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Die Geschäftsführung ist offen für neue Ideen und Pöppel entwickelt sich stetig weiter. Man spürt, dass das Unternehmen in seine Mitarbeiter investiert und uns bestmöglich unterstützt."</p>
+                    <p class="testimonial-author">— Michael Wrage, Verkaufsleiter Holzbau</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Die Firma Pöppel ist sehr familienfreundlich und geht gut auf die Bedürfnisse von Eltern und Kindern ein. Man fühlt sich hier wirklich wohl, weil Familie hier zählt."</p>
+                    <p class="testimonial-author">— Maximilian Straub, Verkaufsberater Innendienst Zerspanung</p>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <a href="bewerben.html?stelle=lager" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Description -->
+    <section class="job-description">
+        <div class="container">
+            <!-- Tasks -->
+            <div class="job-section">
+                <h2>Das ist dein Job</h2>
+                <div class="job-tasks">
+                    <div class="task-card">
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </div>
+                        <h3>Wareneingang</h3>
+                        <p>Bearbeitung des Wareneingangs und Kontrolle auf Identität, Menge und Unversehrtheit</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        </div>
+                        <h3>Warentransport</h3>
+                        <p>Warentransport per Hand mit Wagen, Hubwagen oder Gabelstapler innerhalb des Verkaufshauses</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <h3>Kommissionierung</h3>
+                        <p>Kommissionierung, Verpackung und Kontrolle der ausgehenden Waren</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h3>Bereitstellung</h3>
+                        <p>Bereitstellung der Waren an Zusteller, Theke und Logistikdienstleister</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 48px; height: 48px; color: var(--primary);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <h3>Inventur</h3>
+                        <p>Durchführung der permanenten Inventur nach Anleitung sowie Reklamationsabwicklung</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align: center; margin: 3rem 0;">
+                <a href="bewerben.html?stelle=lager" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+            </div>
+
+            <!-- Requirements -->
+            <div class="job-section">
+                <h2>Das bringst du mit</h2>
+                <ul class="requirements-list">
+                    <li>Eine abgeschlossene Ausbildung in der Lagerlogistik, oder erste Erfahrung in diesem Bereich</li>
+                    <li>Kenntnisse im Handwerks- oder Werkzeugbereich sind vorteilhaft</li>
+                    <li>Ein Führerschein für Flurförderfahrzeuge (Gabelstapler) ist wünschenswert, kann aber auch nachgeholt werden</li>
+                    <li>Strukturiertes Arbeiten gehört zum Arbeitsalltag</li>
+                    <li>Verständigung auf Deutsch ist möglich</li>
+                    <li>Spaß an körperlicher Arbeit, Engagement und Zusammenarbeit im Team sind selbstverständlich</li>
+                    <li>Vertraut mit MS Office und Warenwirtschaftssystemen</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Divider -->
+    <section class="cta-divider">
+        <div class="container">
+            <a href="bewerben.html?stelle=lager" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+        </div>
+    </section>
+
+    <!-- Company Profile -->
+    <section class="company-profile">
+        <div class="container">
+            <h2>Über R. Pöppel GmbH & Co. KG</h2>
+            <p class="company-intro">
+                Seit 1925 steht R. Pöppel für Qualität und Innovation im Handel mit Werkzeugmaschinen, Werkzeugen und Betriebseinrichtungen.
+                Als Familienunternehmen mit etwa 50 Mitarbeitern betreuen wir Handwerksbetriebe und Industriekunden in ganz Süddeutschland.
+                Unser breites Sortiment erstreckt sich von Holzbearbeitung über Metallbearbeitung bis hin zu modernsten Intralogistik-Lösungen.
+            </p>
+            <div class="company-stats">
+                <div class="stat-card">
+                    <div class="stat-number">100</div>
+                    <div class="stat-label">Jahre Erfahrung</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Mitarbeiter</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1/2 Mio.</div>
+                    <div class="stat-label">Artikel</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-box">
+                <h2>Dein Ansprechpartner</h2>
+                <div class="contact-person">
+                    <div class="contact-name">Herr Andreas Bodenmiller</div>
+                    <p>IT-Leitung / Personalleitung</p>
+                </div>
+                <div class="contact-details">
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; display: inline-block; vertical-align: middle; margin-right: 6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <a href="tel:+4983319559660">08331-9559-660</a>
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; display: inline-block; vertical-align: middle; margin-right: 6px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <a href="mailto:support@poeppel-wkz.de">support@poeppel-wkz.de</a>
+                    </p>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <a href="bewerben.html?stelle=lager" class="cta-button">Jetzt in nur 2 Minuten bewerben</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="images/Logo_poeppel.png" alt="Pöppel Logo" class="footer-logo">
+                <div class="footer-links">
+                    <a href="index.html">Zurück zur Übersicht</a>
+                    <a href="https://www.poeppel-wkz.de">Zur Hauptseite</a>
+                    <a href="https://www.poeppel-wkz.de/impressum">Impressum</a>
+                    <a href="https://www.poeppel-wkz.de/datenschutz">Datenschutz</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 R. Pöppel GmbH & Co. KG | Alpenstraße 45, D-87700 Memmingen</p>
+                <p style="margin-top: 0.5rem;">Qualität seit 1925</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer für Scroll-Animationen
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animated');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Beobachte alle animierbaren Elemente
+        document.querySelectorAll('.benefit-category, .testimonial-card, .task-card, .requirements-list li').forEach(el => {
+            observer.observe(el);
+        });
+
+        console.log('Pöppel Jobs - Lagermitarbeiter mit Animationen');
+
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Nach oben scrollen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+</body>
+</html>
