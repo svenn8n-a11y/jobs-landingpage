@@ -174,12 +174,40 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 8. **Erreichbarkeit**: Beste Zeit für Rückruf
 9. **Kontaktdaten**: Name, E-Mail, Telefon, Fragen (optional), DSGVO (ohne Motivation-Feld)
 
+**Lagermitarbeiter (stelle=lager):**
+1. **Lager-Erfahrung**: Erfahrung in Lagerhaltung/Logistik (0-10 Punkte)
+2. **Gabelstapler-Führerschein**: Vorhanden und gültig (0-10 Punkte)
+3. **Werkzeug & Handwerk**: Erfahrung mit Werkzeugen oder im handwerklichen Bereich (0-10 Punkte)
+   - "Ja, arbeite/arbeitete im Handwerk" (10 Punkte)
+   - "Ja, privat handwerklich aktiv" (7 Punkte)
+   - "Grundkenntnisse vorhanden" (3 Punkte)
+4. **Selbstständigkeit & Verantwortung**: Eigenständiges Arbeiten (0-10 Punkte)
+5. **Verfügbarkeit**: Schichtbereitschaft und Flexibilität (0-10 Punkte)
+6. ~~Verkaufsansatz~~ (übersprungen für Lager)
+7. ~~Mini-Praxisfall~~ (übersprungen für Lager)
+8. **Erreichbarkeit**: Beste Zeit für Rückruf
+9. **Kontaktdaten**: Name, E-Mail, Telefon, Motivation, Fragen (optional), DSGVO
+
 **Scoring-System:**
-- 50-60 Punkte: "Perfekt! Du passt hervorragend zu uns!"
-- 35-49 Punkte: "Guter Fit! Lass uns sprechen."
-- 20-34 Punkte: "Interessant! Wir melden uns bei dir."
-- 0-19 Punkte: "Danke für dein Interesse!"
-- **Hinweis**: Innendienst hat nur 5 Scoring-Fragen (max. 50 Punkte), Außendienst 7 Fragen (max. 70 Punkte)
+
+*Verkaufspositionen (Außendienst/Innendienst):*
+- **Außendienst**: max. 70 Punkte (7 Fragen)
+  - 50+ Punkte: "Perfekt! Du passt hervorragend zu uns!"
+  - 35-49 Punkte: "Guter Fit! Lass uns sprechen."
+  - 20-34 Punkte: "Interessant! Wir melden uns bei dir."
+  - <20 Punkte: "Danke für dein Interesse!"
+- **Innendienst**: max. 50 Punkte (5 Fragen)
+  - 35+ Punkte: "Perfekt! Du passt hervorragend zu uns!"
+  - 25-34 Punkte: "Guter Fit! Lass uns sprechen."
+  - 15-24 Punkte: "Interessant! Wir melden uns bei dir."
+  - <15 Punkte: "Danke für dein Interesse!"
+
+*Lagermitarbeiter:*
+- **Lager**: max. 50 Punkte (5 Fragen)
+  - 36+ Punkte: 🌟 PERFEKT
+  - 25-35 Punkte: ✅ GEEIGNET
+  - 15-24 Punkte: 💡 INTERESSANT
+  - <15 Punkte: ⚠️ UNPASSEND
 
 **Features:**
 - Progress-Bar mit 9 Schritten
@@ -444,10 +472,21 @@ php -r "mail('test@example.com', 'Test', 'Test');"
   - Farbcodierte Badges und Score-Boxen im E-Mail-Layout
   - Gradient Header, strukturierte Sektionen, responsive Design
   - Content-Type: text/html; charset=UTF-8
+  - **E-Mail Formatierung verbessert (28.01.2025)**:
+    - Schriftgröße von 15px auf 16px erhöht für bessere Lesbarkeit
+    - Größere Header (28px), Section-Titel (22px) und Buttons (18px)
+    - Mehr Abstände: Section-Padding 30-35px, Info-Rows 16px, Motivation-Box 22px
+    - Dickere Section-Borders (2px) für klarere visuelle Trennung
+    - Zebra-Streifen in Tabellen (jede zweite Zeile grau hinterlegt)
+    - Line-height auf 1.8 erhöht für luftigere Darstellung
 - 🎨 **Favicon-Optimierung**
   - Doppelte Favicon-Deklaration für bessere Browser-Kompatibilität
   - PNG und SVG Fallback auf allen Seiten (index, aussendienst, innendienst, bewerben)
   - Favicon_Poeppel.svg wird korrekt geladen
+- 🔧 **Lagermitarbeiter Quiz-Optimierung**
+  - Frage 3 geändert von "Fitness" zu "Werkzeug & Handwerk"
+  - Neue Antworten: "Ja, arbeite/arbeitete im Handwerk" (10 Punkte), "Ja, privat handwerklich aktiv" (7 Punkte), "Grundkenntnisse vorhanden" (3 Punkte)
+  - Grund: Kleines Lager ohne schwere Pakete - handwerkliche Erfahrung wichtiger als körperliche Fitness
 
 ### Version 3.7 (Januar 2025)
 - 🖼️ **Job-Kachel Bilder auf Index**
