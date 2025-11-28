@@ -134,7 +134,7 @@ if ($stelle === 'lager') {
                     <td>$sales</td>
                 </tr>
                 <tr>
-                    <td>3. Fitness</td>
+                    <td>3. Werkzeug & Handwerk</td>
                     <td>$travel</td>
                 </tr>
                 <tr>
@@ -185,26 +185,26 @@ $message = "
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.7; color: #333; margin: 0; padding: 20px; background: #f4f4f4; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #333; margin: 0; padding: 20px; background: #f4f4f4; font-size: 16px; }
         .container { max-width: 700px; margin: 0 auto; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .header { background: linear-gradient(135deg, #be1823, #32373c); color: white; padding: 35px 30px; text-align: center; }
-        .header h1 { margin: 0 0 5px 0; font-size: 26px; font-weight: 600; letter-spacing: 0.5px; }
-        .classification { display: inline-block; background: $classificationColor; color: white; padding: 10px 24px; border-radius: 25px; font-size: 17px; font-weight: 700; margin-top: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        .header h1 { margin: 0 0 5px 0; font-size: 28px; font-weight: 600; letter-spacing: 0.5px; }
+        .classification { display: inline-block; background: $classificationColor; color: white; padding: 12px 26px; border-radius: 25px; font-size: 18px; font-weight: 700; margin-top: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
         .section { padding: 30px 35px; border-bottom: 2px solid #f0f0f0; background: #fff; }
         .section:last-child { border-bottom: none; }
-        .section-title { color: #be1823; font-size: 20px; font-weight: 700; margin: 0 0 20px 0; padding-bottom: 12px; border-bottom: 3px solid #be1823; letter-spacing: 0.3px; }
-        .info-row { display: flex; margin-bottom: 14px; line-height: 1.6; }
-        .info-label { font-weight: 600; min-width: 160px; color: #666; font-size: 15px; }
-        .info-value { color: #333; font-size: 15px; }
+        .section-title { color: #be1823; font-size: 22px; font-weight: 700; margin: 0 0 20px 0; padding-bottom: 12px; border-bottom: 3px solid #be1823; letter-spacing: 0.3px; }
+        .info-row { display: flex; margin-bottom: 16px; line-height: 1.7; }
+        .info-label { font-weight: 600; min-width: 160px; color: #666; font-size: 16px; }
+        .info-value { color: #333; font-size: 16px; }
         .info-value strong { color: #be1823; }
-        .motivation { background: #f9f9f9; padding: 20px; border-left: 5px solid #be1823; margin: 15px 0; font-style: italic; line-height: 1.7; border-radius: 4px; }
+        .motivation { background: #f9f9f9; padding: 22px; border-left: 5px solid #be1823; margin: 15px 0; font-style: italic; line-height: 1.8; border-radius: 4px; font-size: 16px; }
         table { width: 100%; border-collapse: collapse; margin: 20px 0 10px 0; }
-        th { background: #be1823; color: white; padding: 14px 16px; text-align: left; font-weight: 600; font-size: 15px; }
-        td { padding: 14px 16px; border-bottom: 1px solid #e8e8e8; font-size: 15px; line-height: 1.6; }
+        th { background: #be1823; color: white; padding: 16px 18px; text-align: left; font-weight: 600; font-size: 16px; }
+        td { padding: 16px 18px; border-bottom: 1px solid #e8e8e8; font-size: 16px; line-height: 1.7; }
         tr:last-child td { border-bottom: none; }
         tr:nth-child(even) { background: #fafafa; }
-        .score-box { background: $classificationColor; color: white; padding: 25px; border-radius: 10px; text-align: center; font-size: 22px; font-weight: 700; margin: 20px 0 25px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
-        .footer { background: #32373c; color: #aaa; padding: 25px; text-align: center; font-size: 13px; line-height: 1.5; }
+        .score-box { background: $classificationColor; color: white; padding: 28px; border-radius: 10px; text-align: center; font-size: 24px; font-weight: 700; margin: 20px 0 25px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+        .footer { background: #32373c; color: #aaa; padding: 25px; text-align: center; font-size: 14px; line-height: 1.5; }
     </style>
 </head>
 <body>
