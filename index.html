@@ -12,6 +12,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@300;400;600&display=swap" rel="stylesheet">
 
+    <!-- Matomo -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//log.poeppel-wkz.de/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '4']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+
     <style>
         /* ===== CSS Variables (Pöppel CI) ===== */
         :root {
@@ -1101,6 +1117,70 @@
                 top: 0,
                 behavior: 'smooth'
             });
+            // Matomo Event: Scroll to Top
+            _paq.push(['trackEvent', 'Navigation', 'Scroll to Top', 'Button']);
+        });
+
+        // ===== MATOMO EVENT TRACKING =====
+
+        // Track CTA Button Clicks - Job Cards
+        document.querySelectorAll('.job-card .cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const jobTitle = this.closest('.job-card').querySelector('h3').textContent;
+                _paq.push(['trackEvent', 'Job Application', 'Click Stellenausschreibung', jobTitle]);
+            });
+        });
+
+        // Track "Zu den Jobs" Buttons
+        document.querySelectorAll('a[href="#jobs"]').forEach(link => {
+            link.addEventListener('click', function() {
+                _paq.push(['trackEvent', 'Navigation', 'Zu den Jobs', 'Button']);
+            });
+        });
+
+        // Track Outbound Links to poeppel-wkz.de
+        document.querySelectorAll('a[href*="poeppel-wkz.de"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const linkText = this.textContent.trim();
+                _paq.push(['trackEvent', 'Outbound', 'Click Main Website', linkText]);
+            });
+        });
+
+        // Track Logo Clicks
+        document.querySelectorAll('.logo-img').forEach(logo => {
+            logo.addEventListener('click', function() {
+                _paq.push(['trackEvent', 'Navigation', 'Logo Click', 'Header']);
+            });
+        });
+
+        // Scroll Depth Tracking
+        let scrollDepths = [25, 50, 75, 100];
+        let trackedDepths = new Set();
+
+        window.addEventListener('scroll', function() {
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+
+            scrollDepths.forEach(depth => {
+                if (scrollPercent >= depth && !trackedDepths.has(depth)) {
+                    trackedDepths.add(depth);
+                    _paq.push(['trackEvent', 'Engagement', 'Scroll Depth', depth + '%']);
+                }
+            });
+        });
+
+        // Track Section Views with Intersection Observer
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sectionName = entry.target.className.split(' ')[0] || 'unknown';
+                    _paq.push(['trackEvent', 'Engagement', 'Section View', sectionName]);
+                    sectionObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.jobs-section, .values-section, .benefits-section, .stats-section, .testimonials-section').forEach(section => {
+            sectionObserver.observe(section);
         });
     </script>
 
