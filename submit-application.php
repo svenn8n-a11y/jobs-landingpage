@@ -281,10 +281,203 @@ $headers .= "MIME-Version: 1.0\r\n";
 // E-Mail senden mit zusätzlichen Parametern
 $mailSent = mail($to, $subject, $message, $headers, '-f noreply@poeppel-wkz.com');
 
+// Bestätigungs-E-Mail an den Bewerber
+$confirmationSent = false;
+if ($mailSent) {
+    // Betreff für Bestätigungs-E-Mail
+    $confirmationSubject = '=?UTF-8?B?' . base64_encode('✅ Ihre Bewerbung bei R. Pöppel - Eingangsbestätigung') . '?=';
+
+    // Aktuelle Zeit formatieren
+    $currentDateTime = date('d.m.Y') . ' um ' . date('H:i') . ' Uhr';
+
+    // Bestätigungs-E-Mail HTML
+    $confirmationMessage = "
+<!DOCTYPE html>
+<html lang=\"de\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.8; color: #333; margin: 0; padding: 0; background: #f4f4f4; font-size: 16px; }
+        .container { max-width: 700px; margin: 0 auto; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+        .header { background: linear-gradient(135deg, #be1823, #32373c); color: white; padding: 40px 30px; text-align: center; }
+        .header h1 { margin: 0 0 10px 0; font-size: 32px; font-weight: 600; letter-spacing: 0.5px; }
+        .header p { margin: 0; font-size: 18px; opacity: 0.95; }
+        .section { padding: 35px 40px; border-bottom: 2px solid #f0f0f0; }
+        .section:last-of-type { border-bottom: none; }
+        .section-title { color: #be1823; font-size: 22px; font-weight: 700; margin: 0 0 20px 0; padding-bottom: 12px; border-bottom: 3px solid #be1823; }
+        .greeting { font-size: 18px; margin-bottom: 20px; line-height: 1.8; }
+        .highlight-box { background: #f9f9f9; border-left: 5px solid #be1823; padding: 20px 25px; margin: 20px 0; border-radius: 4px; }
+        .highlight-box h3 { margin: 0 0 10px 0; color: #be1823; font-size: 18px; }
+        .highlight-box p { margin: 5px 0; font-size: 16px; }
+        .info-row { display: flex; margin-bottom: 12px; line-height: 1.8; }
+        .info-label { font-weight: 600; min-width: 180px; color: #666; }
+        .info-value { color: #333; }
+        .steps { margin: 20px 0; }
+        .step { display: flex; align-items: start; margin-bottom: 20px; }
+        .step-number { background: #be1823; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; flex-shrink: 0; margin-right: 15px; }
+        .step-content { flex: 1; padding-top: 5px; }
+        .step-content h4 { margin: 0 0 5px 0; font-size: 17px; color: #333; }
+        .step-content p { margin: 0; color: #666; font-size: 15px; }
+        .contact-box { background: #f9f9f9; padding: 25px; border-radius: 8px; margin: 20px 0; }
+        .contact-person { font-weight: 600; font-size: 18px; color: #be1823; margin-bottom: 15px; }
+        .contact-details { display: flex; flex-direction: column; gap: 10px; }
+        .contact-item { display: flex; align-items: center; gap: 10px; }
+        .contact-item svg { width: 20px; height: 20px; color: #be1823; flex-shrink: 0; }
+        .contact-item a { color: #be1823; text-decoration: none; font-weight: 500; }
+        .contact-item a:hover { text-decoration: underline; }
+        .footer { background: #32373c; color: #aaa; padding: 30px; text-align: center; font-size: 14px; line-height: 1.8; }
+        .footer p { margin: 5px 0; }
+        .footer-logo { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 15px; }
+        .cta-button { display: inline-block; background: #be1823; color: white; padding: 14px 30px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 16px; margin: 20px 0; }
+        @media (max-width: 600px) {
+            .section { padding: 25px 20px; }
+            .info-row { flex-direction: column; }
+            .info-label { min-width: auto; margin-bottom: 5px; }
+        }
+    </style>
+</head>
+<body>
+    <div class=\"container\">
+        <div class=\"header\">
+            <h1>✅ Bewerbung eingegangen!</h1>
+            <p>Vielen Dank für Ihr Interesse an R. Pöppel</p>
+        </div>
+
+        <div class=\"section\">
+            <p class=\"greeting\">
+                <strong>Sehr geehrte/r $name,</strong>
+            </p>
+            <p>
+                vielen Dank für Ihre Bewerbung als <strong>$stellenbezeichnung</strong> bei der R. Pöppel GmbH & Co. KG.
+                Wir haben Ihre Unterlagen erfolgreich erhalten und freuen uns über Ihr Interesse an unserem Unternehmen!
+            </p>
+        </div>
+
+        <div class=\"section\">
+            <div class=\"section-title\">📋 Ihre Bewerbungsdaten</div>
+            <div class=\"highlight-box\">
+                <h3>Zusammenfassung</h3>
+                <div class=\"info-row\">
+                    <div class=\"info-label\">Name:</div>
+                    <div class=\"info-value\">$name</div>
+                </div>
+                <div class=\"info-row\">
+                    <div class=\"info-label\">Position:</div>
+                    <div class=\"info-value\">$stellenbezeichnung</div>
+                </div>
+                <div class=\"info-row\">
+                    <div class=\"info-label\">Eingegangen am:</div>
+                    <div class=\"info-value\">$currentDateTime</div>
+                </div>
+            </div>
+        </div>
+
+        <div class=\"section\">
+            <div class=\"section-title\">🚀 Wie geht es weiter?</div>
+            <div class=\"steps\">
+                <div class=\"step\">
+                    <div class=\"step-number\">1</div>
+                    <div class=\"step-content\">
+                        <h4>Prüfung Ihrer Bewerbung</h4>
+                        <p>Unser Team prüft Ihre Unterlagen sorgfältig und vergleicht Ihr Profil mit unseren Anforderungen.</p>
+                    </div>
+                </div>
+                <div class=\"step\">
+                    <div class=\"step-number\">2</div>
+                    <div class=\"step-content\">
+                        <h4>Rückmeldung binnen 5 Werktagen</h4>
+                        <p>Sie erhalten innerhalb der nächsten 5 Werktage eine Rückmeldung von uns per E-Mail oder Telefon.</p>
+                    </div>
+                </div>
+                <div class=\"step\">
+                    <div class=\"step-number\">3</div>
+                    <div class=\"step-content\">
+                        <h4>Persönliches Gespräch</h4>
+                        <p>Bei Interesse laden wir Sie zu einem persönlichen Kennenlerngespräch in Memmingen ein.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class=\"section\">
+            <div class=\"section-title\">💼 Über R. Pöppel</div>
+            <p>
+                Seit 1925 steht R. Pöppel für Qualität und Innovation im Handel mit Werkzeugmaschinen, Werkzeugen
+                und Betriebseinrichtungen. Als Familienunternehmen mit etwa 50 Mitarbeitern legen wir großen Wert
+                auf ein kollegiales Miteinander und bieten spannende Entwicklungsmöglichkeiten.
+            </p>
+            <p style=\"margin-top: 15px;\">
+                <strong>Was uns auszeichnet:</strong><br>
+                ✓ Über 100 Jahre Erfahrung<br>
+                ✓ Familiäres Arbeitsklima<br>
+                ✓ Moderne Ausstattung<br>
+                ✓ Vielfältige Benefits
+            </p>
+        </div>
+
+        <div class=\"section\">
+            <div class=\"section-title\">📞 Fragen? Wir sind für Sie da!</div>
+            <p>
+                Falls Sie Fragen zu Ihrer Bewerbung haben oder weitere Informationen benötigen,
+                können Sie sich jederzeit an uns wenden:
+            </p>
+            <div class=\"contact-box\">
+                <div class=\"contact-person\">Herr Andreas Bodenmiller</div>
+                <p style=\"margin: 0 0 15px 0; color: #666;\">IT-Leitung / Personalleitung</p>
+                <div class=\"contact-details\">
+                    <div class=\"contact-item\">
+                        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
+                            <path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/>
+                        </svg>
+                        <a href=\"tel:+4983319559660\">08331-9559-660</a>
+                    </div>
+                    <div class=\"contact-item\">
+                        <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
+                            <path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"/>
+                            <polyline points=\"22,6 12,13 2,6\"/>
+                        </svg>
+                        <a href=\"mailto:support@poeppel-wkz.de\">support@poeppel-wkz.de</a>
+                    </div>
+                </div>
+            </div>
+            <p style=\"text-align: center; margin-top: 25px;\">
+                <a href=\"https://www.poeppel-wkz.de\" class=\"cta-button\">Mehr über Pöppel erfahren</a>
+            </p>
+        </div>
+
+        <div class=\"footer\">
+            <div class=\"footer-logo\">R. Pöppel GmbH & Co. KG</div>
+            <p>Alpenstraße 45 | 87700 Memmingen</p>
+            <p>Tel: 08331-9559-0 | <a href=\"https://www.poeppel-wkz.de\" style=\"color: #be1823;\">www.poeppel-wkz.de</a></p>
+            <p style=\"margin-top: 20px; font-size: 12px; opacity: 0.8;\">
+                Diese E-Mail wurde automatisch generiert. Bitte antworten Sie nicht direkt auf diese E-Mail.<br>
+                Bei Fragen kontaktieren Sie uns bitte über die oben angegebenen Kontaktdaten.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+";
+
+    // Header für Bestätigungs-E-Mail
+    $confirmationHeaders = "From: R. Pöppel Bewerbungen <noreply@poeppel-wkz.com>\r\n";
+    $confirmationHeaders .= "Reply-To: support@poeppel-wkz.de\r\n";
+    $confirmationHeaders .= "Return-Path: noreply@poeppel-wkz.com\r\n";
+    $confirmationHeaders .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $confirmationHeaders .= "Content-Transfer-Encoding: 8bit\r\n";
+    $confirmationHeaders .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+    $confirmationHeaders .= "MIME-Version: 1.0\r\n";
+
+    // Bestätigungs-E-Mail an Bewerber senden
+    $confirmationSent = mail($email, $confirmationSubject, $confirmationMessage, $confirmationHeaders, '-f noreply@poeppel-wkz.com');
+}
+
 if ($mailSent) {
     echo json_encode([
         'success' => true,
-        'message' => 'Bewerbung erfolgreich gesendet'
+        'message' => 'Bewerbung erfolgreich gesendet',
+        'confirmation_sent' => $confirmationSent
     ]);
 } else {
     http_response_code(500);
