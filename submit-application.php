@@ -460,8 +460,8 @@ if ($mailSent) {
 </html>
 ";
 
-    // Header für Bestätigungs-E-Mail
-    $confirmationHeaders = "From: R. Pöppel Bewerbungen <noreply@poeppel-wkz.com>\r\n";
+    // Header für Bestätigungs-E-Mail - UTF-8 Name kodiert für Serverkompatibilität
+    $confirmationHeaders = "From: =?UTF-8?B?" . base64_encode("R. Pöppel Bewerbungen") . "?= <noreply@poeppel-wkz.com>\r\n";
     $confirmationHeaders .= "Reply-To: support@poeppel-wkz.de\r\n";
     $confirmationHeaders .= "Return-Path: noreply@poeppel-wkz.com\r\n";
     $confirmationHeaders .= "Content-Type: text/html; charset=UTF-8\r\n";
