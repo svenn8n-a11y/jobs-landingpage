@@ -268,15 +268,18 @@ $message = "
 </html>
 ";
 
-// E-Mail-Header - optimiert für Serverkompatibilität
+// E-Mail-Header - optimiert für Serverkompatibilität (kein SMTPUTF8)
 $headers = "From: noreply@poeppel-wkz.com\r\n";
 $headers .= "Reply-To: $email\r\n";
 $headers .= "Return-Path: noreply@poeppel-wkz.com\r\n";
 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-$headers .= "Content-Transfer-Encoding: 8bit\r\n";
+$headers .= "Content-Transfer-Encoding: quoted-printable\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 $headers .= "X-Priority: 1\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
+
+// Message für quoted-printable kodieren
+$message = quoted_printable_encode($message);
 
 // E-Mail senden mit zusätzlichen Parametern
 $mailSent = mail($to, $subject, $message, $headers, '-f noreply@poeppel-wkz.com');
@@ -460,14 +463,17 @@ if ($mailSent) {
 </html>
 ";
 
-    // Header für Bestätigungs-E-Mail
-    $confirmationHeaders = "From: R. Pöppel Bewerbungen <noreply@poeppel-wkz.com>\r\n";
+    // Header für Bestätigungs-E-Mail - UTF-8 kodiert für Serverkompatibilität (kein SMTPUTF8)
+    $confirmationHeaders = "From: =?UTF-8?B?" . base64_encode("R. Pöppel Bewerbungen") . "?= <noreply@poeppel-wkz.com>\r\n";
     $confirmationHeaders .= "Reply-To: support@poeppel-wkz.de\r\n";
     $confirmationHeaders .= "Return-Path: noreply@poeppel-wkz.com\r\n";
     $confirmationHeaders .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $confirmationHeaders .= "Content-Transfer-Encoding: 8bit\r\n";
+    $confirmationHeaders .= "Content-Transfer-Encoding: quoted-printable\r\n";
     $confirmationHeaders .= "X-Mailer: PHP/" . phpversion() . "\r\n";
     $confirmationHeaders .= "MIME-Version: 1.0\r\n";
+
+    // Confirmation Message für quoted-printable kodieren
+    $confirmationMessage = quoted_printable_encode($confirmationMessage);
 
     // Bestätigungs-E-Mail an Bewerber senden
     $confirmationSent = mail($email, $confirmationSubject, $confirmationMessage, $confirmationHeaders, '-f noreply@poeppel-wkz.com');
