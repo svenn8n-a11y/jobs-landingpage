@@ -2,7 +2,7 @@
 
 Eine moderne, professionelle Landingpage für Jobangebote bei R. Pöppel GmbH & Co. KG - Werkzeugmaschinen und Intralogistik-Spezialist aus Memmingen.
 
-![Version](https://img.shields.io/badge/version-3.8-blue)
+![Version](https://img.shields.io/badge/version-3.9-blue)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
@@ -150,7 +150,7 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 
 ### 4. Bewerbungs-Funnel ([bewerben.html](bewerben.html))
 
-**9-stufiger Prozess mit Scoring (variiert je nach Stelle):**
+**9-10-stufiger Prozess mit Scoring (variiert je nach Stelle):**
 
 **Außendienst (stelle=aussendienst):**
 1. **Technische Erfahrung**: Handwerk, Technik, Baubranche (0-10 Punkte)
@@ -172,7 +172,8 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
 6. **Motivation**: Freitextfeld "Was motiviert Dich als Verkaufsberater bei uns zu arbeiten?"
 7. ~~Mini-Praxisfall~~ (übersprungen für Innendienst)
 8. **Erreichbarkeit**: Beste Zeit für Rückruf
-9. **Kontaktdaten**: Name, E-Mail, Telefon, Fragen (optional), DSGVO (ohne Motivation-Feld)
+9. **Verfügbarkeit**: "Ab wann bist Du verfügbar?" (ab sofort / 1-3 Monate / nach Absprache)
+10. **Kontaktdaten**: Name, E-Mail, Telefon, Fragen (optional), DSGVO (ohne Motivation-Feld)
 
 **Lagermitarbeiter (stelle=lager):**
 1. **Lager-Erfahrung**: Erfahrung in Lagerhaltung/Logistik (0-10 Punkte)
@@ -210,7 +211,7 @@ Diese moderne Karriere-Webseite präsentiert die Jobangebote bei R. Pöppel GmbH
   - <15 Punkte: ⚠️ UNPASSEND
 
 **Features:**
-- Progress-Bar mit 9 Schritten
+- Progress-Bar mit 9-10 Schritten (je nach Position)
 - Auto-Advance bei Radio-Auswahl
 - **Positionsspezifischer Funnel**: Fragen passen sich automatisch an Innendienst/Außendienst an
 - **Intelligente Navigation**: Schritt 7 wird für Innendienst automatisch übersprungen
@@ -465,7 +466,15 @@ php -r "mail('test@example.com', 'Test', 'Test');"
 
 ## 📝 Changelog
 
-### Version 3.8 (Januar 2025) - Aktuell
+### Version 3.9 (Februar 2025) - Aktuell
+- 📅 **Neue Frage "Ab wann bist Du verfügbar?" für Innendienst**
+  - Vorletzte Frage im Innendienst-Fragebogen (Step 9)
+  - 3 Antwortmöglichkeiten: "Ab sofort", "1-3 Monate", "Nach Absprache"
+  - Progress-Bar auf 10 Schritte erweitert für Innendienst
+  - startDate-Feld zum Formular-Datenmodell hinzugefügt
+  - Außendienst und Lager bleiben unverändert (Frage wird übersprungen)
+
+### Version 3.8 (Januar 2025)
 - ✉️ **HTML-E-Mails mit Klassifizierung**
   - E-Mails als professionell gestaltetes HTML (statt Plain-Text)
   - Klassifizierung mit Emojis in Betreffzeile: 🌟 PERFEKT (50+ Punkte), ✅ GEEIGNET (35+ Punkte), 💡 INTERESSANT (20+ Punkte), ⚠️ UNPASSEND (<20 Punkte)
