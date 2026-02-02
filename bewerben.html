@@ -555,6 +555,7 @@
                         <div class="progress-step" data-step="7">7</div>
                         <div class="progress-step" data-step="8">8</div>
                         <div class="progress-step" data-step="9">9</div>
+                        <div class="progress-step" data-step="10">10</div>
                     </div>
                 </div>
 
@@ -752,8 +753,29 @@
                     </div>
                 </div>
 
-                <!-- Step 9: Contact Information -->
+                <!-- Step 9: Start Date (Innendienst only) -->
                 <div class="funnel-step" data-step="9">
+                    <h2 class="step-title">Verfügbarkeit</h2>
+                    <p class="step-subtitle">Ab wann bist Du verfügbar?</p>
+
+                    <div class="radio-options">
+                        <div class="radio-option">
+                            <input type="radio" name="startDate" id="sd1" value="ab sofort">
+                            <label for="sd1" class="radio-label">Ab sofort</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="startDate" id="sd2" value="1-3 Monate">
+                            <label for="sd2" class="radio-label">1-3 Monate</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="startDate" id="sd3" value="nach Absprache">
+                            <label for="sd3" class="radio-label">Nach Absprache</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 10: Contact Information -->
+                <div class="funnel-step" data-step="10">
                     <div id="scoreMessage" style="display: none; margin-bottom: 2rem; padding: 1.5rem; border-left: 4px solid var(--accent-green); border-radius: 6px;">
                         <h3 id="scoreTitle" style="margin-bottom: 0.5rem;"></h3>
                         <p id="scoreText" style="color: var(--dark); margin: 0;"></p>
@@ -798,7 +820,7 @@
                 </div>
 
                 <!-- Success Message -->
-                <div class="funnel-step" data-step="10">
+                <div class="funnel-step" data-step="11">
                     <div class="success-message">
                         <div class="success-icon">✓</div>
                         <h2>Vielen Dank!</h2>
@@ -841,7 +863,7 @@
     <script>
         // State management
         let currentStep = 1;
-        const totalSteps = 9; // 7 qualification questions + availability + contact form
+        let totalSteps = 10; // 7 qualification questions + availability + start date + contact form
         let totalScore = 0;
         const formData = {
             technical: '',
@@ -852,6 +874,7 @@
             approach: '',
             case: '',
             availability: '',
+            startDate: '',
             name: '',
             email: '',
             phone: '',
@@ -915,12 +938,12 @@
         const formInputs = contactForm.querySelectorAll('input[required], textarea[required]');
 
         formInputs.forEach(input => {
-            input.addEventListener('input', validateStep9);
+            input.addEventListener('input', validateStep10);
         });
 
-        document.getElementById('privacy').addEventListener('change', validateStep9);
+        document.getElementById('privacy').addEventListener('change', validateStep10);
 
-        function validateStep9() {
+        function validateStep10() {
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
@@ -940,7 +963,7 @@
 
         // Navigation
         nextBtn.addEventListener('click', () => {
-            if (currentStep === 9) {
+            if (currentStep === 10) {
                 submitForm();
             } else {
                 nextStep();
@@ -951,14 +974,23 @@
             if (currentStep > 1) {
                 currentStep--;
 
-                // Skip step 6 & 7 for Lager when going back
+                // Skip step 6, 7 & 9 for Lager when going back
                 // From step 8 (Erreichbarkeit) jump to step 5 (Verfügbarkeit)
                 if (stelle === 'lager' && currentStep === 7) {
                     currentStep = 5; // Jump back from step 8 to step 5 (skip 6 & 7)
                 }
+                // From step 10 (Contact) jump to step 8 (skip 9)
+                if (stelle === 'lager' && currentStep === 9) {
+                    currentStep = 8; // Jump back from step 10 to step 8 (skip 9)
+                }
 
                 // Skip step 7 for Innendienst (step is hidden)
                 if (stelle === 'innendienst' && currentStep === 7) {
+                    currentStep--;
+                }
+
+                // Skip step 9 for Außendienst when going back
+                if (stelle !== 'innendienst' && stelle !== 'lager' && currentStep === 9) {
                     currentStep--;
                 }
 
@@ -970,14 +1002,23 @@
             if (currentStep < totalSteps) {
                 currentStep++;
 
-                // Skip step 6 & 7 for Lager (steps are hidden)
+                // Skip step 6, 7 & 9 for Lager (steps are hidden)
                 // Jump from Frage 5 to Erreichbarkeit (Step 8)
                 if (stelle === 'lager' && currentStep === 6) {
                     currentStep = 8; // Jump to erreichbarkeit (step 8)
                 }
+                // Jump from Step 8 to Step 10 (skip 9)
+                if (stelle === 'lager' && currentStep === 9) {
+                    currentStep = 10; // Jump to contact form (step 10)
+                }
 
                 // Skip step 7 for Innendienst (step is hidden)
                 if (stelle === 'innendienst' && currentStep === 7) {
+                    currentStep++;
+                }
+
+                // Skip step 9 for Außendienst (Verfügbarkeit nur für Innendienst)
+                if (stelle !== 'innendienst' && stelle !== 'lager' && currentStep === 9) {
                     currentStep++;
                 }
 
@@ -1000,7 +1041,7 @@
             if (currentStep === totalSteps) {
                 nextBtn.textContent = 'Bewerbung absenden';
                 nextBtn.disabled = true;
-                validateStep9();
+                validateStep10();
 
                 // Show score-based message
                 displayScoreMessage();
@@ -1157,8 +1198,8 @@
             setTimeout(() => {
                 popup.classList.remove('active');
 
-                // Show success step (step 10)
-                currentStep = 10;
+                // Show success step (step 11)
+                currentStep = 11;
                 steps.forEach((step, index) => {
                     step.classList.toggle('active', index + 1 === currentStep);
                 });
@@ -1241,7 +1282,7 @@
             document.querySelector('[data-step="7"]').style.display = 'none';
             document.querySelector('.progress-step[data-step="7"]').style.display = 'none';
 
-            // Hide motivation field in step 9 (already asked in step 6 for Innendienst)
+            // Hide motivation field in step 10 (already asked in step 6 for Innendienst)
             const motivationField = document.getElementById('motivationField');
             const motivationTextarea = document.getElementById('motivation');
             if (motivationField) {
@@ -1333,19 +1374,27 @@
             document.querySelector('label[for="d4"]').textContent = 'Später';
             document.querySelector('#d4').setAttribute('data-points', '3');
 
-            // Frage 6 & 7: Für Lager nicht benötigt - verstecken
+            // Frage 6, 7 & 9: Für Lager nicht benötigt - verstecken
             // (Step 8 "Erreichbarkeit" bleibt sichtbar!)
             document.querySelector('[data-step="6"]').style.display = 'none';
             document.querySelector('.progress-step[data-step="6"]').style.display = 'none';
             document.querySelector('[data-step="7"]').style.display = 'none';
             document.querySelector('.progress-step[data-step="7"]').style.display = 'none';
+            document.querySelector('[data-step="9"]').style.display = 'none';
+            document.querySelector('.progress-step[data-step="9"]').style.display = 'none';
 
-            // Progress Bar umnummerieren: Zeige 1-7 statt 1,2,3,4,5,8,9
+            // Progress Bar umnummerieren: Zeige 1-7 statt 1,2,3,4,5,8,10
             document.querySelector('.progress-step[data-step="8"]').textContent = '6';
-            document.querySelector('.progress-step[data-step="9"]').textContent = '7';
+            document.querySelector('.progress-step[data-step="10"]').textContent = '7';
 
             // Adjust total steps for progress calculation
             totalSteps = 8; // 5 questions + erreichbarkeit + contact/motivation + submit
+        } else {
+            // Außendienst: Step 9 (Verfügbarkeit) ausblenden - nur für Innendienst
+            document.querySelector('[data-step="9"]').style.display = 'none';
+            document.querySelector('.progress-step[data-step="9"]').style.display = 'none';
+            document.querySelector('.progress-step[data-step="10"]').textContent = '9';
+            totalSteps = 9; // Außendienst hat weiterhin 9 Schritte
         }
 
         // Log initialization
