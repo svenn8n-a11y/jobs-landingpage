@@ -1282,6 +1282,11 @@
             document.querySelector('[data-step="7"]').style.display = 'none';
             document.querySelector('.progress-step[data-step="7"]').style.display = 'none';
 
+            // Progress Bar umnummerieren für Innendienst: 1-6, 7-9 (statt 1-6, 8-10)
+            document.querySelector('.progress-step[data-step="8"]').textContent = '7';
+            document.querySelector('.progress-step[data-step="9"]').textContent = '8';
+            document.querySelector('.progress-step[data-step="10"]').textContent = '9';
+
             // Hide motivation field in step 10 (already asked in step 6 for Innendienst)
             const motivationField = document.getElementById('motivationField');
             const motivationTextarea = document.getElementById('motivation');
