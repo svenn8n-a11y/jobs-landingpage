@@ -811,18 +811,18 @@
 
                         <div class="form-row">
                             <div class="form-group" style="flex: 1;">
-                                <label for="street">Straße & Hausnr.</label>
-                                <input type="text" id="street" name="street" placeholder="Musterstraße 12">
+                                <label for="street">Straße & Hausnr. *</label>
+                                <input type="text" id="street" name="street" placeholder="Musterstraße 12" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group" style="flex: 0 0 120px;">
-                                <label for="zip">PLZ</label>
-                                <input type="text" id="zip" name="zip" placeholder="87700" maxlength="5" pattern="[0-9]{5}">
+                                <label for="zip">PLZ *</label>
+                                <input type="text" id="zip" name="zip" placeholder="87700" maxlength="5" pattern="[0-9]{5}" required>
                             </div>
                             <div class="form-group" style="flex: 1;">
-                                <label for="city">Ort</label>
-                                <input type="text" id="city" name="city" placeholder="Memmingen">
+                                <label for="city">Ort *</label>
+                                <input type="text" id="city" name="city" placeholder="Memmingen" required>
                             </div>
                         </div>
 
@@ -1012,15 +1012,18 @@
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
+            const street = document.getElementById('street').value.trim();
+            const zip = document.getElementById('zip').value.trim();
+            const city = document.getElementById('city').value.trim();
             const privacy = document.getElementById('privacy').checked;
 
             // For Innendienst, motivation is asked in step 6, not in step 9
             let isValid;
             if (stelle === 'innendienst') {
-                isValid = name && email && phone && privacy;
+                isValid = name && email && phone && street && zip && city && privacy;
             } else {
                 const motivation = document.getElementById('motivation').value.trim();
-                isValid = name && email && phone && motivation && privacy;
+                isValid = name && email && phone && street && zip && city && motivation && privacy;
             }
 
             nextBtn.disabled = !isValid;
