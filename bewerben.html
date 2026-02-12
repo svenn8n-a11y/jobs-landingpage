@@ -962,6 +962,16 @@
                 if (stelle === 'innendienst' && currentStep === 6) {
                     nextBtn.disabled = !innendienstMotivationField.value.trim();
                     formData.innendienstMotivation = innendienstMotivationField.value;
+
+                    // Motivation-Scoring: 0 Punkte bei leer/1 Wort, 5 bei kurz, 10 bei ausführlich
+                    const words = innendienstMotivationField.value.trim().split(/\s+/).filter(w => w.length > 0);
+                    const motivationPoints = words.length <= 1 ? 0 : words.length < 5 ? 5 : 10;
+
+                    if (formData['innendienstMotivation_points']) {
+                        totalScore -= formData['innendienstMotivation_points'];
+                    }
+                    formData['innendienstMotivation_points'] = motivationPoints;
+                    totalScore += motivationPoints;
                 }
             });
         }
@@ -1174,8 +1184,17 @@
                 perfectThreshold = 50;
                 goodThreshold = 35;
                 interestingThreshold = 20;
+            } else if (stelle === 'innendienst') {
+                // Scoring for Innendienst (max 60 points, 5 questions + motivation):
+                // 43-60: Perfect fit (72%+)
+                // 30-42: Good fit (50-70%)
+                // 18-29: Interesting (30-48%)
+                // 0-17: Not optimal (<30%)
+                perfectThreshold = 43;
+                goodThreshold = 30;
+                interestingThreshold = 18;
             } else {
-                // Scoring for Innendienst & Lager (max 50 points, 5 questions):
+                // Scoring for Lager (max 50 points, 5 questions):
                 // 36-50: Perfect fit (72%+)
                 // 25-35: Good fit (50-70%)
                 // 15-24: Interesting (30-48%)

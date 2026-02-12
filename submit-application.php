@@ -103,6 +103,28 @@ $approach = isset($data['approach']) ? htmlspecialchars(strip_tags($data['approa
 $case = isset($data['case']) ? htmlspecialchars(strip_tags($data['case'])) : '';
 $availability = isset($data['availability']) ? htmlspecialchars(strip_tags($data['availability'])) : '';
 
+// Individuelle Punkte pro Frage
+$technical_points = intval($data['technical_points'] ?? 0);
+$sales_points = intval($data['sales_points'] ?? 0);
+$travel_points = intval($data['travel_points'] ?? 0);
+$organization_points = intval($data['organization_points'] ?? 0);
+$digital_points = intval($data['digital_points'] ?? 0);
+$approach_points = intval($data['approach_points'] ?? 0);
+$case_points = intval($data['case_points'] ?? 0);
+$innendienstMotivation_points = intval($data['innendienstMotivation_points'] ?? 0);
+
+// Hilfsfunktion: Punkte-Zelle mit Farbcodierung
+function pointsCell($points, $max = 10) {
+    if ($points >= 8) {
+        $color = '#27ae60';
+    } elseif ($points >= 4) {
+        $color = '#f39c12';
+    } else {
+        $color = '#e74c3c';
+    }
+    return "<td style=\"text-align:center; font-weight:bold; color: $color;\">$points/$max</td>";
+}
+
 // Stellenbezeichnung
 if ($stelle === 'aussendienst') {
     $stellenbezeichnung = 'Verkaufsberater Außendienst';
@@ -135,8 +157,24 @@ if ($stelle === 'aussendienst') {
         $classification = '⚠️ UNPASSEND';
         $classificationColor = '#e74c3c';
     }
+} elseif ($stelle === 'innendienst') {
+    // Innendienst: max 60 Punkte (5 Fragen à max 10 + Motivation max 10)
+    $maxScore = 60;
+    if ($score >= 43) {
+        $classification = '🌟 PERFEKT';
+        $classificationColor = '#27ae60';
+    } elseif ($score >= 30) {
+        $classification = '✅ GEEIGNET';
+        $classificationColor = '#2ecc71';
+    } elseif ($score >= 18) {
+        $classification = '💡 INTERESSANT';
+        $classificationColor = '#f39c12';
+    } else {
+        $classification = '⚠️ UNPASSEND';
+        $classificationColor = '#e74c3c';
+    }
 } else {
-    // Innendienst & Lager: max 50 Punkte (5 Fragen à max 10)
+    // Lager: max 50 Punkte (5 Fragen à max 10)
     $maxScore = 50;
     if ($score >= 36) {
         $classification = '🌟 PERFEKT';
@@ -158,94 +196,105 @@ $subject = '=?UTF-8?B?' . base64_encode($classification . ' | Bewerbung: ' . $st
 
 // Fragetabelle abhängig von der Stelle
 if ($stelle === 'lager') {
-    // Für Lager werden die Input-Namen wiederverwendet, aber mit anderen Bedeutungen
-    // technical = Lager-Erfahrung
-    // sales = Gabelstapler-Führerschein
-    // travel = Fitness
-    // organization = Selbstständigkeit & Verantwortung
-    // digital = Verfügbarkeit (wiederverwendet, da Frage 5 unterschiedlich ist)
     $questionTable = "
                 <tr>
                     <td>1. Lager-Erfahrung</td>
                     <td>$technical</td>
+                    " . pointsCell($technical_points) . "
                 </tr>
                 <tr>
                     <td>2. Gabelstapler-Führerschein</td>
                     <td>$sales</td>
+                    " . pointsCell($sales_points) . "
                 </tr>
                 <tr>
                     <td>3. Werkzeug & Handwerk</td>
                     <td>$travel</td>
+                    " . pointsCell($travel_points) . "
                 </tr>
                 <tr>
                     <td>4. Selbstständigkeit & Verantwortung</td>
                     <td>$organization</td>
+                    " . pointsCell($organization_points) . "
                 </tr>
                 <tr>
                     <td>5. Verfügbarkeit</td>
                     <td>$digital</td>
+                    " . pointsCell($digital_points) . "
                 </tr>";
 } elseif ($stelle === 'innendienst') {
-    // Innendienst: 5 bewertete Fragen + Motivation (Freitext) + Erreichbarkeit
     $questionTable = "
                 <tr>
                     <td>1. Technisches Know-How</td>
                     <td>$technical</td>
+                    " . pointsCell($technical_points) . "
                 </tr>
                 <tr>
                     <td>2. Kommunikationsstärke</td>
                     <td>$sales</td>
+                    " . pointsCell($sales_points) . "
                 </tr>
                 <tr>
                     <td>3. Multitasking</td>
                     <td>$travel</td>
+                    " . pointsCell($travel_points) . "
                 </tr>
                 <tr>
                     <td>4. Digitale Systeme</td>
                     <td>$organization</td>
+                    " . pointsCell($organization_points) . "
                 </tr>
                 <tr>
                     <td>5. Beratung im Haus</td>
                     <td>$digital</td>
+                    " . pointsCell($digital_points) . "
                 </tr>
                 <tr>
                     <td>6. Motivation</td>
                     <td>$motivation</td>
+                    " . pointsCell($innendienstMotivation_points) . "
                 </tr>
                 <tr>
                     <td>7. Erreichbarkeit</td>
                     <td>$availability</td>
+                    <td style=\"text-align:center; color: #999;\">—</td>
                 </tr>";
 } else {
-    // Außendienst: 7 Fragen
     $questionTable = "
                 <tr>
                     <td>1. Technische Erfahrung</td>
                     <td>$technical</td>
+                    " . pointsCell($technical_points) . "
                 </tr>
                 <tr>
                     <td>2. Verkaufsfreude</td>
                     <td>$sales</td>
+                    " . pointsCell($sales_points) . "
                 </tr>
                 <tr>
                     <td>3. Reisebereitschaft</td>
                     <td>$travel</td>
+                    " . pointsCell($travel_points) . "
                 </tr>
                 <tr>
                     <td>4. Selbstorganisation</td>
                     <td>$organization</td>
+                    " . pointsCell($organization_points) . "
                 </tr>
                 <tr>
                     <td>5. Digitale Tools</td>
                     <td>$digital</td>
+                    " . pointsCell($digital_points) . "
                 </tr>
                 <tr>
                     <td>6. Verkaufsansatz</td>
                     <td>$approach</td>
+                    " . pointsCell($approach_points) . "
                 </tr>
                 <tr>
                     <td>7. Mini-Praxisfall</td>
                     <td>$case</td>
+                    " . pointsCell($case_points) . "
                 </tr>";
 }
 
@@ -331,6 +380,7 @@ $message = "
                 <tr>
                     <th>Frage</th>
                     <th>Antwort</th>
+                    <th style="width:80px;text-align:center;">Punkte</th>
                 </tr>
                 $questionTable
             </table>
