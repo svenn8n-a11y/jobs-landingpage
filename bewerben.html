@@ -915,7 +915,7 @@
 
                 // Auto-advance after selection (only for steps 1-6)
                 setTimeout(() => {
-                    if (currentStep < totalSteps) {
+                    if (currentStep < 10) {
                         nextStep();
                     }
                 }, 500);
@@ -999,7 +999,7 @@
         });
 
         function nextStep() {
-            if (currentStep < totalSteps) {
+            if (currentStep < 10) {
                 currentStep++;
 
                 // Skip step 6, 7 & 9 for Lager (steps are hidden)
@@ -1038,7 +1038,7 @@
             // Update buttons
             prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
 
-            if (currentStep === totalSteps) {
+            if (currentStep === 10) {
                 nextBtn.textContent = 'Bewerbung absenden';
                 nextBtn.disabled = true;
                 validateStep10();
@@ -1148,6 +1148,9 @@
         }
 
         function submitForm() {
+            // Ensure score is always up-to-date before sending
+            formData.score = totalScore;
+
             // Collect final form data
             formData.name = document.getElementById('name').value;
             formData.email = document.getElementById('email').value;
