@@ -78,23 +78,9 @@ $to = 'support@poeppel-wkz.de';
 $classification = '';
 $classificationColor = '';
 
-if ($stelle === 'lager') {
-    // Lager: max 50 Punkte
-    if ($score >= 36) {
-        $classification = '🌟 PERFEKT';
-        $classificationColor = '#27ae60';
-    } elseif ($score >= 25) {
-        $classification = '✅ GEEIGNET';
-        $classificationColor = '#2ecc71';
-    } elseif ($score >= 15) {
-        $classification = '💡 INTERESSANT';
-        $classificationColor = '#f39c12';
-    } else {
-        $classification = '⚠️ UNPASSEND';
-        $classificationColor = '#e74c3c';
-    }
-} else {
-    // Verkaufspositionen: max 70 Punkte
+if ($stelle === 'aussendienst') {
+    // Außendienst: max 70 Punkte (7 Fragen à max 10)
+    $maxScore = 70;
     if ($score >= 50) {
         $classification = '🌟 PERFEKT';
         $classificationColor = '#27ae60';
@@ -108,13 +94,26 @@ if ($stelle === 'lager') {
         $classification = '⚠️ UNPASSEND';
         $classificationColor = '#e74c3c';
     }
+} else {
+    // Innendienst & Lager: max 50 Punkte (5 Fragen à max 10)
+    $maxScore = 50;
+    if ($score >= 36) {
+        $classification = '🌟 PERFEKT';
+        $classificationColor = '#27ae60';
+    } elseif ($score >= 25) {
+        $classification = '✅ GEEIGNET';
+        $classificationColor = '#2ecc71';
+    } elseif ($score >= 15) {
+        $classification = '💡 INTERESSANT';
+        $classificationColor = '#f39c12';
+    } else {
+        $classification = '⚠️ UNPASSEND';
+        $classificationColor = '#e74c3c';
+    }
 }
 
 // E-Mail-Betreff mit Klassifizierung und Encoding
 $subject = '=?UTF-8?B?' . base64_encode($classification . ' | Bewerbung: ' . $stellenbezeichnung . ' - ' . $name) . '?=';
-
-// Maximale Punktzahl abhängig von der Stelle
-$maxScore = ($stelle === 'lager') ? 50 : 70;
 
 // Fragetabelle abhängig von der Stelle
 if ($stelle === 'lager') {
@@ -145,7 +144,31 @@ if ($stelle === 'lager') {
                     <td>5. Verfügbarkeit</td>
                     <td>$digital</td>
                 </tr>";
+} elseif ($stelle === 'innendienst') {
+    // Innendienst: 5 Fragen + Motivation als Freitext (wird oben separat angezeigt)
+    $questionTable = "
+                <tr>
+                    <td>1. Technisches Know-How</td>
+                    <td>$technical</td>
+                </tr>
+                <tr>
+                    <td>2. Kommunikationsstärke</td>
+                    <td>$sales</td>
+                </tr>
+                <tr>
+                    <td>3. Multitasking</td>
+                    <td>$travel</td>
+                </tr>
+                <tr>
+                    <td>4. Digitale Systeme</td>
+                    <td>$organization</td>
+                </tr>
+                <tr>
+                    <td>5. Beratung im Haus</td>
+                    <td>$digital</td>
+                </tr>";
 } else {
+    // Außendienst: 7 Fragen
     $questionTable = "
                 <tr>
                     <td>1. Technische Erfahrung</td>

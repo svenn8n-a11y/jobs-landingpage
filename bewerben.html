@@ -1097,17 +1097,8 @@
 
             let perfectThreshold, goodThreshold, interestingThreshold;
 
-            if (stelle === 'lager') {
-                // Scoring for Lager (max 50 points):
-                // 36-50: Perfect fit (72%+)
-                // 25-35: Good fit (50-70%)
-                // 15-24: Interesting (30-48%)
-                // 0-14: Not optimal (<30%)
-                perfectThreshold = 36;
-                goodThreshold = 25;
-                interestingThreshold = 15;
-            } else {
-                // Scoring for Sales positions (max 70 points):
+            if (stelle === 'aussendienst') {
+                // Scoring for Außendienst (max 70 points, 7 questions):
                 // 50-70: Perfect fit (71%+)
                 // 35-49: Good fit (50-70%)
                 // 20-34: Interesting (29-49%)
@@ -1115,6 +1106,15 @@
                 perfectThreshold = 50;
                 goodThreshold = 35;
                 interestingThreshold = 20;
+            } else {
+                // Scoring for Innendienst & Lager (max 50 points, 5 questions):
+                // 36-50: Perfect fit (72%+)
+                // 25-35: Good fit (50-70%)
+                // 15-24: Interesting (30-48%)
+                // 0-14: Not optimal (<30%)
+                perfectThreshold = 36;
+                goodThreshold = 25;
+                interestingThreshold = 15;
             }
 
             if (totalScore >= perfectThreshold) {
