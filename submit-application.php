@@ -308,16 +308,16 @@ $message = "
                 <div class=\"info-label\">Stelle:</div>
                 <div class=\"info-value\"><strong>$stellenbezeichnung</strong></div>
             </div>
-            <div class=\"info-row\">
+            " . ($stelle !== 'innendienst' ? "<div class=\"info-row\">
                 <div class=\"info-label\">Erreichbarkeit:</div>
                 <div class=\"info-value\">$availability</div>
-            </div>
+            </div>" : "") . "
         </div>
 
-        <div class=\"section\">
+        " . ($stelle !== 'innendienst' ? "<div class=\"section\">
             <div class=\"section-title\">💬 Motivation</div>
             <div class=\"motivation\">$motivation</div>
-        </div>
+        </div>" : "") . "
 
         <div class=\"section\">
             <div class=\"section-title\">❓ Fragen an uns</div>
@@ -350,49 +350,51 @@ $message = "
 ";
 
 // E-Mail-Header und Versand (mit optionalen Anhängen)
+$eol = "\r\n";
+
 if (!empty($uploadedFiles)) {
     // MIME Multipart E-Mail mit Anhängen
-    $boundary = md5(uniqid(time()));
+    $boundary = '----=_Part_' . md5(uniqid(microtime(true)));
 
-    $headers = "From: noreply@poeppel-wkz.com\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "Return-Path: noreply@poeppel-wkz.com\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-    $headers .= "X-Priority: 1\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+    $headers = "From: noreply@poeppel-wkz.com" . $eol;
+    $headers .= "Reply-To: $email" . $eol;
+    $headers .= "Return-Path: noreply@poeppel-wkz.com" . $eol;
+    $headers .= "X-Mailer: PHP/" . phpversion() . $eol;
+    $headers .= "X-Priority: 1" . $eol;
+    $headers .= "MIME-Version: 1.0" . $eol;
+    $headers .= "Content-Type: multipart/mixed;" . $eol . " boundary=\"$boundary\"" . $eol;
 
     // HTML-Teil
-    $body = "--$boundary\r\n";
-    $body .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $body .= "Content-Transfer-Encoding: quoted-printable\r\n\r\n";
-    $body .= quoted_printable_encode($message) . "\r\n";
+    $body = "--$boundary" . $eol;
+    $body .= "Content-Type: text/html; charset=UTF-8" . $eol;
+    $body .= "Content-Transfer-Encoding: base64" . $eol . $eol;
+    $body .= chunk_split(base64_encode($message)) . $eol;
 
     // Dateianhänge
     foreach ($uploadedFiles as $file) {
         $fileContent = file_get_contents($file['tmp_name']);
         $fileEncoded = chunk_split(base64_encode($fileContent));
-        $fileName = '=?UTF-8?B?' . base64_encode($file['name']) . '?=';
+        $safeName = basename($file['name']);
 
-        $body .= "--$boundary\r\n";
-        $body .= "Content-Type: {$file['type']}; name=\"$fileName\"\r\n";
-        $body .= "Content-Disposition: attachment; filename=\"$fileName\"\r\n";
-        $body .= "Content-Transfer-Encoding: base64\r\n\r\n";
-        $body .= $fileEncoded . "\r\n";
+        $body .= "--$boundary" . $eol;
+        $body .= "Content-Type: {$file['type']}; name=\"=?UTF-8?B?" . base64_encode($safeName) . "?=\"" . $eol;
+        $body .= "Content-Disposition: attachment; filename=\"=?UTF-8?B?" . base64_encode($safeName) . "?=\"" . $eol;
+        $body .= "Content-Transfer-Encoding: base64" . $eol . $eol;
+        $body .= $fileEncoded . $eol;
     }
 
-    $body .= "--$boundary--";
+    $body .= "--$boundary--" . $eol;
     $mailSent = mail($to, $subject, $body, $headers, '-f noreply@poeppel-wkz.com');
 } else {
     // Einfache HTML-E-Mail ohne Anhänge
-    $headers = "From: noreply@poeppel-wkz.com\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "Return-Path: noreply@poeppel-wkz.com\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    $headers .= "Content-Transfer-Encoding: quoted-printable\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-    $headers .= "X-Priority: 1\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
+    $headers = "From: noreply@poeppel-wkz.com" . $eol;
+    $headers .= "Reply-To: $email" . $eol;
+    $headers .= "Return-Path: noreply@poeppel-wkz.com" . $eol;
+    $headers .= "Content-Type: text/html; charset=UTF-8" . $eol;
+    $headers .= "Content-Transfer-Encoding: quoted-printable" . $eol;
+    $headers .= "X-Mailer: PHP/" . phpversion() . $eol;
+    $headers .= "X-Priority: 1" . $eol;
+    $headers .= "MIME-Version: 1.0" . $eol;
 
     $message = quoted_printable_encode($message);
     $mailSent = mail($to, $subject, $message, $headers, '-f noreply@poeppel-wkz.com');
