@@ -317,9 +317,8 @@ if ($mailSent) {
         .info-label { font-weight: 600; min-width: 180px; color: #666; }
         .info-value { color: #333; }
         .steps { margin: 20px 0; }
-        .step { display: flex; align-items: start; margin-bottom: 20px; }
-        .step-number { background: #be1823; color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; flex-shrink: 0; margin-right: 15px; }
-        .step-content { flex: 1; padding-top: 5px; }
+        .step { margin-bottom: 20px; }
+        .step-number { background: #be1823; color: white; width: 35px; height: 35px; border-radius: 50%; font-weight: 700; font-size: 18px; text-align: center; line-height: 35px; }
         .step-content h4 { margin: 0 0 5px 0; font-size: 17px; color: #333; }
         .step-content p { margin: 0; color: #666; font-size: 15px; }
         .contact-box { background: #f9f9f9; padding: 25px; border-radius: 8px; margin: 20px 0; }
@@ -378,29 +377,35 @@ if ($mailSent) {
 
         <div class=\"section\">
             <div class=\"section-title\">🚀 Wie geht es weiter?</div>
-            <div class=\"steps\">
-                <div class=\"step\">
-                    <div class=\"step-number\">1</div>
-                    <div class=\"step-content\">
-                        <h4>Prüfung Ihrer Bewerbung</h4>
-                        <p>Unser Team prüft Ihre Unterlagen sorgfältig und vergleicht Ihr Profil mit unseren Anforderungen.</p>
-                    </div>
-                </div>
-                <div class=\"step\">
-                    <div class=\"step-number\">2</div>
-                    <div class=\"step-content\">
-                        <h4>Rückmeldung binnen 5 Werktagen</h4>
-                        <p>Sie erhalten innerhalb der nächsten 5 Werktage eine Rückmeldung von uns per E-Mail oder Telefon.</p>
-                    </div>
-                </div>
-                <div class=\"step\">
-                    <div class=\"step-number\">3</div>
-                    <div class=\"step-content\">
-                        <h4>Persönliches Gespräch</h4>
-                        <p>Bei Interesse laden wir Sie zu einem persönlichen Kennenlerngespräch in Memmingen ein.</p>
-                    </div>
-                </div>
-            </div>
+            <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\">
+                <tr>
+                    <td width=\"50\" valign=\"top\" style=\"padding-bottom: 20px;\">
+                        <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"background: #be1823; color: white; width: 35px; height: 35px; border-radius: 50%; font-weight: 700; font-size: 18px; text-align: center; line-height: 35px;\">1</td></tr></table>
+                    </td>
+                    <td valign=\"top\" style=\"padding-bottom: 20px; padding-top: 5px;\">
+                        <h4 style=\"margin: 0 0 5px 0; font-size: 17px; color: #333;\">Prüfung Ihrer Bewerbung</h4>
+                        <p style=\"margin: 0; color: #666; font-size: 15px;\">Unser Team prüft Ihre Unterlagen sorgfältig und vergleicht Ihr Profil mit unseren Anforderungen.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width=\"50\" valign=\"top\" style=\"padding-bottom: 20px;\">
+                        <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"background: #be1823; color: white; width: 35px; height: 35px; border-radius: 50%; font-weight: 700; font-size: 18px; text-align: center; line-height: 35px;\">2</td></tr></table>
+                    </td>
+                    <td valign=\"top\" style=\"padding-bottom: 20px; padding-top: 5px;\">
+                        <h4 style=\"margin: 0 0 5px 0; font-size: 17px; color: #333;\">Rückmeldung binnen 5 Werktagen</h4>
+                        <p style=\"margin: 0; color: #666; font-size: 15px;\">Sie erhalten innerhalb der nächsten 5 Werktage eine Rückmeldung von uns per E-Mail oder Telefon.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width=\"50\" valign=\"top\">
+                        <table cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"background: #be1823; color: white; width: 35px; height: 35px; border-radius: 50%; font-weight: 700; font-size: 18px; text-align: center; line-height: 35px;\">3</td></tr></table>
+                    </td>
+                    <td valign=\"top\" style=\"padding-top: 5px;\">
+                        <h4 style=\"margin: 0 0 5px 0; font-size: 17px; color: #333;\">Persönliches Gespräch</h4>
+                        <p style=\"margin: 0; color: #666; font-size: 15px;\">Bei Interesse laden wir Sie zu einem persönlichen Kennenlerngespräch in Memmingen ein.</p>
+                    </td>
+                </tr>
+            </table>
         </div>
 
         <div class=\"section\">
