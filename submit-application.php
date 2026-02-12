@@ -113,7 +113,7 @@ if ($stelle === 'aussendienst') {
 }
 
 // E-Mail-Empfänger
-$to = 'support@poeppel-wkz.de';
+$to = 'support@poeppel-wkz.de, s.muellers@poeppel-wkz.de';
 
 // Klassifizierung für Betreff bestimmen (unterschiedliche Schwellenwerte für Lager vs. Verkauf)
 $classification = '';
