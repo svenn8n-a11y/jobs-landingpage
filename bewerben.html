@@ -266,6 +266,15 @@
         }
 
         /* ===== Contact Form ===== */
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 1.5rem;
+        }
+
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -800,6 +809,23 @@
                             <input type="tel" id="phone" name="phone" required>
                         </div>
 
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1;">
+                                <label for="street">Straße & Hausnr.</label>
+                                <input type="text" id="street" name="street" placeholder="Musterstraße 12">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 0 0 120px;">
+                                <label for="zip">PLZ</label>
+                                <input type="text" id="zip" name="zip" placeholder="87700" maxlength="5" pattern="[0-9]{5}">
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label for="city">Ort</label>
+                                <input type="text" id="city" name="city" placeholder="Memmingen">
+                            </div>
+                        </div>
+
                         <div class="form-group" id="motivationField">
                             <label for="motivation">Warum möchtest Du für uns arbeiten? * (1-2 Sätze)</label>
                             <textarea id="motivation" name="motivation" rows="3" required placeholder="Erzähle uns in ein bis zwei Sätzen, was dich motiviert..."></textarea>
@@ -808,6 +834,13 @@
                         <div class="form-group">
                             <label for="questions">Hast Du Fragen an uns? (optional)</label>
                             <textarea id="questions" name="questions" rows="3" placeholder="Stelle uns gerne deine Fragen..." style="background-color: #f5f5f5;"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fileUpload">Unterlagen hochladen (optional)</label>
+                            <p style="font-size: 0.85rem; color: #888; margin-bottom: 0.5rem;">Lebenslauf, Zeugnisse, Zertifikate (PDF, max. 10 MB pro Datei, max. 3 Dateien)</p>
+                            <input type="file" id="fileUpload" name="fileUpload" multiple accept=".pdf,.doc,.docx" style="padding: 0.6rem; border: 2px dashed #ccc; border-radius: 8px; width: 100%; cursor: pointer; background: #fafafa;">
+                            <div id="fileList" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--dark);"></div>
                         </div>
 
                         <div class="checkbox-group">
@@ -932,6 +965,38 @@
                 }
             });
         }
+
+        // File upload validation
+        document.getElementById('fileUpload').addEventListener('change', function() {
+            const fileList = document.getElementById('fileList');
+            const maxSize = 10 * 1024 * 1024; // 10 MB
+            const maxFiles = 3;
+            let valid = true;
+
+            if (this.files.length > maxFiles) {
+                fileList.innerHTML = '<span style="color: #e74c3c;">Maximal ' + maxFiles + ' Dateien erlaubt.</span>';
+                this.value = '';
+                return;
+            }
+
+            let html = '';
+            for (let i = 0; i < this.files.length; i++) {
+                const file = this.files[i];
+                const sizeMB = (file.size / 1024 / 1024).toFixed(1);
+                if (file.size > maxSize) {
+                    html += '<div style="color: #e74c3c;">&#10060; ' + file.name + ' (' + sizeMB + ' MB) - zu groß!</div>';
+                    valid = false;
+                } else {
+                    html += '<div style="color: var(--accent-green);">&#10004; ' + file.name + ' (' + sizeMB + ' MB)</div>';
+                }
+            }
+            fileList.innerHTML = html;
+
+            if (!valid) {
+                this.value = '';
+                fileList.innerHTML += '<div style="color: #e74c3c; margin-top: 0.3rem;">Bitte wähle kleinere Dateien (max. 10 MB).</div>';
+            }
+        });
 
         // Form validation for step 9 (contact form)
         const contactForm = document.getElementById('contactForm');
@@ -1155,6 +1220,9 @@
             formData.name = document.getElementById('name').value;
             formData.email = document.getElementById('email').value;
             formData.phone = document.getElementById('phone').value;
+            formData.street = document.getElementById('street').value;
+            formData.zip = document.getElementById('zip').value;
+            formData.city = document.getElementById('city').value;
 
             // For Innendienst, use motivation from step 6, for Außendienst from step 9
             if (stelle === 'innendienst') {
@@ -1172,13 +1240,24 @@
             console.log('Form submitted:', formData);
             console.log('Total Score:', totalScore);
 
+            // Build FormData for file upload support
+            const submitData = new FormData();
+            for (const [key, value] of Object.entries(formData)) {
+                submitData.append(key, value);
+            }
+
+            // Append files if selected
+            const fileInput = document.getElementById('fileUpload');
+            if (fileInput.files.length > 0) {
+                for (let i = 0; i < fileInput.files.length; i++) {
+                    submitData.append('files[]', fileInput.files[i]);
+                }
+            }
+
             // Send data to PHP backend
             fetch('submit-application.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
+                body: submitData
             })
             .then(response => response.json())
             .then(data => {

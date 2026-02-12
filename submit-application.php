@@ -16,9 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// JSON-Daten empfangen
-$jsonData = file_get_contents('php://input');
-$data = json_decode($jsonData, true);
+// Daten empfangen (FormData oder JSON)
+$contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
+
+if (strpos($contentType, 'multipart/form-data') !== false) {
+    // FormData (mit möglichem Datei-Upload)
+    $data = $_POST;
+} else {
+    // Fallback: JSON
+    $jsonData = file_get_contents('php://input');
+    $data = json_decode($jsonData, true);
+}
 
 if (!$data) {
     http_response_code(400);
@@ -51,6 +59,39 @@ $motivation = htmlspecialchars(strip_tags($data['motivation']));
 $questions = isset($data['questions']) ? htmlspecialchars(strip_tags($data['questions'])) : 'Keine Fragen';
 $stelle = htmlspecialchars(strip_tags($data['stelle']));
 $score = intval($data['score']);
+$street = isset($data['street']) ? htmlspecialchars(strip_tags($data['street'])) : '';
+$zip = isset($data['zip']) ? htmlspecialchars(strip_tags($data['zip'])) : '';
+$city = isset($data['city']) ? htmlspecialchars(strip_tags($data['city'])) : '';
+$address = trim("$street, $zip $city", ', ');
+if (empty($address)) $address = 'Nicht angegeben';
+
+// Datei-Upload verarbeiten
+$uploadedFiles = [];
+$maxFileSize = 10 * 1024 * 1024; // 10 MB
+$allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+
+if (isset($_FILES['files']) && !empty($_FILES['files']['name'][0])) {
+    for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
+        if ($_FILES['files']['error'][$i] === UPLOAD_ERR_OK) {
+            $fileName = $_FILES['files']['name'][$i];
+            $fileSize = $_FILES['files']['size'][$i];
+            $fileTmp = $_FILES['files']['tmp_name'][$i];
+            $fileType = $_FILES['files']['type'][$i];
+
+            // Validierung
+            if ($fileSize > $maxFileSize) continue;
+            if (!in_array($fileType, $allowedTypes)) continue;
+            if ($i >= 3) break; // Max 3 Dateien
+
+            $uploadedFiles[] = [
+                'name' => $fileName,
+                'tmp_name' => $fileTmp,
+                'type' => $fileType,
+                'size' => $fileSize
+            ];
+        }
+    }
+}
 
 // Antworten auf die Vorqualifizierungsfragen
 $technical = isset($data['technical']) ? htmlspecialchars(strip_tags($data['technical'])) : '';
@@ -145,7 +186,7 @@ if ($stelle === 'lager') {
                     <td>$digital</td>
                 </tr>";
 } elseif ($stelle === 'innendienst') {
-    // Innendienst: 5 Fragen + Motivation als Freitext (wird oben separat angezeigt)
+    // Innendienst: 5 bewertete Fragen + Motivation (Freitext) + Erreichbarkeit
     $questionTable = "
                 <tr>
                     <td>1. Technisches Know-How</td>
@@ -166,6 +207,14 @@ if ($stelle === 'lager') {
                 <tr>
                     <td>5. Beratung im Haus</td>
                     <td>$digital</td>
+                </tr>
+                <tr>
+                    <td>6. Motivation</td>
+                    <td>$motivation</td>
+                </tr>
+                <tr>
+                    <td>7. Erreichbarkeit</td>
+                    <td>$availability</td>
                 </tr>";
 } else {
     // Außendienst: 7 Fragen
@@ -252,6 +301,10 @@ $message = "
                 <div class=\"info-value\"><a href=\"tel:$phone\">$phone</a></div>
             </div>
             <div class=\"info-row\">
+                <div class=\"info-label\">Anschrift:</div>
+                <div class=\"info-value\">$address</div>
+            </div>
+            <div class=\"info-row\">
                 <div class=\"info-label\">Stelle:</div>
                 <div class=\"info-value\"><strong>$stellenbezeichnung</strong></div>
             </div>
@@ -283,6 +336,11 @@ $message = "
             </table>
         </div>
 
+        " . (!empty($uploadedFiles) ? "<div class=\"section\">
+            <div class=\"section-title\">📎 Anhänge</div>
+            <p>" . count($uploadedFiles) . " Datei(en) angehängt: " . implode(', ', array_map(function($f) { return $f['name']; }, $uploadedFiles)) . "</p>
+        </div>" : "") . "
+
         <div class=\"footer\">
             Gesendet: " . date('d.m.Y H:i:s') . " | R. Pöppel GmbH & Co. KG
         </div>
@@ -291,21 +349,54 @@ $message = "
 </html>
 ";
 
-// E-Mail-Header - optimiert für Serverkompatibilität (kein SMTPUTF8)
-$headers = "From: noreply@poeppel-wkz.com\r\n";
-$headers .= "Reply-To: $email\r\n";
-$headers .= "Return-Path: noreply@poeppel-wkz.com\r\n";
-$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-$headers .= "Content-Transfer-Encoding: quoted-printable\r\n";
-$headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-$headers .= "X-Priority: 1\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
+// E-Mail-Header und Versand (mit optionalen Anhängen)
+if (!empty($uploadedFiles)) {
+    // MIME Multipart E-Mail mit Anhängen
+    $boundary = md5(uniqid(time()));
 
-// Message für quoted-printable kodieren
-$message = quoted_printable_encode($message);
+    $headers = "From: noreply@poeppel-wkz.com\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "Return-Path: noreply@poeppel-wkz.com\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+    $headers .= "X-Priority: 1\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
 
-// E-Mail senden mit zusätzlichen Parametern
-$mailSent = mail($to, $subject, $message, $headers, '-f noreply@poeppel-wkz.com');
+    // HTML-Teil
+    $body = "--$boundary\r\n";
+    $body .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $body .= "Content-Transfer-Encoding: quoted-printable\r\n\r\n";
+    $body .= quoted_printable_encode($message) . "\r\n";
+
+    // Dateianhänge
+    foreach ($uploadedFiles as $file) {
+        $fileContent = file_get_contents($file['tmp_name']);
+        $fileEncoded = chunk_split(base64_encode($fileContent));
+        $fileName = '=?UTF-8?B?' . base64_encode($file['name']) . '?=';
+
+        $body .= "--$boundary\r\n";
+        $body .= "Content-Type: {$file['type']}; name=\"$fileName\"\r\n";
+        $body .= "Content-Disposition: attachment; filename=\"$fileName\"\r\n";
+        $body .= "Content-Transfer-Encoding: base64\r\n\r\n";
+        $body .= $fileEncoded . "\r\n";
+    }
+
+    $body .= "--$boundary--";
+    $mailSent = mail($to, $subject, $body, $headers, '-f noreply@poeppel-wkz.com');
+} else {
+    // Einfache HTML-E-Mail ohne Anhänge
+    $headers = "From: noreply@poeppel-wkz.com\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    $headers .= "Return-Path: noreply@poeppel-wkz.com\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $headers .= "Content-Transfer-Encoding: quoted-printable\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+    $headers .= "X-Priority: 1\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+
+    $message = quoted_printable_encode($message);
+    $mailSent = mail($to, $subject, $message, $headers, '-f noreply@poeppel-wkz.com');
+}
 
 // Bestätigungs-E-Mail an den Bewerber
 $confirmationSent = false;
