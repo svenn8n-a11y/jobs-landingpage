@@ -1082,11 +1082,6 @@
                     currentStep = 8; // Jump back from step 10 to step 8 (skip 9)
                 }
 
-                // Skip step 7 for Innendienst (step is hidden)
-                if (stelle === 'innendienst' && currentStep === 7) {
-                    currentStep--;
-                }
-
                 // Skip step 9 for Außendienst when going back
                 if (stelle !== 'innendienst' && stelle !== 'lager' && currentStep === 9) {
                     currentStep--;
@@ -1108,11 +1103,6 @@
                 // Jump from Step 8 to Step 10 (skip 9)
                 if (stelle === 'lager' && currentStep === 9) {
                     currentStep = 10; // Jump to contact form (step 10)
-                }
-
-                // Skip step 7 for Innendienst (step is hidden)
-                if (stelle === 'innendienst' && currentStep === 7) {
-                    currentStep++;
                 }
 
                 // Skip step 9 for Außendienst (Verfügbarkeit nur für Innendienst)
@@ -1205,14 +1195,14 @@
                 goodThreshold = 35;
                 interestingThreshold = 20;
             } else if (stelle === 'innendienst') {
-                // Scoring for Innendienst (max 60 points, 5 questions + motivation):
-                // 43-60: Perfect fit (72%+)
-                // 30-42: Good fit (50-70%)
-                // 18-29: Interesting (30-48%)
-                // 0-17: Not optimal (<30%)
-                perfectThreshold = 43;
-                goodThreshold = 30;
-                interestingThreshold = 18;
+                // Scoring for Innendienst (max 70 points, 5 questions + Berufsausbildung + motivation):
+                // 50-70: Perfect fit (71%+)
+                // 35-49: Good fit (50-70%)
+                // 21-34: Interesting (30-49%)
+                // 0-20: Not optimal (<30%)
+                perfectThreshold = 50;
+                goodThreshold = 35;
+                interestingThreshold = 21;
             } else {
                 // Scoring for Lager (max 50 points, 5 questions):
                 // 36-50: Perfect fit (72%+)
@@ -1402,14 +1392,21 @@
             document.getElementById('step6RadioButtons').style.display = 'none';
             document.getElementById('innendienstMotivation').style.display = 'block';
 
-            // Frage 7: Hide this step for Innendienst (not needed)
-            document.querySelector('[data-step="7"]').style.display = 'none';
-            document.querySelector('.progress-step[data-step="7"]').style.display = 'none';
-
-            // Progress Bar umnummerieren für Innendienst: 1-6, 7-9 (statt 1-6, 8-10)
-            document.querySelector('.progress-step[data-step="8"]').textContent = '7';
-            document.querySelector('.progress-step[data-step="9"]').textContent = '8';
-            document.querySelector('.progress-step[data-step="10"]').textContent = '9';
+            // Frage 7: Berufsausbildung (für Innendienst)
+            document.querySelector('[data-step="7"] .step-title').textContent = 'Deine Berufsausbildung';
+            document.querySelector('[data-step="7"] .step-subtitle').textContent = 'Welche Berufsausbildung hast Du abgeschlossen?';
+            document.querySelector('#c1').value = 'Kaufmännische oder technische Ausbildung';
+            document.querySelector('label[for="c1"]').textContent = 'Kaufmännische oder technische Ausbildung';
+            document.querySelector('#c1').setAttribute('data-points', '10');
+            document.querySelector('#c2').value = 'Ausbildung in einem anderen Bereich';
+            document.querySelector('label[for="c2"]').textContent = 'Ausbildung in einem anderen Bereich';
+            document.querySelector('#c2').setAttribute('data-points', '5');
+            document.querySelector('#c3').value = 'Noch in Ausbildung / abgebrochen';
+            document.querySelector('label[for="c3"]').textContent = 'Noch in Ausbildung / abgebrochen';
+            document.querySelector('#c3').setAttribute('data-points', '2');
+            document.querySelector('#c4').value = 'Keine Berufsausbildung';
+            document.querySelector('label[for="c4"]').textContent = 'Keine Berufsausbildung';
+            document.querySelector('#c4').setAttribute('data-points', '0');
 
             // Hide motivation field in step 10 (already asked in step 6 for Innendienst)
             const motivationField = document.getElementById('motivationField');
