@@ -237,6 +237,52 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
 
+        /* Karten-Bild (Hochformat Standard) */
+        .job-card-img {
+            width: calc(100% + 5rem);
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+            margin: -2.5rem -2.5rem 1.5rem -2.5rem;
+            display: block;
+        }
+
+        /* Querformat-Layout wenn nur 1 Karte im Grid sichtbar */
+        @media (min-width: 769px) {
+            .jobs-grid:has(> .job-card:only-child) {
+                grid-template-columns: 1fr;
+                max-width: 900px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .jobs-grid:has(> .job-card:only-child) .job-card {
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+                padding: 0;
+                overflow: hidden;
+            }
+            .jobs-grid:has(> .job-card:only-child) .job-card:hover {
+                transform: translateY(-5px);
+            }
+            .jobs-grid:has(> .job-card:only-child) .job-card-img {
+                width: 340px;
+                min-width: 340px;
+                height: auto;
+                border-radius: 12px 0 0 12px;
+                margin: 0;
+            }
+            .jobs-grid:has(> .job-card:only-child) .job-card-content {
+                padding: 2.5rem;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            .jobs-grid:has(> .job-card:only-child) .job-card-content .cta-button {
+                margin-top: auto;
+            }
+        }
+
         .job-icon {
             display: inline-flex;
             align-items: center;
@@ -840,45 +886,50 @@
 
                 <!-- Job 2: Innendienst -->
                 <div class="job-card">
-                    <img src="images/Kachel Innendienst.png" alt="Innendienst" style="width: calc(100% + 5rem); height: 200px; object-fit: cover; border-radius: 8px 8px 0 0; margin: -2.5rem -2.5rem 1.5rem -2.5rem; display: block;">
-                    <h3>Verkaufsberater Innendienst</h3>
-                    <div class="job-meta">
-                        <span class="job-tag">Vollzeit</span>
-                        <span class="job-tag">Memmingen</span>
-                        <span class="job-tag">Moderner Arbeitsplatz</span>
+                    <img src="images/Kachel Innendienst.png" alt="Innendienst" class="job-card-img">
+                    <div class="job-card-content">
+                        <h3>Verkaufsberater Innendienst</h3>
+                        <div class="job-meta">
+                            <span class="job-tag">Vollzeit</span>
+                            <span class="job-tag">Memmingen</span>
+                            <span class="job-tag">Moderner Arbeitsplatz</span>
+                        </div>
+                        <p class="job-description">
+                            Im Innendienst bist du die zentrale Anlaufstelle für unsere Kunden – vom ersten Kontakt bis zur Auftragsabwicklung und darüber hinaus.
+                        </p>
+                        <ul class="job-highlights">
+                            <li>Geregelte Arbeitszeiten</li>
+                            <li>Top-Ausstattung</li>
+                            <li>Systematische Einarbeitung</li>
+                            <li>Tolles Team</li>
+                        </ul>
+                        <a href="innendienst.html" class="cta-button">Zur Stellenausschreibung →</a>
                     </div>
-                    <p class="job-description">
-                        Im Innendienst bist du die zentrale Anlaufstelle für unsere Kunden – vom ersten Kontakt bis zur Auftragsabwicklung und darüber hinaus.
-                    </p>
-                    <ul class="job-highlights">
-                        <li>Geregelte Arbeitszeiten</li>
-                        <li>Top-Ausstattung</li>
-                        <li>Systematische Einarbeitung</li>
-                        <li>Tolles Team</li>
-                    </ul>
-                    <a href="innendienst.html" class="cta-button">Zur Stellenausschreibung →</a>
                 </div>
 
-                <!-- Job 3: Lagermitarbeiter -->
+                <!-- AUSGEBLENDET: Lagermitarbeiter-Stelle (zum Reaktivieren diesen Kommentar entfernen)
                 <div class="job-card">
-                    <img src="images/Kachel Lager.png" alt="Lagermitarbeiter" style="width: calc(100% + 5rem); height: 200px; object-fit: cover; border-radius: 8px 8px 0 0; margin: -2.5rem -2.5rem 1.5rem -2.5rem; display: block;">
-                    <h3>Lagermitarbeiter (m/w/d)</h3>
-                    <div class="job-meta">
-                        <span class="job-tag">Vollzeit</span>
-                        <span class="job-tag">Memmingen</span>
-                        <span class="job-tag">Unbefristet</span>
+                    <img src="images/Kachel Lager.png" alt="Lagermitarbeiter" class="job-card-img">
+                    <div class="job-card-content">
+                        <h3>Lagermitarbeiter (m/w/d)</h3>
+                        <div class="job-meta">
+                            <span class="job-tag">Vollzeit</span>
+                            <span class="job-tag">Memmingen</span>
+                            <span class="job-tag">Unbefristet</span>
+                        </div>
+                        <p class="job-description">
+                            Als Lagermitarbeiter sorgst du für einen reibungslosen Warenfluss – von der Annahme über die Kommissionierung bis zur Auslieferung.
+                        </p>
+                        <ul class="job-highlights">
+                            <li>Geregelte Arbeitszeiten (Mo-Fr)</li>
+                            <li>Keine Schichtarbeit</li>
+                            <li>Kostenfreie Arbeitskleidung</li>
+                            <li>30 Tage Urlaub</li>
+                        </ul>
+                        <a href="lager.html" class="cta-button">Zur Stellenausschreibung →</a>
                     </div>
-                    <p class="job-description">
-                        Als Lagermitarbeiter sorgst du für einen reibungslosen Warenfluss – von der Annahme über die Kommissionierung bis zur Auslieferung.
-                    </p>
-                    <ul class="job-highlights">
-                        <li>Geregelte Arbeitszeiten (Mo-Fr)</li>
-                        <li>Keine Schichtarbeit</li>
-                        <li>Kostenfreie Arbeitskleidung</li>
-                        <li>30 Tage Urlaub</li>
-                    </ul>
-                    <a href="lager.html" class="cta-button">Zur Stellenausschreibung →</a>
                 </div>
+                -->
             </div>
         </div>
     </section>
